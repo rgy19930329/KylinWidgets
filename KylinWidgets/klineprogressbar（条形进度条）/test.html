@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>test</title>
+<script type="text/javascript" src="klineprogressbar.js"></script>
+<style type="text/css">
+
+.wrap {
+	padding: 10px;
+}
+
+
+</style>
+</head>
+<body>
+
+    <div class="wrap">
+   	    <div id="myBar">
+            <div class="inner"></div>
+        </div>
+        <div id="show"></div>
+    </div>
+    
+    <button id="sub">sub</button>
+    <button id="add">add</button>
+
+
+	<script type="text/javascript">
+
+	var bar = Klineprogressbar(myBar);
+	
+	bar.init({
+		'width': '600px',
+		'height': '15px',
+		'color': 'orange'
+	}, {
+		'maxValue': 100,
+		'minValue': -100,
+		'value': -80
+	});
+
+
+	function showInfo(){
+		show.innerHTML = bar.getValue() + '/(' + bar.getMaxValue() + ',' + bar.getMinValue() + ')';
+	}
+
+	showInfo();
+
+	function addPro(){
+		var v = bar.getValue();
+		v = v + 10;
+		bar.setValue(v);
+		showInfo();
+	}
+	
+	add.onclick = function(){
+		addPro();
+	}
+
+	sub.onclick = function(){
+		var v = bar.getValue();
+		v = v - 10;
+		bar.setValue(v);
+		showInfo();
+	}
+
+	setInterval(function(){
+		addPro();
+	}, 1000);
+
+	</script>
+</body>
+</html>
