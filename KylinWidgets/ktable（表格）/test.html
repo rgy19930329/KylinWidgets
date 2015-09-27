@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>test</title>
+<script type="text/javascript" src="ktable.js"></script>
+<style type="text/css">
+
+.handler {
+	width: 500px;
+	padding: 20px;
+	margin-bottom: 30px;
+	border: 5px solid #59f;
+}
+
+#tab {
+	border-collapse: collapse;
+}
+
+#tab tr {
+	border: 1px solid blue;
+}
+
+#tab td {
+	padding: 10px;
+}
+
+
+</style>
+</head>
+<body>
+
+	<div class="handler">
+		<button id="drow">删除行</button>
+		<button id="dcol">删除列</button>
+		<button id="irow">插入行</button>
+		<button id="icol">插入列</button>
+		<button id="pdata">打印数据</button>
+	</div>
+
+	<table id="tab">
+		<thead>
+			<tr>
+				<th>first</th>
+				<th>second</th>
+				<th>three</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>111</td>
+				<td>222</td>
+				<td>333</td>
+			</tr>
+			<tr>
+				<td>444</td>
+				<td>555</td>
+				<td>666</td>
+			</tr>
+			<tr>
+				<td>777</td>
+				<td>888</td>
+				<td>999</td>
+			</tr>
+			<tr>
+				<td>aaa</td>
+				<td>bbb</td>
+				<td>ccc</td>
+			</tr>
+		</tbody>
+	</table>
+	
+	<script type="text/javascript">
+
+	var tab = document.getElementById("tab");
+
+	var targetTab = Ktable(tab);
+
+	drow.onclick = function(){
+		targetTab.deleteRow(0);
+	}
+
+	dcol.onclick = function(){
+		targetTab.deleteCol(0);
+	}
+
+	irow.onclick = function(){
+		targetTab.insertRow(-1);
+	}
+
+	icol.onclick = function(){
+		targetTab.insertCol(-1);
+	}
+
+	pdata.onclick = function(){
+		alert( targetTab.getDataList() );
+	}
+
+
+	</script>
+</body>
+</html>

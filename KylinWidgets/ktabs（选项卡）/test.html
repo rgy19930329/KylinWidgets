@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>test</title>
+<script type="text/javascript" src="ktabs.js"></script>
+<style type="text/css">
+
+body {
+	font-family: "Microsoft Yahei";
+	color: #000;
+}
+
+#tabs {
+	width: 500px;
+	border: 2px solid #ddd;
+}
+
+.tabs-nav a {
+	text-decoration: none;
+	padding: 10px 20px;
+	display: table-cell;
+}
+
+.tabs-nav a:visited {
+	color: #000;
+}
+
+.tabs-nav a:active {
+	color: #000;
+}
+
+.nav-selected {
+	color: blue;
+	background: #eee;
+}
+
+.tabs-content {
+	height: 200px;
+	overflow-y: scroll;
+	background: #eee;
+}
+
+</style>
+</head>
+<body>
+
+	<div id="tabs">
+		<div class="tabs-nav">
+			<a href="" class="nav-selected">首页</a>
+			<a href="">html</a>
+			<a href="">css</a>
+			<a href="">javascript</a>
+		</div>
+		<div class="tabs-content">
+			<div class="content-show">
+				<p>Web前端开发工程师是一个很新的职业，在国内乃至国际上真正开始受到重视的时间不超过7年。Web前端开发是从网页制作演变而来的，名称上有很明显的时代特征。在互联网的演化进程中，网页制作是Web 1.0时代的产物，那时网站的主要内容都是静态的，用户使用网站的行为也以浏览为主。</p>
+			</div>
+			<div>
+				<p>超文本标记语言，标准通用标记语言下的一个应用。</p>
+				<p>“超文本”就是指页面内可以包含图片、链接，甚至音乐、程序等非文字元素。</p>
+				<p>超文本标记语言的结构包括“头”部分（英语：Head）、和“主体”部分（英语：Body），其中“头”部提供关于网页的信息，“主体”部分提供网页的具体内容。</p>
+			</div>
+			<div>
+				<p>层叠样式表是一种用来表现HTML（标准通用标记语言的一个应用）或XML（标准通用标记语言的一个子集）等文件样式的计算机语言。</p>
+				<p>CSS目前最新版本为CSS3，是能够真正做到网页表现与内容分离的一种样式设计语言。相对于传统HTML的表现而言，CSS能够对网页中的对象的位置排版进行像素级的精确控制，支持几乎所有的字体字号样式，拥有对网页对象和模型样式编辑的能力，并能够进行初步交互设计，是目前基于文本展示最优秀的表现设计语言。CSS能够根据不同使用者的理解能力，简化或者优化写法，针对各类人群，有较强的易读性。</p>
+			</div>
+			<div>
+				<p>JavaScript一种直译式脚本语言，是一种动态类型、弱类型、基于原型的语言，内置支持类型。它的解释器被称为JavaScript引擎，为浏览器的一部分，广泛用于客户端的脚本语言，最早是在HTML（标准通用标记语言下的一个应用）网页上使用，用来给HTML网页增加动态功能。</p>
+				<p>为了取得技术优势，微软推出了JScript，CEnvi推出ScriptEase，与JavaScript同样可在浏览器上运行。为了统一规格，因为JavaScript兼容于ECMA标准，因此也称为ECMAScript。</p>
+			</div>
+		</div>
+	</div>
+	
+	<script type="text/javascript">
+
+	Ktabs(tabs).createTabs(1000);
+
+
+	</script>
+</body>
+</html>

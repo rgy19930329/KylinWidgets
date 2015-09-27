@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>test</title>
+<script type="text/javascript" src="knav.js"></script>
+
+<style type="text/css">
+
+#wrap {
+	margin-left: 250px;
+}
+
+#wrap div {
+	height: 300px;
+	border: 1px solid orange;
+}
+
+nav {
+	width: 200px;
+	border: 1px solid blue;
+	text-align: center;
+}
+
+nav div {
+	border-bottom: 1px solid blue;
+}
+
+.selected {
+	background: #59f;
+}
+
+</style>
+</head>
+<body id="doc">
+
+	<nav id="myNav">
+		<div class="selected"><a href="#1F">1F</a></div>
+		<div><a href="#2F">2F</a></div>
+		<div><a href="#3F">3F</a></div>
+		<div><a href="#4F">4F</a></div>
+		<div><a href="#5F">5F</a></div>
+		<div><a href="#6F">6F</a></div>
+		<div><a href="#7F">7F</a></div>
+		<div><a href="#8F">8F</a></div>
+	</nav>
+
+	<div id="wrap">
+		<div><a name="1F">1FF</a></div>
+		<div><a name="2F">2FF</a></div>
+		<div><a name="3F">3FF</a></div>
+		<div><a name="4F">4FF</a></div>
+		<div><a name="5F">5FF</a></div>
+		<div><a name="6F">6FF</a></div>
+		<div><a name="7F">7FF</a></div>
+		<div><a name="8F">8FF</a></div>
+	</div>
+
+	
+
+	<script type="text/javascript">
+
+	var nav = document.getElementById("myNav");
+
+	Knav(myNav).init();
+
+	</script>
+</body>
+</html>
