@@ -1,4 +1,3 @@
-
 function Kcarousel(carousel){
 
 	window.requestAnimationFrame = (function() {
@@ -46,6 +45,7 @@ function Kcarousel(carousel){
 			}else{
 				for(var k in obj){
 					source.style[this.toCamel(k)] = obj[k];
+					console.log(this.toCamel);
 				}
 			}
 		}
