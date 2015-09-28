@@ -3,55 +3,52 @@
 <head>
 <meta charset="utf-8">
 <title>test</title>
-<script type="text/javascript" src="klineprogressbar.js"></script>
+<script type="text/javascript" src="kcircleprogressbar.js"></script>
 <style type="text/css">
 
 .wrap {
 	padding: 10px;
+	width: 300px;
 }
 
+.wrap > div{
+	text-align: center;
+}
 
 </style>
 </head>
 <body>
 
     <div class="wrap">
-   	    <div id="myBar">
-            <div class="inner"></div>
-        </div>
-        <div id="show"></div>
+   	    <canvas id="myBar" width="300" height="300"></canvas>
+   	    <div>
+   	    	<button id="sub">sub</button>
+    		<button id="add">add</button>
+   	    </div>
     </div>
-    
-    <button id="sub">sub</button>
-    <button id="add">add</button>
 
 
 	<script type="text/javascript">
 
-	var bar = Klineprogressbar(myBar);
+	var bar = Kcircleprogressbar(myBar);
 	
 	bar.init({
-		'width': '600px',
-		'height': '15px',
-		'color': 'orange'
+		'radius': '150px',//半径
+		'thick': '45px',//厚度
+		'bgColor': '#59f',//背景颜色
+		'fillColor': '#eee',//空白填充颜色
+		'proColor': '#F2E42C',//进度颜色
+		'textColor': 'orange',//文字颜色
+		'textSize': '50px'//文字大小
 	}, {
-		'maxValue': 100,
-		'minValue': -100,
-		'value': -80
+		'process': '0%'//当前进度
 	});
 
 
-	function showInfo(){
-		show.innerHTML = bar.getValue() + '/(' + bar.getMaxValue() + ',' + bar.getMinValue() + ')';
-	}
-
-	showInfo();
-
 	function addPro(){
-		var v = bar.getValue();
-		v = v + 10;
-		bar.setValue(v);
-		showInfo();
+		var v = bar.getProcess();
+		v++;
+		bar.setProcess(v);
 	}
 	
 	add.onclick = function(){
@@ -59,15 +56,14 @@
 	}
 
 	sub.onclick = function(){
-		var v = bar.getValue();
-		v = v - 10;
-		bar.setValue(v);
-		showInfo();
+		var v = bar.getProcess();
+		v--;
+		bar.setProcess(v);
 	}
 
 	setInterval(function(){
 		addPro();
-	}, 1000);
+	}, 50);
 
 	</script>
 </body>
