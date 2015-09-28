@@ -7,9 +7,17 @@
 <style type="text/css">
 
 .wrap {
+	width: 600px;
 	padding: 10px;
 }
 
+.wrap > div{
+	margin: 10px;
+}
+
+.wrap > div:nth-child(2), .wrap > div:nth-child(3){
+	text-align: center;
+}
 
 </style>
 </head>
@@ -20,10 +28,13 @@
             <div class="inner"></div>
         </div>
         <div id="show"></div>
+        <div>
+        	<button id="sub">sub</button>
+    		<button id="add">add</button>
+        </div>
     </div>
     
-    <button id="sub">sub</button>
-    <button id="add">add</button>
+    
 
 
 	<script type="text/javascript">
