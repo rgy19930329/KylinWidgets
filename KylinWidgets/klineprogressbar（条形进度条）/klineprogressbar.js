@@ -32,11 +32,9 @@ function Klineprogressbar(bar){
 	var maxValue = null;
 	var minValue = null;
 	var barWidth = null;
-	var inner = bar.querySelector('.inner');
 
-	function getValue(){
-		return currentValue;
-	}
+	var inner = document.createElement('div');
+	bar.appendChild(inner);
 
 	function getMaxValue(){
 		return maxValue;
@@ -44,6 +42,15 @@ function Klineprogressbar(bar){
 
 	function getMinValue(){
 		return minValue;
+	}
+
+	function getProcess(){
+		var process = Math.round( (currentValue - minValue) * 100 / (maxValue - minValue) );
+		return process + '%';
+	}
+
+	function getValue(){
+		return currentValue;
 	}
 
 	function setValue(value){
@@ -95,7 +102,8 @@ function Klineprogressbar(bar){
 		getValue: getValue,
 		setValue: setValue,
 		getMaxValue: getMaxValue,
-		getMinValue: getMinValue
+		getMinValue: getMinValue,
+		getProcess: getProcess
 	}
 
 }

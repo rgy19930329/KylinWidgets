@@ -24,9 +24,9 @@
 <body>
 
     <div class="wrap">
-   	    <div id="myBar">
-            <div class="inner"></div>
-        </div>
+
+   	    <div id="myBar"></div>
+
         <div id="show"></div>
         <div>
         	<button id="sub">sub</button>
@@ -53,14 +53,14 @@
 
 
 	function showInfo(){
-		show.innerHTML = bar.getValue() + '/(' + bar.getMaxValue() + ',' + bar.getMinValue() + ')';
+		show.innerHTML = bar.getValue() + '/(' + bar.getMaxValue() + ',' + bar.getMinValue() + ')/' + bar.getProcess();
 	}
 
 	showInfo();
 
 	function addPro(){
 		var v = bar.getValue();
-		v = v + 10;
+		v++;
 		bar.setValue(v);
 		showInfo();
 	}
@@ -78,7 +78,7 @@
 
 	setInterval(function(){
 		addPro();
-	}, 1000);
+	}, 50);
 
 	</script>
 </body>
