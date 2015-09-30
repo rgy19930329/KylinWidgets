@@ -6,6 +6,10 @@
 <script type="text/javascript" src="klineprogressbar.js"></script>
 <style type="text/css">
 
+body {
+	font-family: "Microsoft Yahei";
+}
+
 .wrap {
 	width: 600px;
 	padding: 10px;
@@ -17,6 +21,10 @@
 
 .wrap > div:nth-child(2), .wrap > div:nth-child(3){
 	text-align: center;
+}
+
+.box {
+	padding: 50px;
 }
 
 </style>
@@ -34,8 +42,17 @@
         </div>
     </div>
     
-    
+    <div class="box">
+    	<div id="myBar2"></div>
+    </div>
 
+    <div class="box">
+    	<div id="myBar3"></div>
+    </div>
+
+    <hr>
+
+    <img src="img/instruction.jpg">
 
 	<script type="text/javascript">
 
@@ -44,13 +61,14 @@
 	bar.init({
 		'width': '600px',
 		'height': '15px',
-		'color': 'orange'
+		'proColor': 'orange',
+		'bgColor': '#aaa',
+		'isShowProgress': true
 	}, {
 		'maxValue': 100,
 		'minValue': -100,
 		'value': -80
 	});
-
 
 	function showInfo(){
 		show.innerHTML = bar.getValue() + '/(' + bar.getMaxValue() + ',' + bar.getMinValue() + ')/' + bar.getProcess();
@@ -79,6 +97,25 @@
 	setInterval(function(){
 		addPro();
 	}, 50);
+
+	/* ---------------------------- */
+
+	Klineprogressbar(myBar2).init();
+
+	/* ---------------------------- */
+
+	Klineprogressbar(myBar3).init({
+		'width': '400px',// 进度条宽度
+		'height': '20px',// 进度条高度
+		'proColor': '#59f',// 进度颜色
+		'bgColor': '#ccc',// 背景颜色
+		'isFillet': true,// 是否使用圆角
+		'isShowProgress': true // 是否显示进度
+	}, {
+		'maxValue': 100,
+		'minValue': 0,
+		'value': 10
+	});
 
 	</script>
 </body>

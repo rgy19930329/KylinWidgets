@@ -27,6 +27,9 @@ function Klineprogressbar(bar){
 		}
 	}
 
+	/*-----------------------------*/
+
+	var isShowProgress = false;// 是否显示进度条
 
 	var currentValue = null;
 	var maxValue = null;
@@ -35,6 +38,9 @@ function Klineprogressbar(bar){
 
 	var inner = document.createElement('div');
 	bar.appendChild(inner);
+	var showDiv = document.createElement('div');
+	bar.appendChild(showDiv);
+
 
 	function getMaxValue(){
 		return maxValue;
@@ -64,37 +70,57 @@ function Klineprogressbar(bar){
 			CssUtil.setCss(inner, {
 				'width': innerWidth
 			});
+			showDiv.innerHTML = isShowProgress ? getProcess() : '';
 		}
 	}
 
 	function init(obj, data){
+		var obj = obj || {};
+		var data = data || {};
 
-		var radius = parseInt(obj.height) / 2 + 'px';
+		var bwidth = obj.width || '600px';
+		var bheight = obj.height || '15px';
+		var radius = obj.isFillet ? parseInt(bheight) / 2 + 'px' : '0';
+		var proColor = obj.proColor || 'orange';
+		var bgColor = obj.bgColor || '#eee';
+		isShowProgress = obj.isShowProgress;
 
-		var childValue = data.value - data.minValue;
-		var allValue = data.maxValue - data.minValue;
+		currentValue = data.value || 50;
+		maxValue = data.maxValue || 100;
+		minValue = data.minValue || 0;
+		barWidth = parseInt(bwidth);
 
-		var innerWidth = ( childValue / allValue ) * parseInt(obj.width) + 'px';
-
-		currentValue = data.value;
-		maxValue = data.maxValue;
-		minValue = data.minValue;
-		barWidth = parseInt(obj.width);
+		var childValue = currentValue - minValue;
+		var allValue = maxValue - minValue;
+		var innerWidth = ( childValue / allValue ) * parseInt(bwidth) + 'px';
 
 		CssUtil.setCss(bar, {
-			'width': obj.width,
-			'height': obj.height,
-			'background-color': '#eee',
-			'border-radius': radius
+			'width': bwidth,
+			'height': bheight,
+			'background': bgColor,
+			'border-radius': radius,
+			'position': 'relative'
 		});
 
 		CssUtil.setCss(inner, {
 			'width': innerWidth,
 			'height': '100%',
-			'background-color': obj.color,
+			'background': proColor,
 			'border-radius': radius,
 			'transition': 'width 200ms ease'
 		});
+
+		CssUtil.setCss(showDiv, {
+			'width': bwidth,
+			'height': bheight,
+			'position': 'absolute',
+			'top': '0',
+			'text-align': 'center',
+			'font-size': bheight,
+			'line-height': bheight
+		});
+
+		showDiv.innerHTML = isShowProgress ? getProcess() : '';
 	}
 
 	return {
