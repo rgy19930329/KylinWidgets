@@ -15,6 +15,10 @@
 	text-align: center;
 }
 
+.wrap, .box {
+	display: inline-block;
+}
+
 </style>
 </head>
 <body>
@@ -26,6 +30,14 @@
     		<button id="add">add</button>
    	    </div>
     </div>
+
+    <div class="box">
+    	<canvas id="myBar2" width="200" height="300"></canvas>
+    </div>
+
+    <hr>
+
+    <img src="img/instruction.jpg">
 
 
 	<script type="text/javascript">
@@ -57,13 +69,18 @@
 
 	sub.onclick = function(){
 		var v = bar.getProcess();
-		v--;
+		v = v - 10;
 		bar.setProcess(v);
 	}
 
 	setInterval(function(){
 		addPro();
 	}, 50);
+
+	// ------------------------------------------
+
+	Kcircleprogressbar(myBar2).init();
+
 
 	</script>
 </body>

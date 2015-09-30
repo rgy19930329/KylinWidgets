@@ -43,10 +43,6 @@ function Kcircleprogressbar(bar){
         ctx.fillText(process + '%', radius, radius);
 	}
 
-	function drawme(){
-
-	}
-
 	function getProcess(){
 		return currentProcess;
 	}
@@ -60,17 +56,26 @@ function Kcircleprogressbar(bar){
 	}
 
 	function init(obj, data){
-		radius = parseInt(obj.radius);
-		thick = parseInt(obj.thick);
-		bgColor = obj.bgColor;
-		fillColor = obj.fillColor;
-		proColor = obj.proColor;
-		textColor = obj.textColor;
-		textSize = obj.textSize;
+		var obj = obj || {};
+		var data = data || {};
 
-		currentProcess = parseInt(data.process);
+		var bwidth = bar.width;
+		var bheight = bar.height;
+		var r = Math.min(bwidth, bheight);
+		console.log(r);
 
-		var process = data.process.slice(0, -1);
+		radius = parseInt(obj.radius) || r / 2;
+		thick = parseInt(obj.thick) || 10;
+		bgColor = obj.bgColor || '#eee';
+		fillColor = obj.fillColor || '#fff';
+		proColor = obj.proColor || 'orange';
+		textColor = obj.textColor || '#59f';
+		textSize = obj.textSize || '20px';
+
+		var str_process = data.process || '50%';
+		currentProcess = parseInt(str_process);
+
+		var process = str_process.slice(0, -1);
 		draw(process);
 	}
 
