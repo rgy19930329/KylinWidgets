@@ -176,6 +176,9 @@ function Kslidebar(bar){
 			'border-radius': cradius
 		});
 
+		/**
+			控制块滑动事件
+		*/
 		ctrlBtn.onmousedown = function(e) {
 	        var e = e || window.event;
 	        x = e.offsetX;
@@ -183,7 +186,6 @@ function Kslidebar(bar){
 	            var evt = e || window.event;
 	            var parentX = getAbsPoint(bar).x;
 	            var leftDist = evt.clientX - parentX - x;
-	            
 	            var realX = leftDist + 10;
 
 	            if(leftDist > -10 && leftDist < barWidth - 10){
@@ -200,6 +202,19 @@ function Kslidebar(bar){
 	        };
 	    };
 
+	    bar.onclick = function(e){
+	    	var evt = e || window.event;
+	    	var leftDist = evt.offsetX;
+	    	var realX = leftDist;
+
+			if (leftDist >= 0 && leftDist <= barWidth) {
+				CssUtil.setCss(ctrlBtn, {
+					'left': leftDist - 10 + "px"
+				});
+				var p = Math.round(realX * 100 / barWidth);
+				setProgress(p + '%');
+			}
+	    }
 	}
 
 	return {
