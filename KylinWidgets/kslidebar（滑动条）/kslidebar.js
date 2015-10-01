@@ -40,6 +40,61 @@ function Kslidebar(bar){
         }
 	}
 
+	var EventUtil = {
+		//添加事件
+        addEvent: function(element, eventType, handler){
+            if(element.addEventListener){//标准浏览器
+                element.addEventListener(eventType, handler, false);
+            }else{
+                element.attachEvent('on' + eventType, handler);
+            }
+        }
+    }
+
+	/**
+		animation工具
+	*/
+	var AnimUtil = {
+		//动画
+        animate: function(source, obj, opr, callback){
+            var opr = opr || {};
+
+            var easing = opr.easing || 'ease';
+            var dur = opr.dur || 500;
+            var str = easing + " " + dur + "ms";
+
+            CssUtil.setCss(source, {
+                'transition': str,
+                '-moz-transition': str,
+                '-webkit-transition': str,
+                '-o-transition': str
+            });
+
+           	CssUtil.setCss(source, obj);
+
+            /*----------------*/
+
+            function getTransitionEndEvent(){
+                var ele = document.createElement('fakeelement');
+                var obj = {
+                    'transition': 'transitionend',
+                    'OTransition': 'oTransitionEnd',
+                    'MozTransition': 'transitionend',
+                    'WebkitTransition': 'webkitTransitionEnd'
+                }
+                for(var i in obj){
+                    if(ele.style[i] !== undefined){
+                        return obj[i];
+                    }
+                }
+            }
+
+            var transitionend = getTransitionEndEvent();
+
+            EventUtil.addEvent(source, transitionend, callback);
+        }
+	}
+
 	/**
 		计算元素的绝对位置
 	*/
@@ -105,7 +160,7 @@ function Kslidebar(bar){
 			var allValue = maxValue - minValue;
 
 			var innerWidth = ( childValue / allValue ) * barWidth + 'px';
-			CssUtil.setCss(inner, {
+			AnimUtil.animate(inner, {
 				'width': innerWidth
 			});
 			showDiv.innerHTML = isShowProgress ? getProcess() : '';
@@ -192,6 +247,7 @@ function Kslidebar(bar){
 	            	CssUtil.setCss(ctrlBtn, {
 		            	'left': leftDist + "px"
 		            });
+
 		            var p = Math.round(realX * 100 / barWidth);
 		            setProgress(p + '%');
 	            }
@@ -208,7 +264,10 @@ function Kslidebar(bar){
 	    	var realX = leftDist;
 
 			if (leftDist >= 0 && leftDist <= barWidth) {
-				CssUtil.setCss(ctrlBtn, {
+				// CssUtil.setCss(ctrlBtn, {
+				// 	'left': leftDist - 10 + "px"
+				// });
+				AnimUtil.animate(ctrlBtn, {
 					'left': leftDist - 10 + "px"
 				});
 				var p = Math.round(realX * 100 / barWidth);
