@@ -83,6 +83,7 @@ function Klineprogressbar(bar){
 		var radius = obj.isFillet ? parseInt(bheight) / 2 + 'px' : '0';
 		var proColor = obj.proColor || 'orange';
 		var bgColor = obj.bgColor || '#eee';
+		var textColor = obj.textColor || '#000';
 		isShowProgress = obj.isShowProgress;
 
 		currentValue = data.value || 50;
@@ -117,7 +118,8 @@ function Klineprogressbar(bar){
 			'top': '0',
 			'text-align': 'center',
 			'font-size': bheight,
-			'line-height': bheight
+			'line-height': bheight,
+			'color': textColor
 		});
 
 		showDiv.innerHTML = isShowProgress ? getProcess() : '';

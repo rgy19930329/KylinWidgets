@@ -6,8 +6,8 @@
 <script type="text/javascript" src="kslidebar.js"></script>
 <style type="text/css">
 
-.wrap {
-	padding: 10px;
+.box {
+	padding: 50px;
 }
 
 
@@ -15,20 +15,38 @@
 </head>
 <body>
 
-    <div class="wrap">
-   	    <div id="myBar">
-            <div class="inner"></div>
-        </div>
-        <div id="show"></div>
+    <div class="box">
+   	    <div id="myBar"></div>
+    </div>
+
+    <div class="box">
+        <div id="myBar2"></div>
     </div>
     
-    <button id="sub">sub</button>
-    <button id="add">add</button>
+    <hr>
 
+    <img src="img/instruction.jpg">
 
 	<script type="text/javascript">
 
+    Kslidebar(myBar).init({
+        'width': '450px',// 进度条宽度
+        'height': '20px',// 进度条高度
+        'isFillet': true,// 是否使用圆角
+        'proColor': '#59f',// 进度颜色
+        'bgColor': '#ccc',// 进度条背景颜色
+        'cIsArc': true,// 控制块是否使用弧形样式
+        'cwidth': '15px',// 控制块宽度
+        'cColor': '#888',// 控制块颜色
+        'isShowProgress': true,// 是否显示进度提示文字
+        'textColor': '#fff'// 进度提示文字颜色
+    }, {
+        'maxValue': 100,// 最大值
+        'minValue': 0,// 最小值
+        'value': 30// 初始化值
+    });
 
+    Kslidebar(myBar2).init();
 
 	</script>
 </body>
