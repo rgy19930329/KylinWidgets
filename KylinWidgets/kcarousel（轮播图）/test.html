@@ -6,10 +6,6 @@
 <script type="text/javascript" src="kcarousel.js"></script>
 <style type="text/css">
 
-*{
-	margin: 0; padding: 0;
-}
-
 #myCarousel {
 	border: 5px solid #59f;
 }
@@ -109,20 +105,24 @@
         </div>
     </div>
 
+    <hr>
+    <img src="imgs/instruction2.jpg">
+    <img src="imgs/instruction.jpg">
+
 
 	<script type="text/javascript">
 	
 	var carousel = Kcarousel(myCarousel);
 	carousel.init({
-		"width" : '600px',
-		"height" : '400px',
-		"dur": 1000,
-		"delay": 5000,
-		"needOpacity": false
+		"width" : '600px',// 宽度
+		"height" : '400px',// 高度
+		"dur": 1000,// 每个动画持续时间
+		"delay": 5000,// 到下一个动画的延迟时间
+		"needOpacity": false// 是否需要透明度变化
 	}, {
-		"leftBtn": leftBtn, 
-		"rightBtn": rightBtn,
-		"footer": footer
+		"leftBtn": leftBtn,// 向左按钮id
+		"rightBtn": rightBtn,// 向右按钮id
+		"footer": footer// 当前索引展示块id
 	});
 
 	</script>

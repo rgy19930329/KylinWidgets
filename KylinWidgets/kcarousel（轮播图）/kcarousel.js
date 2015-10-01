@@ -112,13 +112,14 @@ function Kcarousel(carousel){
 
 	
 	function init(obj, opr) {
-		obj = obj || {
+		var obj = obj || {
 			"width": '600px', 
 			"height": '400px', 
 			"dur": 1000, //切换时间
 			"delay": 5000, //等待切换时间
 			"needOpacity": false
 		};
+		var opr = opr || {};
 		if(obj.dur > obj.delay){
 			alert("dur的值不能大于delay!");
 			return;
