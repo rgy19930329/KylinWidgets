@@ -181,6 +181,46 @@
                    requestAnimationFrame(f);
                }
             });
+        },
+
+        //动画
+        animate: function(source, obj, opr, callback){
+            var opr = opr || {};
+
+            var easing = opr.easing || 'ease';
+            var dur = opr.dur || 1000;
+            var str = easing + " " + dur + "ms";
+
+            ky.CssUtil.setCss(source, {
+                'transition': str,
+                '-moz-transition': str,
+                '-webkit-transition': str,
+                '-o-transition': str
+            });
+
+            ky.CssUtil.setCss(source, obj);
+
+            /*----------------*/
+
+            function getTransitionEndEvent(){
+                var ele = document.createElement('fakeelement');
+                var obj = {
+                    'transition': 'transitionend',
+                    'OTransition': 'oTransitionEnd',
+                    'MozTransition': 'transitionend',
+                    'WebkitTransition': 'webkitTransitionEnd',
+                    'MsTransition': 'msTransitionEnd'
+                }
+                for(var i in obj){
+                    if(ele.style[i] !== undefined){
+                        return obj[i];
+                    }
+                }
+            }
+
+            var transitionend = getTransitionEndEvent();
+
+            ky.EventUtil.addEvent(source, transitionend, callback);
         }
     }
 
