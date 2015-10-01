@@ -7,12 +7,12 @@
 
 <style type="text/css">
 
-#wrap {
+#myContent {
 	margin-left: 250px;
 }
 
-#wrap div {
-	height: 300px;
+#myContent div {
+	min-height: 250px;
 	border: 1px solid orange;
 }
 
@@ -45,9 +45,12 @@ nav div {
 		<div><a href="#8F">8F</a></div>
 	</nav>
 
-	<div id="wrap">
+	<div id="myContent">
 		<div><a name="1F">1FF</a></div>
-		<div><a name="2F">2FF</a></div>
+		<div><a name="2F"></a>
+			<img src="img/instruction.jpg">
+			<img src="img/instruction2.jpg">
+		</div>
 		<div><a name="3F">3FF</a></div>
 		<div><a name="4F">4FF</a></div>
 		<div><a name="5F">5FF</a></div>
@@ -57,13 +60,13 @@ nav div {
 	</div>
 
 	
-
 	<script type="text/javascript">
 
 	var nav = document.getElementById("myNav");
 
-	Knav(myNav).init();
+	Knav(myNav, myContent).init();
 
 	</script>
+
 </body>
 </html>

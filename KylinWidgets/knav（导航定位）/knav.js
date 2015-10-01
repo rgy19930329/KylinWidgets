@@ -1,5 +1,9 @@
 
-function Knav(nav){
+function Knav(nav, content){
+
+	if(arguments.length != 2){
+		alert("参数错误！");
+	}
 
 	function getAbsPoint(e) {
 		var x = e.offsetLeft;
@@ -16,7 +20,7 @@ function Knav(nav){
 
 	function getDomPosList(){
 		var res = [];
-		var temp = document.querySelectorAll('#wrap a[name*=F]');
+		var temp = content.querySelectorAll('a[name*=F]');
 		for(var i = 0, len = temp.length; i < len; i++){
 			res.push(getAbsPoint(temp[i]).y);
 		}

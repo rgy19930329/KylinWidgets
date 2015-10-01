@@ -22,7 +22,6 @@ function Ktabs(tabs){
 	*/
 	var CssUtil = {
 		
-
 		setCss: function(source, obj){
 			if(Object.prototype.toString.call(source) == '[object String]'){
 				var list = document.querySelectorAll(source);
@@ -107,6 +106,7 @@ function Ktabs(tabs){
 	
 
 	function init(obj) {
+		var obj = obj || {};
 		var dur = obj.dur || 0;
 		var source = tabs.querySelectorAll('.tabs-nav a');
 		var content = tabs.querySelectorAll('.tabs-content div');
