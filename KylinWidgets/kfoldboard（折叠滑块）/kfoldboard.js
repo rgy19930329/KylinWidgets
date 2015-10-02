@@ -1,5 +1,8 @@
-function Klineprogressbar(bar){
+function Kfoldboard(board){
 
+	/**
+		css工具
+	*/
 	var CssUtil = {
 
 		toCamel: function(name){
@@ -24,78 +27,123 @@ function Klineprogressbar(bar){
 					source.style[this.toCamel(k)] = obj[k];
 				}
 			}
+		}, 
+
+		getCss: function(source, attr) {
+            if (source.style[attr]) {
+                return source.style[attr];
+            } else if (source.currentStyle) {
+                return source.currentStyle[attr];
+            } else {
+                return getComputedStyle(source, false)[attr];
+            }
+        },
+
+        addClass: function(source, value){
+            if(!this.hasClass(source, value)){
+                source.className += ' ' + value;
+            }
+        },
+
+        hasClass: function(source, value){
+            return source.className.match(new RegExp('(\\s|^)' + value + '(\\s|$)'));
+        },
+
+        removeClass: function(source, value){
+            if(this.hasClass(source, value)){
+                source.className = source.className.replace(new RegExp('(\\s|^)' + value + '(\\s|$)'), '')
+            }
+        },
+
+        removeClassAll: function(source, value){
+            for(var i = 0, len = source.length; i < len; i++){
+                this.removeClass(source[i], value);
+            }
+        }
+	}
+
+	/**
+        event工具
+    */
+    var EventUtil = {
+        //添加事件
+        addEvent: function(element, eventType, handler){
+            if(element.addEventListener){//标准浏览器
+                element.addEventListener(eventType, handler, false);
+            }else{
+                element.attachEvent('on' + eventType, handler);
+            }
+        },
+        //移除事件
+        removeEvent: function(element, eventType, handler){
+            if(element.removeEventListener){//标准浏览器
+                element.removeEventListener(eventType, handler, false);
+            }else{
+                element.detachEvent('on' + eventType, handler);
+            }
+        },
+        //获取事件
+        getEvent: function(event){
+            return event || window.event;
+        },
+        //获取目标元素
+        getTarget: function(event){
+            return this.getEvent(event).target || this.getEvent(event).srcElement;
+        },
+        //阻止默认行为
+        preventDefault: function(event){
+            var evt = this.getEvent(event);
+            if(evt.preventDefault){//标准浏览器
+                evt.preventDefault();
+            }else{
+                evt.returnValue = false;
+            }
+        },
+        //阻止事件冒泡
+        stopPropagation: function(event){
+            var evt = this.getEvent(event);
+            if(evt.stopPropagation){//标准浏览器
+                evt.stopPropagation();
+            }else{
+                evt.cancelBubble = true;
+            }
+        }
+    };
+
+	// ------------------------------------------- //
+
+	function init(obj){
+		var obj = obj || {};
+		var dur = obj.dur || 0;
+
+		var easing = 'linear';
+        var str = easing + " " + dur + "ms";
+
+		var cList = board.querySelectorAll('.item-content');
+        CssUtil.setCss(cList, {
+            'transition': str,
+            '-moz-transition': str,
+            '-webkit-transition': str,
+            '-o-transition': str
+        });
+
+        // 切换效果
+        var list = board.querySelectorAll('li');
+		var cList = board.querySelectorAll('.item-title');
+		for(var i = 0, len = cList.length; i < len; i++){
+			EventUtil.addEvent(cList[i], 'click', function(k){
+				return function(){
+					var ele = cList[k].parentNode.querySelector('.item-content');
+					CssUtil.removeClassAll(list, 'item-selected');
+					CssUtil.addClass(ele.parentNode, 'item-selected');
+				}
+			}(i));
 		}
-	}
-
-
-	var currentValue = null;
-	var maxValue = null;
-	var minValue = null;
-	var barWidth = null;
-	var inner = bar.querySelector('.inner');
-
-	function getValue(){
-		return currentValue;
-	}
-
-	function getMaxValue(){
-		return maxValue;
-	}
-
-	function getMinValue(){
-		return minValue;
-	}
-
-	function setValue(value){
-		if(value <= maxValue && value >= minValue){
-			currentValue = value;
-
-			var childValue = currentValue - minValue;
-			var allValue = maxValue - minValue;
-
-			var innerWidth = ( childValue / allValue ) * barWidth + 'px';
-			CssUtil.setCss(inner, {
-				'width': innerWidth
-			});
-		}
-	}
-
-	function init(obj, data){
-
-		var radius = parseInt(obj.height) / 2 + 'px';
-
-		var childValue = data.value - data.minValue;
-		var allValue = data.maxValue - data.minValue;
-
-		var innerWidth = ( childValue / allValue ) * parseInt(obj.width) + 'px';
-
-		currentValue = data.value;
-		maxValue = data.maxValue;
-		minValue = data.minValue;
-		barWidth = parseInt(obj.width);
-
-		CssUtil.setCss(bar, {
-			'width': obj.width,
-			'height': obj.height,
-			'background-color': '#eee',
-			'border-radius': radius
-		});
-
-		CssUtil.setCss(inner, {
-			'width': innerWidth,
-			'height': '100%',
-			'background-color': obj.color,
-			'border-radius': radius,
-			'transition': 'width 200ms ease'
-		});
+		
 	}
 
 	return {
-		init: init,
-		getValue: getValue,
-		setValue: setValue,
-		getMaxValue: getMaxValue,
-		getMinValue: getMinValue
+		init: init
 	}
 
 }

@@ -40,6 +40,9 @@ function Kslidebar(bar){
         }
 	}
 
+	/**
+		event工具
+	*/
 	var EventUtil = {
 		//添加事件
         addEvent: function(element, eventType, handler){
