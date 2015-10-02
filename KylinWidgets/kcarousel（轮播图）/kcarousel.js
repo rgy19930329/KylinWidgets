@@ -45,7 +45,6 @@ function Kcarousel(carousel){
 			}else{
 				for(var k in obj){
 					source.style[this.toCamel(k)] = obj[k];
-					console.log(this.toCamel);
 				}
 			}
 		}
@@ -110,6 +109,12 @@ function Kcarousel(carousel){
 		}
 	}
 
+	var currentIndex = null;
+
+	function getIndex(){
+		return currentIndex;
+	}
+
 	
 	function init(obj, opr) {
 		var obj = obj || {
@@ -136,7 +141,7 @@ function Kcarousel(carousel){
 
 		var images = moveBox.getElementsByTagName('img');
 		var imgNum = images.length - 2;
-		var currentIndex = 0;
+		currentIndex = 0;
 
 		CssUtil.setCss(carousel, {
 			"width": obj.width,
@@ -188,7 +193,6 @@ function Kcarousel(carousel){
 			if(currentIndex == -1){
 				currentIndex = imgNum - 1;
 			}
-			console.log(currentIndex);
 		}
 
 		/**
@@ -215,7 +219,6 @@ function Kcarousel(carousel){
 			if(currentIndex == imgNum){
 				currentIndex = 0;
 			}
-			console.log(currentIndex);
 		}
 
 		/**
@@ -277,7 +280,8 @@ function Kcarousel(carousel){
 	}
 
 	return {
-		init: init
+		init: init,
+		getIndex: getIndex
 	}
 
 }

@@ -105,6 +105,8 @@
         </div>
     </div>
 
+    <button id="btn">press</button>
+
     <hr>
     <img src="imgs/instruction2.jpg">
     <img src="imgs/instruction.jpg">
@@ -124,6 +126,10 @@
 		"rightBtn": rightBtn,// 向右按钮id
 		"footer": footer// 当前索引展示块id
 	});
+
+	btn.onclick = function(){
+		console.log(carousel.getIndex());
+	}
 
 	</script>
 </body>
