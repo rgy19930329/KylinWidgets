@@ -228,7 +228,14 @@
         dom工具
     */
     window.ky.DomUtil = {
-        
+
+        insertBefore: function(source, newNode, existNode){
+            source.insertBefore(newNode, existNode);
+        },
+
+        insertAfter: function(source, newNode, existNode){
+            source.insertBefore(newNode, existNode.nextSibling);
+        }
     }
 
 })();

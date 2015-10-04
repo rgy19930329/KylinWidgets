@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>test</title>
+<script type="text/javascript" src="kpages.js"></script>
+
+<style type="text/css">
+
+* {
+	margin: 0;padding: 0;
+}
+
+#pageBar {
+	padding: 30px;
+}
+
+#pageBar li {
+	padding: 10px;
+}
+
+#pageBar li:hover {
+	background: #000;
+	color: #fff;
+}
+
+#pageBar button {
+	padding: 10px;
+}
+
+.page-selected {
+	color: red;
+}
+
+</style>
+</head>
+<body>
+
+	<div id="pageBar">
+		<div><button id="pageSub">pre</button></div>
+		<div>
+			<ul><li></li></ul>
+		</div>
+		<div><button id="pageAdd">next</button></div>
+	</div>
+
+
+	
+	<script type="text/javascript">
+
+	var pageBar = document.getElementById("pageBar");
+
+	Kpages(pageBar).init({
+		'maxPage': 14,
+		'currentPage': 5
+	});
+
+
+
+
+	</script>
+
+</body>
+</html>
