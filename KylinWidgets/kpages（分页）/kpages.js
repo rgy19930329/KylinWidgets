@@ -106,6 +106,7 @@ function Kpages(bar){
     function emit(currentPage){
     	
     	var list = myUl.getElementsByTagName('li');
+        var spanList = myUl.getElementsByTagName('span');
 
     	CssUtil.setCss(list, {
 			'display': 'inline-block'
@@ -114,40 +115,46 @@ function Kpages(bar){
     	CssUtil.removeClassAll(list, 'page-selected');
     	CssUtil.addClass(list[currentPage - 1], 'page-selected');
 
-    	var spanList = myUl.getElementsByTagName('span');
-    	console.log(spanList.length)
-    	for(var i = 0; i < spanList.length; i++){
-    		myUl.removeChild(spanList[i]);
+
+    	if(currentPage - minPage > 3 && currentPage - maxPage < -3){// 中
+    		CssUtil.setCss(spanList, {
+                'display': 'inline'
+            });
+            for(var i = 1; i < currentPage - 3; i++){
+                CssUtil.setCss(list[i], {
+                    'display': 'none'
+                });
+            }
+            for(var i = currentPage + 2; i < maxPage - 1; i++){
+                CssUtil.setCss(list[i], {
+                    'display': 'none'
+                });
+            }
     	}
 
-    	var newNode1 = document.createElement('span');
-    	newNode1.innerHTML = '…';
-    	var newNode2 = document.createElement('span');
-    	newNode2.innerHTML = '…';
-
-    	if(currentPage - minPage > 3 && currentPage - maxPage < -3){
-    		DomUtil.insertAfter(myUl, newNode1, list[0]);
-    		DomUtil.insertBefore(myUl, newNode2, list[list.length - 1]);
-
+    	if(currentPage - minPage <= 3){// 前
+    		CssUtil.setCss(spanList[0], {
+                'display': 'none'
+            });
+    		for(var i = 6; i < maxPage - 1; i++){
+    			CssUtil.setCss(list[i], {
+    				'display': 'none'
+    			});
+    		}
     	}
 
-    	if(currentPage - minPage <= 3){
-    		DomUtil.insertBefore(myUl, newNode1, list[list.length - 1]);
-    		// for(var i = 6; i < 13; i++){
-    		// 	CssUtil.setCss(list[i], {
-    		// 		'display': 'none'
-    		// 	});
-    		// }
+    	if(currentPage - maxPage >= -3){// 后
+    		CssUtil.setCss(spanList[1], {
+                'display': 'none'
+            });
+    		for(var i = 1; i < maxPage - (2 * 2 + 2); i++){
+    			CssUtil.setCss(list[i], {
+    				'display': 'none'
+    			});
+    		}
     	}
 
-    	if(currentPage - maxPage >= -3){
-    		DomUtil.insertAfter(myUl, newNode2, list[0]);
-    		// for(var i = 1; i < 8; i++){
-    		// 	CssUtil.setCss(list[i], {
-    		// 		'display': 'none'
-    		// 	});
-    		// }
-    	}
+        console.log(currentPage);
     }
 	
 	function init(data){
@@ -173,6 +180,15 @@ function Kpages(bar){
 			'cursor': 'pointer'
 		});
 
+
+        var newNode1 = document.createElement('span');
+        newNode1.innerHTML = '…';
+        var newNode2 = document.createElement('span');
+        newNode2.innerHTML = '…';
+
+        DomUtil.insertAfter(myUl, newNode1, list[0]);
+        DomUtil.insertBefore(myUl, newNode2, list[list.length - 1]);
+
 		emit(currentPage);
 
 
@@ -191,8 +207,8 @@ function Kpages(bar){
 
 		EventUtil.addEvent(pageAdd, 'click', function(){
 			currentPage++;
-			if(currentPage > 14){
-				currentPage = 14;
+			if(currentPage > maxPage){
+				currentPage = maxPage;
 				return;
 			}
 			var list = myUl.getElementsByTagName('li');
