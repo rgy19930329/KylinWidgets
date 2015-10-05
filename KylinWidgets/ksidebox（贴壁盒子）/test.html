@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>test</title>
+<script src="ksidebox.js"></script>
+<style type="text/css">
+
+* {
+	margin: 0;padding: 0;
+}
+
+.box {
+	border: 1px solid #59f;
+}
+
+.ctrlBtn1 {
+	width: 20px;
+	border: 1px solid #59f;
+	border-left: none;
+	left: -22px;
+	top: -1px;
+	text-align: center;
+	color: #fff;
+	font-weight: bold;
+	background: #59f;
+}
+
+#myBar2 {
+	border: 1px solid orange;
+}
+
+.ctrlBtn2 {
+	width: 20px;
+	padding: 10px 0;
+	border: 1px solid orange;
+	border-left: none;
+	right: -22px;
+	top: -1px;
+	text-align: center;
+	color: #fff;
+	font-weight: bold;
+	background: orange;
+	font-family: "Microsoft Yahei";
+}
+
+.wrap {
+	border: 1px solid #eee;
+	width: 700px;
+	margin: 20px auto;
+}
+
+</style>
+</head>
+<body>
+
+	<div id="myBar" class="box">
+		侧边栏内容1
+		<div id="ctrlBtn" class="ctrlBtn1"></div>
+	</div>
+
+	<div id="myBar2" class="box">
+		侧边栏内容2
+		<div id="ctrlBtn2" class="ctrlBtn2"></div>
+	</div>
+
+	<div class="wrap">
+		<img src="img/instruction.jpg">
+		<img src="img/instruction2.jpg">
+	</div>
+
+	
+	<script type="text/javascript">
+
+	Ksidebox(myBar).init({
+		'direction': 'right',// 贴壁方向
+		'width': '200px',// 宽度
+		'height': '350px',// 高度
+		'top': '150px',// 与顶部距离
+		'dur': 500,// 打开与关闭时间
+		'isOpen': true// 是否处于打开状态
+	}, {
+		'ctrlBtn': ctrlBtn// 开关控制器
+	});
+
+	Ksidebox(myBar2).init({
+		'direction': 'left',// 贴壁方向
+		'width': '200px',// 宽度
+		'height': '350px',// 高度
+		'top': '150px',// 与顶部距离
+		'dur': 500,// 打开与关闭时间
+		'isOpen': true// 是否处于打开状态
+	}, {
+		'ctrlBtn': ctrlBtn2// 开关控制器
+	});
+
+	</script>
+</body>
+</html>
