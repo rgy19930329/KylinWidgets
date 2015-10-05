@@ -12,7 +12,7 @@
 }
 
 #pageBar {
-	padding: 30px;
+	padding: 100px;
 }
 
 #pageBar li {
@@ -44,15 +44,18 @@
 		<div><button id="pageAdd">next</button></div>
 	</div>
 
+	<hr>
 
+	<img src="img/instruction.jpg">
+	<img src="img/instruction2.jpg">
 	
 	<script type="text/javascript">
 
 	var pageBar = document.getElementById("pageBar");
 
 	Kpages(pageBar).init({
-		'maxPage': 20,
-		'currentPage': 1
+		'maxPage': 20, // 最大页数
+		'currentPage': 1 //当前页号
 	});
 
 
