@@ -235,6 +235,17 @@
 
         insertAfter: function(source, newNode, existNode){
             source.insertBefore(newNode, existNode.nextSibling);
+        },
+
+        siblings: function(source, selector){
+            var parent = source.parentNode;
+            var list = parent.querySelectorAll(selector);
+            return list;
+        },
+
+        children: function(source, selector){
+            var list = source.querySelectorAll(selector);
+            return list;
         }
     }
 
