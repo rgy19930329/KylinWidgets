@@ -1,5 +1,5 @@
 
-function Knav(nav, content){
+function Kscrollnav(nav, content){
 
 	if(arguments.length != 2){
 		alert("参数错误！");
