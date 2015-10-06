@@ -195,7 +195,8 @@
                 'transition': str,
                 '-moz-transition': str,
                 '-webkit-transition': str,
-                '-o-transition': str
+                '-o-transition': str,
+                '-ms-transition': str
             });
 
             ky.CssUtil.setCss(source, obj);

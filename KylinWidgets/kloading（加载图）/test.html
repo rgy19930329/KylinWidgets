@@ -7,13 +7,41 @@
 
 <style type="text/css">
 
+.wrap {
+	padding: 50px;
+	background: #59f;
+	width: 200px;
+	float: left;
+}
 
+.wrap2 {
+	padding: 50px;
+	float: left;
+}
+
+.cb {
+	clear: both;
+}
 
 </style>
 </head>
 <body>
 
-	<div id="myLoading"></div>
+	<div class="wrap">
+		<div id="myLoading"></div>
+	</div>
+
+	<div class="wrap2">
+		<div id="myLoading2"></div>
+	</div>
+
+	<div class="cb"></div>
+	
+	<hr>
+
+	<img src="img/instruction.jpg">
+	<img src="img/instruction2.jpg">
+
 
 	
 	<script type="text/javascript">
@@ -21,9 +49,15 @@
 	var loading = document.getElementById("myLoading");
 
 	Kloading(loading).init({
-		'radius': '200px',
-		'model': '1'
+		'radius': '120px',// 半径
+		'thick': '10px',// 厚度
+		'color': 'orange',// 颜色
+		'bgColor': '#59f',// 背景颜色
+		'time': 1200,// 循环一个周期所用时间
+		'model': 'model_1'// 加载器模式选择
 	});
+
+	Kloading(myLoading2).init();
 
 	</script>
 
