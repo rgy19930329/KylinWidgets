@@ -68,8 +68,10 @@ function Kloading(bar){
 	function init(obj){
 		var obj = obj || {};
 
-		var bwidth = obj.radius || '100px';
-		var bheight = obj.radius || '100px';
+		var bwidth = obj.radius || '50px';
+        bwidth = parseInt(bwidth) * 2 + 'px';
+		var bheight = obj.radius || '50px';
+        bheight = parseInt(bheight) * 2 + 'px';
         var thick = obj.thick || '5px';
         var color = obj.color || '#59f';
         var bgColor = obj.bgColor || '#fff';
