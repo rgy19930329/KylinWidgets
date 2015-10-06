@@ -10,9 +10,15 @@ function Kcircleprogressbar(bar){
 
 	var currentProcess = null;
 
+	var canvas = document.createElement('canvas');
+    bar.appendChild(canvas);
+
 	function draw(process) {  
         
-        var ctx = bar.getContext('2d');
+        
+        canvas.setAttribute('width', radius * 2);
+        canvas.setAttribute('height', radius * 2);
+        var ctx = canvas.getContext('2d');
         ctx.clearRect(0, 0, radius * 2, radius * 2);  
 
         ctx.beginPath();  
@@ -59,12 +65,7 @@ function Kcircleprogressbar(bar){
 		var obj = obj || {};
 		var data = data || {};
 
-		var bwidth = bar.width;
-		var bheight = bar.height;
-		var r = Math.min(bwidth, bheight);
-		console.log(r);
-
-		radius = parseInt(obj.radius) || r / 2;
+		radius = parseInt(obj.radius) || 100;
 		thick = parseInt(obj.thick) || 10;
 		bgColor = obj.bgColor || '#eee';
 		fillColor = obj.fillColor || '#fff';
