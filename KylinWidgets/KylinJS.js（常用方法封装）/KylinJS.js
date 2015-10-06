@@ -38,9 +38,7 @@
         },
 
         getCss: function(source, attr) {
-            if (source.style[attr]) {
-                return source.style[attr];
-            } else if (source.currentStyle) {
+            if (source.currentStyle) {
                 return source.currentStyle[attr];
             } else {
                 return getComputedStyle(source, false)[attr];
