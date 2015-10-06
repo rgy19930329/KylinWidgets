@@ -263,16 +263,20 @@ function Kslidebar(bar){
 
 	    bar.onclick = function(e){
 	    	var evt = e || window.event;
+
+	    	if(evt.target !== showDiv){
+	    		return;
+	    	}
 	    	var leftDist = evt.offsetX;
 	    	var realX = leftDist;
 
 			if (leftDist >= 0 && leftDist <= barWidth) {
-				// CssUtil.setCss(ctrlBtn, {
-				// 	'left': leftDist - 10 + "px"
-				// });
-				AnimUtil.animate(ctrlBtn, {
+				CssUtil.setCss(ctrlBtn, {
 					'left': leftDist - 10 + "px"
 				});
+				// AnimUtil.animate(ctrlBtn, {
+				// 	'left': leftDist - 10 + "px"
+				// });
 				var p = Math.round(realX * 100 / barWidth);
 				setProgress(p + '%');
 			}
