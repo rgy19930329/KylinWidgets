@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>test</title>
+<script type="text/javascript" src="kratingbar.js"></script>
+
+<style type="text/css">
+
+.box {
+	padding: 50px;
+}
+
+</style>
+</head>
+<body>
+
+	<div class="box">
+		<div id="myBar"></div>
+	</div>
+
+	<br>
+
+	<div class="box">
+		<div id="myBar2"></div>
+	</div>
+
+	<button id="press">当前值</button>
+
+	<hr>
+
+	<img src="img/instruction.jpg">
+	<img src="img/instruction2.jpg">
+	
+	<script type="text/javascript">
+
+	Kratingbar(myBar).init();
+
+	var bar = Kratingbar(myBar2);
+	bar.init({
+		'starSize': '40px',
+		'color': 'orange'
+	}, {
+		'list': ['1星', '2星', '3星', '4星', '5星']
+	});
+
+	press.onclick = function(){
+		alert(bar.getValue());
+	}
+	
+
+	</script>
+
+</body>
+</html>
