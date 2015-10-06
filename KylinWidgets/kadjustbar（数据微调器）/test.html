@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>test</title>
+<script type="text/javascript" src="kadjustbar.js"></script>
+
+<style type="text/css">
+
+* {
+	margin: 0;padding: 0;
+}
+
+#myBar {
+	margin: 50px;
+}
+
+#myBar input {
+	width: 120px;
+	height: 40px;
+	transition: all 0.3s ease;
+	padding: 0 5px;
+}
+
+#myBar input:focus {
+	width: 150px;
+}
+
+#myBar button {
+	width: 30px;
+	height: 20px;
+}
+
+
+
+#myBar2 {
+	margin: 50px;
+	border: 1px solid orange;
+}
+
+#myBar2 input {
+	height: 40px;
+	text-align: center;
+}
+
+#myBar2 button {
+	width: 40px;
+	height: 20px;
+	border: none;
+	color: #fff;
+	background: #222;
+}
+
+#myBar2 button:hover {
+	background: #555;
+	font-size: 18px;
+}
+
+#myBar2 button:first-child {
+	border-bottom: 1px solid orange;
+}
+
+</style>
+</head>
+<body>
+
+	<div id="myBar">
+		<input type="text">
+		<div>
+			<button id="addBtn">+</button>
+			<button id="subBtn">-</button>
+		</div>
+	</div>
+
+	<br>
+
+	<div id="myBar2">
+		<input type="text">
+		<div>
+			<button id="addBtn2">+</button>
+			<button id="subBtn2">-</button>
+		</div>
+	</div>
+
+	<br>
+
+	<button id="press">当前值</button>
+
+	<hr>
+
+	<img src="img/instruction.jpg">
+	<img src="img/instruction2.jpg">
+	<img src="img/instruction3.jpg">
+
+	
+	<script type="text/javascript">
+
+	var list1 = ['星期一', '星期二', '星期三', '星期四', '星期五', '星期六', '星期天'];
+
+	Kadjustbar(myBar).init({
+		'dataList': list1,
+		'currentIndex': 3
+	}, {
+		'addBtn': addBtn,
+		'subBtn': subBtn
+	});
+
+
+	var list2 = [];
+	for(var i = 0; i < 100; i++){
+		list2[i] = i;
+	}
+	var bar = Kadjustbar(myBar2);
+	bar.init({
+		'dataList': list2
+	},{
+		'addBtn': addBtn2,
+		'subBtn': subBtn2
+	});
+
+	press.onclick = function(){
+		alert(bar.getValue());
+	}
+
+
+	</script>
+
+</body>
+</html>
