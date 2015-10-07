@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>test2</title>
+<script type="text/javascript" src="kfullpage.js"></script>
+
+<style type="text/css">
+
+body {
+	font-size: 70px;
+	font-family: "Microsoft Yahei";
+	color: #fff;
+}
+
+#myBar div:nth-child(odd) {
+	background: orange;
+}
+
+#myBar div:nth-child(even) {
+	background: #59f;
+}
+
+#content div {
+	display: flex;
+	align-items: center;
+}
+
+p {
+	width: 100%;
+	text-align: center;
+	margin: 0 auto;
+}
+
+
+</style>
+</head>
+<body>
+
+	<div id="myBar">
+		<div id="content">
+			<div class="section">
+				<p>第一屏</p>
+			</div>
+			<div class="section">
+				<p>第二屏</p>
+			</div>
+			<div class="section">
+				<p>第三屏</p>
+			</div>
+			<div class="section">
+				<p>第四屏</p>
+			</div>
+			<div class="section">
+				<p>第五屏</p>
+			</div>
+		</div>
+	</div>
+	
+	<script type="text/javascript">
+
+	Kfullpage(myBar, content).init();
+
+
+	</script>
+
+</body>
+</html>
