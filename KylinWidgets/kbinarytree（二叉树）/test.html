@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>test</title>
+<script type="text/javascript" src="kbinarytree.js"></script>
+
+<style type="text/css">
+
+body {
+	font-family: "Microsoft Yahei";
+}
+
+</style>
+</head>
+<body>
+
+	<section id="myTree"></section>
+
+	<hr>
+
+	<section id="myTree2"></section>
+
+	<hr>
+
+	<img src="img/instruction.jpg">
+	
+	<script type="text/javascript">
+
+	var arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, undefined, 10, 11];// 数据源
+	Kbinarytree(myTree).init(arr, {
+		'width': '800px',// 二叉树宽度
+		'nodeSize': '60px',// 节点尺寸
+		'nodeBgColor': 'orange',// 节点背景颜色
+		'nodeTextColor': '#fff',// 节点文字颜色
+		'nodeSpan': '5px',// 节点间隔
+		'nodeIsCircle': true,// 节点是否使用圆形
+		'lineSize': '2px',// 线条粗细
+		'lineColor': '#6EB215'// 线条颜色
+	});
+
+	// ---------------------- //
+
+	var tree = Kbinarytree(myTree2);
+	tree.init(arr);
+	var divs = tree.getNodes();
+	console.log(divs);
+
+	</script>
+
+</body>
+</html>
