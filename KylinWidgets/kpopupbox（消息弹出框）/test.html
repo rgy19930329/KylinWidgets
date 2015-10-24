@@ -3,24 +3,82 @@
 <head>
 <meta charset="utf-8">
 <title>test</title>
-<script type="text/javascript" src="k.js"></script>
+<script type="text/javascript" src="kpopupbox.js"></script>
 
 <style type="text/css">
 
+* {
+	margin: 0;padding: 0;
+}
 
+body {
+	font-family: "Microsoft Yahei";
+}
+
+#myBox p {
+	padding: 5px;
+	font-size: 20px;
+	font-weight: bold;
+	background: #59f;
+	color: #fff;
+}
+
+#myBox div {
+	padding: 5px;
+}
+
+button {
+	padding: 5px 10px;
+	font-family: "Microsoft Yahei";
+	font-size: 16px;
+	background: #59f;
+	border: none;
+	margin: 0 5px;
+	color: #fff;
+}
 
 </style>
 </head>
 <body>
 
+	<button id="press">press</button>
+
+	<div id="myBox">
+		<p>提示</p>
+		<div>
+			此处为消息内容此处为消息内容此处为消息内容此处为消息内容
+		</div>
+		<div>
+			<button>确 定</button><button>关 闭</button>
+		</div>
+	</div>
+
+	<hr>
 	
+	<img src="img/instruction.jpg">
+	<img src="img/instruction2.jpg">
 
 	
 	<script type="text/javascript">
 
-	
+	var box = Kpopupbox(myBox);
+	box.init({
+		'width': '450px'// 消息框宽度
+	});
 
-	K().init();
+	press.onclick = function(){
+		box.emit();
+	}
+
+	var buttons = myBox.getElementsByTagName('button');
+	buttons[0].onclick = function(){
+		box.close();
+	}
+
+	buttons[1].onclick = function(){
+		box.close();
+	}
+	
 
 	</script>
 
