@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>test</title>
+<script type="text/javascript" src="ktoast.js"></script>
+
+<style type="text/css">
+
+</style>
+</head>
+<body>
+
+	<button id="press">emit</button>
+
+	<div id="myToast"></div>
+
+	<hr>
+
+	<img src="img/instruction.jpg">
+
+	
+	<script type="text/javascript">
+
+	
+	var bar = Ktoast(myToast);
+	bar.init({
+		'width': '280px',// toast宽度
+		'time': 2000 // toast持续时间
+	});
+
+	press.onclick = function(){
+		bar.emit("我是一个简易消息提示框ktoast我是一个简易消息提示框");
+	}
+
+	</script>
+
+</body>
+</html>
