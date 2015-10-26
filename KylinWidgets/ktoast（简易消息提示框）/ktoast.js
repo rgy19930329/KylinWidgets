@@ -126,7 +126,8 @@ function Ktoast(toast){
 			'padding': '5px',
 			'box-sizing': 'border-box',
 			'box-shadow': '0 5px 5px #888',
-			'transform': 'scale(0)'
+			'transform': 'scale(0)',
+            'text-align': 'center'
 		});
 	}
 
