@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>test</title>
+<script type="text/javascript" src="ktyper.js"></script>
+
+<style type="text/css">
+
+#myTyper {
+	display: none;
+	width: 300px;
+	min-height: 200px;
+	border: 10px solid #59f;
+	margin-top: 20px;
+	text-indent: 2em;
+}
+
+</style>
+</head>
+<body>
+
+	<button id="press">press</button>
+
+	<div id="myTyper">
+		<p>1、老师：投资跟投机有什么区别？</p>
+		<p>小明：一个是普通话，一个是广东话！</p>
+		<p>老师：就你知道的多，滚出去！</p>
+		<p>2、数学老师布置了一个作业，计算家里一个月的用水量，并且设计一下节水方案。小明的作业这样写：水费单上一个月用水量18吨。节水方案：到外面买水。</p>
+	</div>
+
+	<hr>
+
+	<img src="img/instruction2.jpg">
+	<img src="img/instruction.jpg">
+
+	<script type="text/javascript">
+
+	press.onclick = function(){
+		myTyper.style.display = 'block';
+		Ktyper(myTyper).init({
+			'dur': 100 // 打印每个字的间隔时间
+		});
+	}
+
+	</script>
+
+</body>
+</html>
