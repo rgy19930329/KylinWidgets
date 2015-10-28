@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>test</title>
+<script type="text/javascript" src="kgraph.js"></script>
+
+<style type="text/css">
+
+body {
+	font-family: "Microsoft Yahei";
+}
+
+#graph {
+	border: 1px solid orange;
+	display: inline-block;
+}
+
+#graph div:nth-child(1){
+	left: 0;
+	top: 0;
+}
+
+#graph div:nth-child(2){
+	left: 400px;
+	top: 0;
+}
+
+#graph div:nth-child(3){
+	left: 200px;
+	top: 100px;
+}
+
+#graph div:nth-child(4){
+	left: 0;
+	top: 200px;
+}
+
+#graph div:nth-child(5){
+	left: 400px;
+	top: 200px;
+}
+
+/*--------------------------*/
+
+#graph2 {
+	border: 1px solid orange;
+	display: inline-block;
+}
+
+#graph2 div:nth-child(1){
+	left: 0;
+	top: 0;
+}
+
+#graph2 div:nth-child(2){
+	left: 400px;
+	top: 0;
+}
+
+#graph2 div:nth-child(3){
+	left: 0;
+	top: 200px;
+}
+
+#graph2 div:nth-child(4){
+	left: 400px;
+	top: 200px;
+}
+
+/*---------------------------*/
+
+#graph3 {
+	border: 1px solid orange;
+	display: inline-block;
+}
+
+#graph3 div:nth-child(1){
+	left: 0;
+	top: 0;
+}
+
+#graph3 div:nth-child(2){
+	left: 400px;
+	top: 0;
+}
+
+#graph3 div:nth-child(3){
+	left: 200px;
+	top: 100px;
+}
+
+#graph3 div:nth-child(4){
+	left: 0;
+	top: 200px;
+}
+
+#graph3 div:nth-child(5){
+	left: 400px;
+	top: 200px;
+}
+
+/*--------------------------*/
+
+#graph4 {
+	border: 1px solid orange;
+	display: inline-block;
+}
+
+#graph4 div:nth-child(1){
+	left: 0;
+	top: 0;
+}
+
+#graph4 div:nth-child(2){
+	left: 400px;
+	top: 0;
+}
+
+#graph4 div:nth-child(3){
+	left: 0;
+	top: 200px;
+}
+
+#graph4 div:nth-child(4){
+	left: 400px;
+	top: 200px;
+}
+
+</style>
+</head>
+<body>
+
+	<section id="graph">
+		<div>V<sub>1</sub></div>
+		<div>V<sub>2</sub></div>
+		<div>V<sub>3</sub></div>
+		<div>V<sub>4</sub></div>
+		<div>V<sub>5</sub></div>
+	</section>
+	<img src="img/instruction1.jpg">
+	<img src="img/instruction11.jpg">
+	<hr>
+
+	<section id="graph2">
+		<div>V<sub>1</sub></div>
+		<div>V<sub>2</sub></div>
+		<div>V<sub>3</sub></div>
+		<div>V<sub>4</sub></div>
+	</section>
+	<img src="img/instruction2.jpg">
+	<img src="img/instruction22.jpg">
+	<hr>
+
+	<section id="graph3">
+		<div>V<sub>1</sub></div>
+		<div>V<sub>2</sub></div>
+		<div>V<sub>3</sub></div>
+		<div>V<sub>4</sub></div>
+		<div>V<sub>5</sub></div>
+	</section>
+	<img src="img/instruction3.jpg">
+	<img src="img/instruction33.jpg">
+	<hr>
+
+	<section id="graph4">
+		<div>V<sub>1</sub></div>
+		<div>V<sub>2</sub></div>
+		<div>V<sub>3</sub></div>
+		<div>V<sub>4</sub></div>
+	</section>
+	<img src="img/instruction4.jpg">
+	<img src="img/instruction44.jpg">
+	<hr>
+	
+	
+	<script type="text/javascript">
+
+	var arr = [ // 数据源（邻接矩阵，0表示重合或者无穷大）
+		[0, 1, 0, 1, 0],
+		[1, 0, 1, 0, 1],
+		[0, 1, 0, 1, 1],
+		[1, 0, 1, 0, 0],
+		[0, 1, 1, 0, 0]
+	];
+	Kgraph(graph).init(arr, {
+		'width': '450px',// 图的宽度
+		'height': '250px',// 图的高度
+		'nodeSize': '50px',// 节点尺寸
+		'nodeBgColor': '#59f',// 节点背景颜色
+		'nodeTextColor': '#fff',// 节点文字颜色
+		'arcColor': '#6EB215',// 弧的颜色
+		'hasDirected': false, // 是否是有向图
+		'hasArcWeight': false // 是否显示权值
+	});
+
+	// ------------------------------ //
+
+	var arr2 = [ // 数据源（邻接矩阵，0表示重合或者无穷大）
+		[0, 1, 1, 0],
+		[0, 0, 0, 0],
+		[0, 0, 0, 1],
+		[1, 0, 0, 0],
+	];
+	Kgraph(graph2).init(arr2, {
+		'width': '450px',// 图的宽度
+		'height': '250px',// 图的高度
+		'nodeSize': '50px',// 节点尺寸
+		'nodeBgColor': '#59f',// 节点背景颜色
+		'nodeTextColor': '#fff',// 节点文字颜色
+		'arcColor': '#6EB215',// 弧的颜色
+		'hasDirected': true, // 是否是有向图
+		'hasArcWeight': false // 是否显示权值
+	});
+
+	// ------------------------------ //
+
+	var arr3 = [ // 数据源（邻接矩阵，0表示重合或者无穷大）
+		[0, 4, 0, 2, 0],
+		[4, 0, 3, 0, 3],
+		[0, 3, 0, 2, 3],
+		[2, 0, 2, 0, 0],
+		[0, 3, 3, 0, 0]
+	];
+	Kgraph(graph3).init(arr3, {
+		'width': '450px',// 图的宽度
+		'height': '250px',// 图的高度
+		'nodeSize': '50px',// 节点尺寸
+		'nodeBgColor': '#59f',// 节点背景颜色
+		'nodeTextColor': '#fff',// 节点文字颜色
+		'arcColor': '#6EB215',// 弧的颜色
+		'hasDirected': false, // 是否是有向图
+		'hasArcWeight': true // 是否显示权值
+	});
+
+	// ------------------------------ //
+
+	var arr4 = [ // 数据源（邻接矩阵，0表示重合或者无穷大）
+		[0, 4, 2, 0],
+		[0, 0, 0, 0],
+		[0, 0, 0, 5],
+		[10, 0, 0, 0],
+	];
+	Kgraph(graph4).init(arr4, {
+		'width': '450px',// 图的宽度
+		'height': '250px',// 图的高度
+		'nodeSize': '50px',// 节点尺寸
+		'nodeBgColor': '#59f',// 节点背景颜色
+		'nodeTextColor': '#fff',// 节点文字颜色
+		'arcColor': '#6EB215',// 弧的颜色
+		'hasDirected': true, // 是否是有向图
+		'hasArcWeight': true // 是否显示权值
+	});
+
+	</script>
+
+</body>
+</html>
