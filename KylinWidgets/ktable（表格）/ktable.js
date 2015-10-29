@@ -64,7 +64,7 @@ function Ktable(table){
 		获得行数
 	*/
 	function getRowNum(){
-		return tab.tBodies[0].rows.length;
+		return table.tBodies[0].rows.length;
 	}
 
 	/**
