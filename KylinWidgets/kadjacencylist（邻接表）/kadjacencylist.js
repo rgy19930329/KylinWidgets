@@ -79,7 +79,7 @@ function Kadjacencylist(alist){
 
 		for(var i = 0; i < len; i++){
 			var section = document.createElement('section');
-			alist.appendChild(section);
+			inner.appendChild(section);
 			var hnode = document.createElement('div');
 			CssUtil.setCss(hnode, {
 				'display': 'inline-block'
@@ -146,7 +146,7 @@ function Kadjacencylist(alist){
 
 		var line = document.createElement('span');
 		CssUtil.setCss(line, config);
-		alist.appendChild(line);
+		inner.appendChild(line);
 
 		var arrowh = document.createElement('span');
 		arrowh.innerHTML = '\u25b6';
@@ -163,34 +163,40 @@ function Kadjacencylist(alist){
 		var point1 = getAbsPoint(head);
 		var point2 = getAbsPoint(tail);
 
-		var alistX = getAbsPoint(alist).x;
-		var alistY = getAbsPoint(alist).y;
+		var innerX = getAbsPoint(inner).x;
+		var innerY = getAbsPoint(inner).y;
 
 		var itemRadius = parseInt(cellSize) / 2;
 
 		CssUtil.setCss(line, {
 			'width': itemRadius * 3 + 'px',
-			'left': (point1.x - alistX + itemRadius * 3) + 'px',
-			'top': (point1.y - alistY + itemRadius) + 'px'
+			'left': (point1.x - innerX + itemRadius * 3) + 'px',
+			'top': (point1.y - innerY + itemRadius) + 'px'
 		});
 	}
 
 	// 绘制所有的箭头
 	function drawAllArrows(){
-		var list = alist.getElementsByTagName('section');
+		var list = inner.getElementsByTagName('section');
 
 		for(var i = 0; i < list.length; i++){
 			var rowNodes = list[i].getElementsByTagName('div');
-			console.log(rowNodes);
 			for(var j = 0; j < rowNodes.length - 1; j++){
 				drawArrow(rowNodes[j], rowNodes[j + 1]);
 			}
 		}
 	}
 
+	// 使用新的数据源刷新所有展示内容
+	function fresh(arr){
+		inner.innerHTML = '';
+		createAllList(arr);
+		drawAllArrows();
+	}
 	// ------------------ //
 	var data_nodes = alist.getElementsByTagName('div')[0];
 	var nodes = data_nodes.getElementsByTagName('span');
+	var inner = null;
 
 	var twidth = null;
 	var theight = null;
@@ -216,6 +222,14 @@ function Kadjacencylist(alist){
 			'display': 'none'
 		});
 
+		inner = document.createElement('div');
+		CssUtil.setCss(inner, {
+			'position': 'absolute',
+			'width': '100%',
+			'height': '100%'
+		});
+		alist.appendChild(inner);
+
 		// --------------------------- //
 
 		createAllList(arr);
@@ -223,7 +237,8 @@ function Kadjacencylist(alist){
 	}
 
 	return {
-		init: init
+		init: init,
+		fresh: fresh
 	}
 }
 

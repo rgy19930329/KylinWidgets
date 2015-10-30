@@ -40,6 +40,8 @@ body {
 			<span>V<sub>5</sub></span>
 		</div>
 	</div>
+	<button id="fresh_btn">刷新</button>
+	<br>
 	<img src="img/instruction22.jpg">
 	<img src="img/instruction2.jpg">
 
@@ -68,10 +70,22 @@ body {
 		[1, 0, 1, 0, 0],
 		[0, 1, 1, 0, 0]
 	];
-	Kadjacencylist(alist2).init(arr2, {
+	var arr3 = [ 
+		[0, 1, 0, 1, 0],
+		[1, 0, 1, 0, 1],
+		[0, 1, 0, 1, 1],
+		[1, 0, 1, 0, 0],
+		[0, 1, 0, 0, 0]
+	];
+	var mylist = Kadjacencylist(alist2);
+	mylist.init(arr2, {
 		'width': '380px',
 		'height': '200px'
 	});
+
+	fresh_btn.onclick = function(){
+		mylist.fresh(arr3);
+	}
 
 	</script>
 
