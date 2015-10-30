@@ -109,7 +109,7 @@ function Ktabs(tabs){
 		var obj = obj || {};
 		var dur = obj.dur || 0;
 		var source = tabs.querySelectorAll('.tabs-nav a');
-		var content = tabs.querySelectorAll('.tabs-content div');
+		var content = tabs.querySelectorAll('.tabs-content > div');
 
 		var fresh = function() {
 			CssUtil.setCss(
