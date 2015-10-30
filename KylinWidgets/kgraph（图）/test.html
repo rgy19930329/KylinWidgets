@@ -140,6 +140,8 @@ body {
 	</section>
 	<img src="img/instruction1.jpg">
 	<img src="img/instruction11.jpg">
+	<br>
+	<button id="fresh_btn">刷新</button>
 	<hr>
 
 	<section id="graph2">
@@ -183,7 +185,8 @@ body {
 		[1, 0, 1, 0, 0],
 		[0, 1, 1, 0, 0]
 	];
-	Kgraph(graph).init(arr, {
+	var myGraph = Kgraph(graph);
+	myGraph.init(arr, {
 		'width': '450px',// 图的宽度
 		'height': '250px',// 图的高度
 		'nodeSize': '50px',// 节点尺寸
@@ -194,6 +197,16 @@ body {
 		'hasArcWeight': false // 是否显示权值
 	});
 
+	var tarr = [ 
+		[0, 1, 0, 1, 0],
+		[1, 0, 1, 0, 1],
+		[0, 1, 0, 1, 0],
+		[1, 0, 1, 0, 0],
+		[0, 1, 1, 0, 0]
+	];
+	fresh_btn.onclick = function(){
+		myGraph.fresh(tarr);
+	}
 	// ------------------------------ //
 
 	var arr2 = [ // 数据源（邻接矩阵，0表示重合或者无穷大）

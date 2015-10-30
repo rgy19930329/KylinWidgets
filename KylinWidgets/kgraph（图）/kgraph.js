@@ -83,7 +83,7 @@ function Kgraph(graph){
 
 		var line = document.createElement('span');
 		CssUtil.setCss(line, config);
-		graph.appendChild(line);
+		inner.appendChild(line);
 
 		var arcWeight = document.createElement('span');
 		arcWeight.innerHTML = weightValue;
@@ -100,8 +100,8 @@ function Kgraph(graph){
 		var point1 = getAbsPoint(node1);
 		var point2 = getAbsPoint(node2);
 
-		var graphX = getAbsPoint(graph).x;
-		var graphY = getAbsPoint(graph).y;
+		var innerX = getAbsPoint(inner).x;
+		var innerY = getAbsPoint(inner).y;
 
 		var itemDivSize = CssUtil.getCss(divs[0], 'width');
 		itemDivSize = parseInt(itemDivSize);
@@ -115,8 +115,8 @@ function Kgraph(graph){
 
 		CssUtil.setCss(line, {
 			'width': arcWidth + 'px',
-			'left': (point1.x - graphX + itemRadius) + 'px',
-			'top': (point1.y - graphY + itemRadius) + 'px'
+			'left': (point1.x - innerX + itemRadius) + 'px',
+			'top': (point1.y - innerY + itemRadius) + 'px'
 		});
 
 		CssUtil.setCss(arcWeight, {
@@ -172,7 +172,7 @@ function Kgraph(graph){
 
 		var line = document.createElement('span');
 		CssUtil.setCss(line, config);
-		graph.appendChild(line);
+		inner.appendChild(line);
 
 		var arrowh = document.createElement('span');
 		arrowh.innerHTML = '\u25b6';
@@ -200,8 +200,8 @@ function Kgraph(graph){
 		var point1 = getAbsPoint(head);
 		var point2 = getAbsPoint(tail);
 
-		var graphX = getAbsPoint(graph).x;
-		var graphY = getAbsPoint(graph).y;
+		var innerX = getAbsPoint(inner).x;
+		var innerY = getAbsPoint(inner).y;
 
 		var itemDivSize = CssUtil.getCss(divs[0], 'width');
 		itemDivSize = parseInt(itemDivSize);
@@ -215,8 +215,8 @@ function Kgraph(graph){
 		
 		CssUtil.setCss(line, {
 			'width': arcWidth + 'px',
-			'left': (point1.x - graphX + itemRadius) + 'px',
-			'top': (point1.y - graphY + itemRadius) + 'px'
+			'left': (point1.x - innerX + itemRadius) + 'px',
+			'top': (point1.y - innerY + itemRadius) + 'px'
 		});
 
 		CssUtil.setCss(arrowh, {
@@ -288,6 +288,17 @@ function Kgraph(graph){
 		}
 	}
 
+	// 用新的数据源刷新显示的内容
+	function fresh(arr){
+		inner.innerHTML = '';
+		
+		if(hasDirected){
+			drawAllArrows(arr);
+		}else{
+			drawAllLines(arr);
+		}
+	}
+
 	// ------------------ //
 
 	function getAllNodes(){
@@ -297,6 +308,7 @@ function Kgraph(graph){
 	// ------------------ //
 
 	var divs = graph.getElementsByTagName('div');
+	var inner = null;
 
 	var twidth = null;
 	var theight = null;
@@ -345,6 +357,14 @@ function Kgraph(graph){
 			'z-index': 10
 		});
 
+		inner = document.createElement('section');
+		CssUtil.setCss(inner, {
+			'position': 'absolute',
+			'width': '100%',
+			'height': '100%'
+		});
+		graph.appendChild(inner);
+
 		// --------------------------- //
 
 		if(hasDirected){
@@ -357,6 +377,7 @@ function Kgraph(graph){
 
 	return {
 		init: init,
+		fresh: fresh,
 		getAllNodes: getAllNodes
 	}
 }
