@@ -24,7 +24,8 @@
                 var list = document.querySelectorAll(source);
                 arguments.callee(list, obj);
             }else if(Object.prototype.toString.call(source) == '[object NodeList]' || 
-                Object.prototype.toString.call(source) == '[object HTMLCollection]'){
+                Object.prototype.toString.call(source) == '[object HTMLCollection]' ||
+                Object.prototype.toString.call(source) == '[object Array]'){
                 for(var i = 0, len = source.length; i < len; i++){
                     for(var k in obj){
                         source[i].style[this.toCamel(k)] = obj[k];
@@ -220,6 +221,41 @@
             var transitionend = getTransitionEndEvent();
 
             ky.EventUtil.addEvent(source, transitionend, callback);
+        },
+
+        createKeyframes: function(source, obj){
+            var styleDom = document.createElement('style');
+            var process = '';
+            for(var i in obj){
+                process += (i + obj[i]);
+            }
+            var prefix = ['', '-webkit-', '-moz-', '-o-', '-ms-'];
+            var str = '';
+            for(var i = 0; i < prefix.length; i++){
+                str += ('@' + prefix[i] + 'keyframes ' + source + '{' + process + '}');
+            }
+            styleDom.innerHTML = str;
+            document.getElementsByTagName("head")[0].appendChild(styleDom);
+        },
+
+        createAnimation: function(source, animConfig, keyframesConfig){
+            var animConfig = animConfig || {};
+            var dur = animConfig.dur || 1000;// 每次循环持续时间
+            var easing = animConfig.easing || 'linear';// 缓动函数
+            var times = animConfig.times || 'infinite';// 循环次数
+
+            var motion_name = 'motion_' + Math.random().toString().slice(2);
+            console.log(motion_name)
+            var param = motion_name + ' ' + dur + ' ' + easing + ' ' + times;
+            ky.CssUtil.setCss(source, {
+                'animation': param,
+                '-webkit-animation': param,
+                '-moz-animation': param,
+                '-o-animation': param,
+                '-ms-animation': param
+            });
+
+            this.createKeyframes(motion_name, keyframesConfig);
         }
     }
 
@@ -236,10 +272,30 @@
             source.insertBefore(newNode, existNode.nextSibling);
         },
 
-        siblings: function(source, selector){
+        siblings: function(source, selector){// 返回数组
             var parent = source.parentNode;
             var list = parent.querySelectorAll(selector);
-            return list;
+            var res = [];
+            for(var i = 0, len = list.length; i < len; i++){
+                if(list[i] !== source){
+                    res.push(list[i]);
+                }
+            }
+            return res;
+        },
+
+        findNextSilblingByTagName: function(source, tag){// 根据标签寻找下一个兄弟节点
+            var obj = source;
+            while(true){
+                obj = obj.nextSibling;
+                if(obj.nodeType == 3){
+                    continue;
+                }
+                if(obj.tagName.toLowerCase() == tag){
+                    break;
+                }
+            }
+            return obj;
         },
 
         children: function(source, selector){
