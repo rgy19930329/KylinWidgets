@@ -137,12 +137,6 @@ function Kfullpage(bar, content){
 
 		// ------- //
 
-		var allEle = document.getElementsByTagName('*');
-		CssUtil.setCss(allEle, {
-			'margin': '0',
-			'padding': '0'
-		});
-
 		CssUtil.setCss(bar, {
 			'position': 'relative',
 			'overflow': 'hidden'
