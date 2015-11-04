@@ -88,12 +88,20 @@ function Kfullpage(bar, content){
         }
 	}
 
+	// -------------------- //
+
 	var doce = document.documentElement;
 	var swidth = doce.clientWidth;
 	var sheight = doce.clientHeight;
 	var isLock = false;
 
 	var divList = content.getElementsByClassName('section');
+
+	var index = 0;// 当前section的索引
+
+	function getIndex(){
+		return index;
+	}
 
 	function fresh(){
 		swidth = doce.clientWidth;
@@ -185,6 +193,8 @@ function Kfullpage(bar, content){
 			}
 			isLock = true;
 
+			index = Math.floor( Math.abs(topDist) / sheight );
+
 			AnimUtil.animate(content, {
 				'top': topDist + 'px'
 			}, {
@@ -199,6 +209,7 @@ function Kfullpage(bar, content){
 	}
 
 	return {
-		init: init
+		init: init,
+		getIndex: getIndex
 	}
 }
