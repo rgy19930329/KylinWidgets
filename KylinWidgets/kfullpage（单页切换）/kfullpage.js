@@ -197,8 +197,58 @@ function Kfullpage(bar, content){
 			}, function(){
 				isLock = false;
 			});
-
 		}
+
+		// ----------- //
+
+		var mydist = 0;
+		var pos1, pos2;
+		EventUtil.addEvent(bar, 'touchstart', function(e){
+			var touch = e.touches[0];
+			pos1 = touch.pageY;
+			console.log(pos1);
+		});
+
+		EventUtil.addEvent(bar, 'touchend', function(e){
+			var touch = e.changedTouches[0];
+			pos2 = touch.pageY;
+			console.log(pos2)
+			// 移动10个像素以上
+			if (pos1 - pos2 > 10) {
+				mydist = sheight;
+			}
+
+			if(pos2 - pos1 > 10){
+				mydist = -sheight;
+			}
+
+			var ctop = CssUtil.getCss(content, 'top');
+
+			var topDist = parseInt(ctop) + mydist;
+			var cheight = CssUtil.getCss(content, 'height');
+
+			if(parseInt(cheight) == -topDist || topDist > 0){
+				return;
+			}
+
+			if(isLock){
+				return;
+			}
+			isLock = true;
+
+			index = Math.floor( Math.abs(topDist) / sheight );
+
+			AnimUtil.animate(content, {
+				'top': topDist + 'px'
+			}, {
+				'dur': dur,
+				'easing': easing
+			}, function(){
+				isLock = false;
+			});
+		});
+
+		
 
 	}
 
