@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>test</title>
+<script type="text/javascript" src="knoticelist.js"></script>
+
+<style type="text/css">
+
+* {
+	margin: 0;padding: 0;
+}
+
+body {
+	font-family: "Microsoft Yahei";
+}
+
+li {
+	list-style: none;
+}
+
+input[type="checkbox"]{
+	margin-right: 10px;
+}
+
+button {
+	margin-left: 10px;
+	border: none;
+	padding: 3px;
+}
+
+button:hover {
+	background: #59f;
+}
+
+.myNoticeList {
+	border: 1px solid #59f;
+	width: 400px;
+	padding: 5px;
+	margin: 30px;
+}
+
+.myNoticeList > div:nth-child(1) {
+	padding-bottom: 5px;
+	border-bottom: 1px solid #ccc;
+}
+
+.myNoticeList li {
+	margin: 5px 0;
+}
+
+</style>
+</head>
+<body>
+
+	<div id="myNoticeList" class="myNoticeList">
+		<div>
+			<label><input type="checkbox"><span>全选</span></label>
+			<button>删除所选</button>
+		</div>
+		<div>
+			<p>暂无内容</p>
+		</div>
+		<ul>
+			<li>
+				<p><input type="checkbox"><span>标题一</span></p>
+				<div>截至2015年11月10日，AOAL基础系列算法已基本开发完成。</div>
+			</li>
+			<li>
+				<p><input type="checkbox"><span>标题二</span></p>
+				<div>截至2015年11月10日，AOAL基础系列算法已基本开发完成。截至2015年11月10日，AOAL基础系列算法已基本开发完成。截至2015年11月10日，AOAL基础系列算法已基本开发完成。</div>
+			</li>
+			<li>
+				<p><input type="checkbox"><span>标题三</span></p>
+				<div>截至2015年11月10日，AOAL基础系列算法已基本开发完成。</div>
+			</li>
+			<li>
+				<p><input type="checkbox"><span>标题四</span></p>
+				<div>截至2015年11月10日，AOAL基础系列算法已基本开发完成。</div>
+			</li>
+		</ul>
+	</div>
+
+	<hr>
+
+	<img src="img/instruction.jpg">
+	<img src="img/instruction2.jpg">
+
+	
+	<script type="text/javascript">
+
+	var kNoticeTarget = Knoticelist(myNoticeList);
+	kNoticeTarget.init();
+	var btn = myNoticeList.getElementsByTagName('button')[0];
+	btn.addEventListener('click', function(){
+		console.log(kNoticeTarget.getDeletedIndexes());
+	}, false);
+
+	</script>
+
+</body>
+</html>
