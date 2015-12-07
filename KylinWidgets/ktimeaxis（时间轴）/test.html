@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>test</title>
+<script type="text/javascript" src="ktimeaxis.js"></script>
+
+<style type="text/css">
+
+* {
+	margin: 0;padding: 0;
+}
+
+body {
+	font-family: "Microsoft Yahei";
+}
+
+li {
+	list-style: none;
+}
+
+
+#myTimeAxis {
+	margin: 50px auto;
+}
+
+</style>
+</head>
+<body>
+
+	<div id="myTimeAxis"></div>
+	
+	<script type="text/javascript">
+
+	var data = [
+		{
+			'year': '2015年',
+			'detail': [
+				{
+					'day': '12月7日',
+					'content': ['形成完整的基础服务+互动推广+业务管理+行业应用+应用商店的服务架构', '注册用户突破10万，荣获“创业之星”大赛八强']
+				},
+				{
+					'day': '8月2日',
+					'content': ['全新渠道代理管理后台上线，更便捷更强大', 
+					'荣获2013年微应用最佳服务商']
+				},
+				{
+					'day': '6月18日',
+					'content': ['V5.2上线', 
+					'与众多行业建立合作，推出多个行业解决方案']
+				}
+			]
+		},
+		{
+			'year': '2014年',
+			'detail': [
+				{
+					'day': '5月2日',
+					'content': ['全网第一个微信刮刮卡、大转盘上线', 
+					'创造微信公众号一周涨5万粉的奇迹']
+				},
+				{
+					'day': '1月10日',
+					'content': ['计划实现一个NB的社会化APP']
+				}
+			]
+		},
+		{
+			'year': '2013年',
+			'detail': [
+				{
+					'day': '8月20日',
+					'content': ['寻找一个适合的商机']
+				}
+			]
+		}
+	];
+
+	Ktimeaxis(myTimeAxis).init({
+		'width': '800px',
+		'color': 'orange',
+		'yearSize': '22px',
+		'daySize': '16px',
+		'msgSize': '14px'
+	}, data);
+
+	</script>
+
+</body>
+</html>
