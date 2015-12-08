@@ -7,22 +7,51 @@
 
 <style type="text/css">
 
-#myclock {
-	margin: 50px;
+div {
+	float: left;
+}
+
+header {
+	overflow: hidden;
+	padding: 20px;
 }
 
 </style>
 </head>
 <body>
 
-	<div id="myclock"></div>
+	<header>
 
+		<div id="myclock"></div>
+
+		<div id="myclock2"></div>
+
+		<div id="myclock3"></div>
+
+	</header>
+	
+	<hr>
+
+	<img src="img/instruction.jpg">
+	<img src="img/instruction2.jpg">
 	
 	<script type="text/javascript">
 
 	Kclock(myclock).init({
 		'color': '#59f',// 颜色
 		'size': 'large',// 尺寸（small, middle, large）
+		'showScale': true // 是否显示刻度
+	});
+
+	Kclock(myclock2).init({
+		'color': 'blue',// 颜色
+		'size': 'middle',// 尺寸（small, middle, large）
+		'showScale': false // 是否显示刻度
+	});
+
+	Kclock(myclock3).init({
+		'color': 'orange',// 颜色
+		'size': 'small',// 尺寸（small, middle, large）
 		'showScale': true // 是否显示刻度
 	});
 
