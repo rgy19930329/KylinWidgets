@@ -1,6 +1,6 @@
 function Ktimeaxis(bar){
 
-		var CssUtil = {
+	var CssUtil = {
 
         toCamel: function(name){
             return name.replace(/-[a-z]{1}/g, function(item){
