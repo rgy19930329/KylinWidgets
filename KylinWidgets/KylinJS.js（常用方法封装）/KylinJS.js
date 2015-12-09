@@ -298,6 +298,20 @@
             return obj;
         },
 
+        findPrevSilblingByTagName: function(source, tag){// 根据标签寻找上一个兄弟节点
+            var obj = source;
+            while(true){
+                obj = obj.previousSibling;
+                if(obj.nodeType == 3){
+                    continue;
+                }
+                if(obj.tagName.toLowerCase() == tag){
+                    break;
+                }
+            }
+            return obj;
+        },
+
         children: function(source, selector){
             var list = source.querySelectorAll(selector);
             return list;
