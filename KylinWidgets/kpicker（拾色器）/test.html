@@ -7,18 +7,37 @@
 
 <style type="text/css">
 
+#mypicker {
+	margin: 30px;
+}
 
 
 </style>
 </head>
 <body>
 
-	
+	<button id="press">当前颜色</button>
 
+	<div id="mypicker"></div>
+
+	<hr>
+
+	<img src="img/instruction.jpg">
+	<img src="img/instruction2.jpg">
 	
 	<script type="text/javascript">
 
-	Kpicker().init();
+	var pickerTarget = Kpicker(mypicker);
+	pickerTarget.init({
+		'surfaceColor': '#59f' // 外观颜色
+	});
+
+	press.onclick = function(){
+		var color1 = pickerTarget.getColor();
+		var color2 = pickerTarget.getColor('rgb');
+		var color3 = pickerTarget.getColor('hex');
+		alert(color1 + '\n' + color2 + '\n' + color3);
+	}
 
 	</script>
 
