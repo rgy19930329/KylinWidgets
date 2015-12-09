@@ -177,7 +177,7 @@ function Kslidebar(bar){
 		var bwidth = obj.width || '600px';
 		var bheight = obj.height || '15px';
 		var cwidth = obj.cwidth || '20px';
-		var cColor = obj.cColor || '#ddd';
+		var cColor = obj.ccolor || '#ddd';
 		var cradius = obj.cIsArc ? '50%' : '0';
 		var radius = obj.isFillet ? parseInt(bheight) / 2 + 'px' : '0';
 		var proColor = obj.proColor || 'orange';
