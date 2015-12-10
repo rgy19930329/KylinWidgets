@@ -315,6 +315,27 @@
         children: function(source, selector){
             var list = source.querySelectorAll(selector);
             return list;
+        },
+
+        // 将伪数组对象转化成数组，如(arguments, HTMLCollection, NodeList等)
+        makeArray: function(obj){
+            return Array.prototype.slice.call(obj);
+        },
+
+        // 获取子元素在父容器中的索引
+        getIndex: function(parent, child){
+            var list = parent.childNodes;
+            list = this.makeArray(list);
+            for(var i = 0; i < list.length; i++){
+                if(list[i].nodeType == 3){
+                    list.splice(i, 1);
+                }
+            }
+            for(var i = 0, len = list.length; i < len; i++){
+                if(list[i] == child){
+                    return i;
+                }
+            }
         }
     }
 
