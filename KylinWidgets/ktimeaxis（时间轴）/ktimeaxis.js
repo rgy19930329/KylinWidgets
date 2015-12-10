@@ -123,7 +123,7 @@ function Ktimeaxis(bar){
 		var msgSize = obj.msgSize || '90%';
 
 		CssUtil.setCss(bar, {
-			'width': '800px'
+			'width': bwidth
 		});
 
 		// -------------------- //
@@ -235,8 +235,6 @@ function Ktimeaxis(bar){
 				s_content.innerHTML = str_msg;
 			}
 		}
-
-		
 
 		// --------------获取ul高度，返回数组---------------//
 		var heightArr = [];
