@@ -41,8 +41,7 @@ function Kratingbar(bar){
 	
 
 	var isLock = false;
-	var list = null;
-	var result = null;
+	var list, result;
 	
 	function getValue(){
 		return result;
