@@ -187,7 +187,12 @@
             var opr = opr || {};
 
             var easing = opr.easing || 'ease';
-            var dur = opr.dur || 1000;
+            var dur;
+            if(opr.dur == undefined){
+                 dur = 1000;
+            }else{
+                dur = opr.dur;
+            }
             var str = easing + " " + dur + "ms";
 
             ky.CssUtil.setCss(source, {
