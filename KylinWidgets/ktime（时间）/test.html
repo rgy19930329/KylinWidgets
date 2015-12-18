@@ -7,21 +7,33 @@
 
 <style type="text/css">
 
+#mytime, #mytime2 {
+	margin: 80px;
+}
 
 </style>
 </head>
 <body>
 
 	<div id="mytime"></div>
+
+	<div id="mytime2"></div>
+
+	<hr>
+
+	<img src="img/instruction.jpg">
+	<img src="img/instruction2.jpg">
 	
 	<script type="text/javascript">
 
 	Ktime(mytime).init({
-		'bgColor': 'orange',
-		'textColor': '#fff',
+		'bgColor': '#444',
+		'textColor': '#F8F28C',
 		'textSize': '100px',
-		'hasFillet': false
+		'hasFillet': true
 	});
+
+	Ktime(mytime2).init();
 
 	</script>
 
