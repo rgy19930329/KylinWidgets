@@ -75,7 +75,8 @@ function Kmarquee(bar){
 		}
 		// ---------------- //
 
-		var bwidth = parseInt(cellWidth) * 3;
+		var cells = bar.getElementsByTagName('section');
+		var bwidth = parseInt(cellWidth) * cells.length;
 		CssUtil.setCss(bar, {
 			'width': bwidth + 'px',
 			'overflow': 'hidden'
@@ -102,7 +103,7 @@ function Kmarquee(bar){
 			'padding-top': '5px'
 		});
 
-		var cells = bar.getElementsByTagName('section');
+		
 		CssUtil.setCss(cells, {
 			'width': cellWidth,
 			'height': cellHeight,
