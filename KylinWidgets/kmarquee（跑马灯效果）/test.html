@@ -11,54 +11,57 @@
 	margin: 0;padding: 0;
 }
 
-#demo {
-	overflow:hidden;
-	width: 100%;
+#mymarquee {
+	margin: 50px;
+	border: 1px solid #ccc;
 }
 
-#demo img {
-	width: 240px;
-	height: 180px;
-	margin: 0 5px;
+#mymarquee a {
+	text-decoration: none;
+	color: #000;
+	font-size: 90%;
 }
 
-#indemo {
-	float: left;
-	width: 200%;
+#mymarquee a:hover {
+	text-decoration: underline;
 }
 
-#demo1 {
-	float: left;
-}
-
-#demo2 {
-	float: left;
-}
 
 
 </style>
 </head>
 <body>
 
-	<div id="demo">
-		<div id="indemo">
-			<div id="demo1">
-				<a href=""><img src="http://www.vicidear.com/d/file/ganyan/2015-09-01/127663dd4a8287da9424b3e5022c1f2e.jpg"></a>
-				<a href=""><img src="http://www.vicidear.com/d/file/ganyan/2015-09-01/ff9808c24b63552c3e5ec6d6ea555b6d.jpg"></a>
-				<a href=""><img src="http://www.vicidear.com/d/file/ganyan/2015-10-29/e41a6a00237e4c9ef9389e695f759612.jpg"></a>
-				<a href=""><img src="http://www.vicidear.com/d/file/ganyan/2015-11-04/e4d5c2d6b00f05fa500f464804b4a269.jpg"></a>
-				<a href=""><img src="http://www.vicidear.com/d/file/ganyan/2015-11-04/3618ff371aaf0474549ea1f44cc11b77.jpg"></a>
-			</div>
-			<div id="demo2"></div>
+	<div id="mymarquee">
+		<div class="innerBox">
+			<section>
+				<div><a href=""><img title="图片标题" src="http://h.hiphotos.baidu.com/image/pic/item/6609c93d70cf3bc798e14b10d700baa1cc112a6c.jpg"></a></div>
+				<p><a href="">图片说明图片说明</a></p>
+			</section>
+			<section>
+				<div><a href=""><img title="图片标题" src="http://c.hiphotos.baidu.com/image/pic/item/503d269759ee3d6ddfd3157740166d224f4ade71.jpg"></a></div>
+				<p><a href="">图片说明图片说明</a></p>
+			</section>
+			<section>
+				<div><a href=""><img title="图片标题" src="http://g.hiphotos.baidu.com/image/pic/item/6a63f6246b600c3389cadd601f4c510fd8f9a1e2.jpg"></a></div>
+				<p><a href="">图片说明图片说明</a></p>
+			</section>
 		</div>
 	</div>
 
-	
+	<hr>
+
+	<img src="img/instruction.jpg">
+	<img src="img/instruction2.jpg">
+
 	<script type="text/javascript">
 
-	
-
-	Kmarquee().init();
+	Kmarquee(mymarquee).init({
+		'cellWidth': '200px', // 单元宽度
+		'cellHeight': '300px',// 单元高度
+		'direction': 'left',// 移动方向（默认向左）
+		'speed': 3 // 速度档位（一共5个档位：1, 2, 3, 4, 5）
+	});
 
 	</script>
 
