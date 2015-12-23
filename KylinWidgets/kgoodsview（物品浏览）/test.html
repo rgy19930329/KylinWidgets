@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>test</title>
+<script type="text/javascript" src="kgoodsview.js"></script>
+
+<style type="text/css">
+
+#mygoodsview {
+	border: 1px solid #eee;
+	display: inline-block;
+}
+
+#mygoodsview2 {
+	border: 1px solid #eee;
+	display: inline-block;
+}
+
+</style>
+</head>
+<body>
+
+	<div id="mygoodsview"></div>
+
+	<div id="mygoodsview2"></div>
+
+	<hr>
+
+	<img src="img/instruction.jpg">
+	<img src="img/instruction2.jpg">
+	<img src="img/instruction3.jpg">
+
+	
+	<script type="text/javascript">
+
+	Kgoodsview(mygoodsview).init(
+		{'width': '400px', 'textColor': '#888'}, 
+		'女士手拎斜挎两用包VEA1044',
+		'http://www.vicidear.com/shoutibao626.html',
+		[
+			'http://www.vicidear.com/d/file/product/nvbao/shoutibao/2015-11-14/842f939887dba2cfd2b4bb91d3b4eb31.jpg',
+			'http://www.vicidear.com/d/file/product/nvbao/shoutibao/2015-11-14/ba8f6252f2efa588b87f0156fe6b407a.jpg',
+			'http://www.vicidear.com/d/file/product/nvbao/shoutibao/2015-11-14/d05104e311754426a5068ccd2acc5b4f.jpg',
+			'http://www.vicidear.com/d/file/product/nvbao/shoutibao/2015-11-14/f69a1ec8046cad46d61aecf6726c073b.jpg',
+			'http://www.vicidear.com/d/file/product/nvbao/shoutibao/2015-11-14/e496821cf5f777d6a9c9c7f113a65560.jpg',
+			'http://www.vicidear.com/d/file/product/nvbao/shoutibao/2015-11-14/b2d81238a91df2e03f857be01e6a47ed.jpg',
+			'http://www.vicidear.com/d/file/product/nvbao/shoutibao/2015-11-14/9bc3619f83392863d4b88c9834e187a5.jpg',
+			'http://www.vicidear.com/d/file/product/nvbao/shoutibao/2015-11-14/5e51d125f3d1527aebe19f9909e9387c.jpg',
+			'http://www.vicidear.com/d/file/product/nvbao/shoutibao/2015-11-14/842f939887dba2cfd2b4bb91d3b4eb31.jpg',
+			'http://www.vicidear.com/d/file/product/nvbao/shoutibao/2015-11-14/ba8f6252f2efa588b87f0156fe6b407a.jpg',
+			'http://www.vicidear.com/d/file/product/nvbao/shoutibao/2015-11-14/d05104e311754426a5068ccd2acc5b4f.jpg',
+			'http://www.vicidear.com/d/file/product/nvbao/shoutibao/2015-11-14/f69a1ec8046cad46d61aecf6726c073b.jpg',
+			'http://www.vicidear.com/d/file/product/nvbao/shoutibao/2015-11-14/e496821cf5f777d6a9c9c7f113a65560.jpg',
+		]
+	);
+
+	Kgoodsview(mygoodsview2).init(
+		{}, 
+		'女士手拎斜挎两用包VEA1044',
+		'http://www.vicidear.com/shoutibao626.html',
+		[
+			'http://www.vicidear.com/d/file/product/nvbao/shoutibao/2015-11-14/842f939887dba2cfd2b4bb91d3b4eb31.jpg',
+			'http://www.vicidear.com/d/file/product/nvbao/shoutibao/2015-11-14/ba8f6252f2efa588b87f0156fe6b407a.jpg',
+			'http://www.vicidear.com/d/file/product/nvbao/shoutibao/2015-11-14/d05104e311754426a5068ccd2acc5b4f.jpg'
+		]
+	);
+
+	</script>
+
+</body>
+</html>
