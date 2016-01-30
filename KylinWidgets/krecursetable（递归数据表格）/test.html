@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>test</title>
+<script type="text/javascript" src="krecursetable.js"></script>
+
+<style type="text/css">
+
+.cell1 {
+	border: 1px solid #ccc;
+	width: 910px;
+	overflow: hidden;
+}
+
+.cell1 > div {
+	border-bottom: 1px solid #ccc;
+}
+
+.cell1 > div:last-child {
+	border-bottom: none;
+}
+
+.cell2 {
+	display: inline-block;
+	vertical-align: top;
+}
+
+.cell2 > div {
+	border-bottom: 1px solid #ccc;
+	border-left: 1px solid #ccc;
+}
+
+.cell2 > div:last-child {
+	border-bottom: none;
+}
+
+.cell3 {
+	display: inline-block;
+	vertical-align: top;
+}
+
+.cell3 > div {
+	border-left: 1px solid #ccc;
+}
+
+.cell3 > div:last-child {
+	border-bottom: none;
+}
+
+</style>
+</head>
+<body>
+
+	<div id="box"></div>
+
+	<script type="text/javascript">
+
+	var tableData = {
+    	'func': [
+    		{
+    			'name': '个人中心',
+    			'func': [{
+    				'name': '我的资料',
+    				'func': [{'name': ''}]
+    			}, {
+    				'name': '资料认证',
+    				'func': [{'name': '修改'}]
+    			}]
+    		},
+    		{
+    			'name': '标识管理',
+    			'func': [{
+    				'name': '标识申请',
+    				'func': [{'name': '申请'}, {'name': '网申'}]
+    			}, {
+    				'name': '标识列表',
+    				'func': [{'name': '下载'}, {'name': '撤销'}, {'name': '提交'}]
+    			}]
+    		},
+    		{
+    			'name': '项目管理',
+    			'func': [{
+    				'name': '',
+    				'func': [{'name': '开始'}, {'name': '需求'}, {'name': '分析'}, {'name': '建模'}]
+    			}]
+    		}
+    	]
+    };
+
+    function createCell(name){
+    	var label = document.createElement('label');
+		label.style.display = 'inline-block';
+    	label.style.width = '300px';
+    	label.style.height = '30px';
+    	label.style.lineHeight = '30px';
+		var div = document.createElement('div');
+		div.appendChild(label);
+
+    	if(name){
+    		var checkbox = document.createElement('input');
+	    	checkbox.setAttribute('type', 'checkbox');
+	    	var span = document.createElement('span');
+	    	span.innerHTML = name;
+	    	label.appendChild(checkbox);
+	    	label.appendChild(span);
+	    	var div = document.createElement('div');
+	    	div.appendChild(label);
+	    	return div;
+    	}
+    	return div;
+    }
+
+	Krecursetable(box).init(tableData, createCell);
+
+	</script>
+
+</body>
+</html>
