@@ -103,7 +103,7 @@ function Kpages(bar){
     }
 
     // currentPage改变时触发
-    function emit(currentPage){
+    function emit(currentPage, callback){
     	
     	var list = myUl.getElementsByTagName('li');
         var spanList = myUl.getElementsByTagName('span');
@@ -154,10 +154,12 @@ function Kpages(bar){
     		}
     	}
 
-        console.log(currentPage);
+        // console.log(currentPage);
+
+        callback && callback.call(this, arguments[0]);
     }
 	
-	function init(data){
+	function init(data, callback){
 		var data = data || {};
 
 		maxPage = data.maxPage;
@@ -189,7 +191,7 @@ function Kpages(bar){
         DomUtil.insertAfter(myUl, newNode1, list[0]);
         DomUtil.insertBefore(myUl, newNode2, list[list.length - 1]);
 
-		emit(currentPage);
+		emit(currentPage, callback);
 
 
 		EventUtil.addEvent(pageSub, 'click', function(){
@@ -202,7 +204,7 @@ function Kpages(bar){
 			CssUtil.removeClassAll(list, 'page-selected');
 			CssUtil.addClass(list[currentPage - 1], 'page-selected');
 			//
-			emit(currentPage);
+			emit(currentPage, callback);
 		});
 
 		EventUtil.addEvent(pageAdd, 'click', function(){
@@ -215,7 +217,7 @@ function Kpages(bar){
 			CssUtil.removeClassAll(list, 'page-selected');
 			CssUtil.addClass(list[currentPage - 1], 'page-selected');
 			//
-			emit(currentPage);
+			emit(currentPage, callback);
 		});
 
 		EventUtil.addEvent(myUl, 'click', function(){
@@ -228,7 +230,7 @@ function Kpages(bar){
 				CssUtil.removeClassAll(list, 'page-selected');
 				CssUtil.addClass(list[currentPage - 1], 'page-selected');
 				//
-				emit(currentPage);
+				emit(currentPage, callback);
 			}
 		});
 
