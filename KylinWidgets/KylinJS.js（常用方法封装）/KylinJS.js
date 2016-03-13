@@ -73,7 +73,7 @@
                 this.removeClass(source[i], value);
             }
         }
-    }
+    };
 
     /**
         event工具
@@ -262,7 +262,7 @@
 
             this.createKeyframes(motion_name, keyframesConfig);
         }
-    }
+    };
 
     /**
         dom工具
@@ -342,6 +342,6 @@
                 }
             }
         }
-    }
+    };
 
 })();
