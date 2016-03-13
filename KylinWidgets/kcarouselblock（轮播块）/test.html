@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>test</title>
+<script type="text/javascript" src="kcarouselblock.js"></script>
+
+<style type="text/css">
+
+* {
+	margin: 0;padding: 0;
+}
+
+body {
+	font-family: "microsoft yahei";
+}
+
+li {
+	list-style: none;
+}
+
+/*-----媒体报道-----*/
+
+.wrapper {
+	margin: 100px;
+}
+
+.list-carousel-pilot {
+	height: 30px;
+}
+
+.dot {
+	display: inline-block;
+	width: 6px;
+	height: 6px;
+	background: #d9d9d9;
+	margin-left: 8px;
+}
+
+.dot-active {
+	background: #309cfd;
+}
+
+.carousel-content-item div {
+	border-top: 1px solid #dfdfdf;
+	padding-top: 25px;
+	padding-bottom: 20px;
+}
+
+.carousel-content-item img {
+	float: left;
+	margin-right: 15px;
+	height: 105px;
+}
+
+.h3-report {
+	color: #555;
+	font-size: 95%;
+	font-weight: normal;
+}
+
+.carousel-content-item .report-time {
+	font-size: 70%;
+	color: #eaeaea;
+	line-height: 22px;
+	padding-left: 5px;
+}
+
+.carousel-content-item .report-content {
+	font-size: 70%;
+	color: #858585;
+	line-height: 20px;
+}
+
+.my-carousel {
+	width: 500px;
+}
+
+
+</style>
+</head>
+<body>
+
+	<div class="wrapper">
+		<div id="j-carousel-pilot" class="list-carousel-pilot">
+			<span class="dot dot-active"><!-- 蓝色小方点 --></span>
+			<span class="dot"><!-- 蓝色小方点 --></span>
+			<span class="dot"><!-- 蓝色小方点 --></span>
+		</div>
+
+		<div id="j-carousel" class="my-carousel">
+			<ul class="list-carousel-content">
+				<li class="carousel-content-item">
+	    			<div class="oh">
+	    				<img src="images/account-img.png" alt="代帐">
+	    				<p class="oh">
+	    					<h3 class="h3-report">八戒代帐为中小微企业开创企业财务服务新时代</h3>
+	    					<p class="report-time">2015-11-25</p>
+	    					<p class="report-content">非常专业，很贴心，更及时，有了八戒代帐，我们就不需要专门招财务，省了一大笔资金，另外八戒代帐能很好的帮我们规避一些税务风险，省去了很多麻烦……</p>
+	    				</p>
+	    			</div>
+	    			<div>
+	    				<p>
+	    					<h3 class="h3-report">八戒代帐为中小微企业开创企业财务服务新时代</h3>
+	    					<p class="report-time">2015-11-25</p>
+	    					<p class="report-content">非常专业，很贴心，更及时，有了八戒代帐，我们就不需要专门招财务，省了一大笔资金，另外八戒代帐能很好的帮我们规避一些税务风险，省去了很多麻烦……</p>
+	    				</p>
+	    			</div>
+				</li>
+				<li class="carousel-content-item">
+					<div class="oh">
+	    				<p class="oh">
+	    					<h3 class="h3-report">八戒代帐为中小微企业开创企业财务服务新时代</h3>
+	    					<p class="report-time">2015-11-25</p>
+	    					<p class="report-content">非常专业，很贴心，更及时，有了八戒代帐，我们就不需要专门招财务，省了一大笔资金，另外八戒代帐能很好的帮我们规避一些税务风险，省去了很多麻烦……</p>
+	    				</p>
+	    			</div>
+	    			<div>
+	    				<img src="images/account-img.png" alt="代帐">
+	    				<p class="oh">
+	    					<h3 class="h3-report">八戒代帐为中小微企业开创企业财务服务新时代</h3>
+	    					<p class="report-time">2015-11-25</p>
+	    					<p class="report-content">非常专业，很贴心，更及时，有了八戒代帐，我们就不需要专门招财务，省了一大笔资金，另外八戒代帐能很好的帮我们规避一些税务风险，省去了很多麻烦……</p>
+	    				</p>
+	    			</div>
+				</li>
+				<li class="carousel-content-item">
+					<div class="oh">
+						<img src="images/account-img2.png" alt="代帐">
+	    				<p class="oh">
+	    					<h3 class="h3-report">八戒代帐为中小微企业开创企业财务服务新时代</h3>
+	    					<p class="report-time">2015-11-25</p>
+	    					<p class="report-content">非常专业，很贴心，更及时，有了八戒代帐，我们就不需要专门招财务，省了一大笔资金，另外八戒代帐能很好的帮我们规避一些税务风险，省去了很多麻烦……</p>
+	    				</p>
+	    			</div>
+	    			<div>
+	    				<p class="oh">
+	    					<h3 class="h3-report">八戒代帐为中小微企业开创企业财务服务新时代</h3>
+	    					<p class="report-time">2015-11-25</p>
+	    					<p class="report-content">非常专业，很贴心，更及时，有了八戒代帐，我们就不需要专门招财务，省了一大笔资金，另外八戒代帐能很好的帮我们规避一些税务风险，省去了很多麻烦……</p>
+	    				</p>
+	    			</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+
+	
+	<script type="text/javascript">
+	
+	var myCarousel = document.getElementById('j-carousel');
+	var myPilot = document.getElementById('j-carousel-pilot');
+	Kcarouselblock(myCarousel, myPilot).init();
+
+	</script>
+
+</body>
+</html>
