@@ -173,7 +173,7 @@ function Kcarouselblock(carousel, pilot){
 		var defaults = {
 			"speed": 3000, // 轮播间隔时间
 			"dur": 500, // 动画持续时间
-			"direction": "right", // 轮播方向
+			"direction": "left", // 轮播方向
 			"index": 0 // 指定当前索引
 		};
 
