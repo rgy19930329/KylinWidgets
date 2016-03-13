@@ -34,7 +34,7 @@ var CssUtil = {
     }
 };
 
-	var EventUtil = {
+var EventUtil = {
     //添加事件
     addEvent: function(element, eventType, handler){
         if(element.addEventListener){//标准浏览器
