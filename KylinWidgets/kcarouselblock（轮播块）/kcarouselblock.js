@@ -171,7 +171,7 @@ function Kcarouselblock(carousel, pilot){
 	function init(opts, pilot){
 
 		var defaults = {
-			"speed": 3000, // 轮播间隔时间
+			"speed": 5000, // 轮播间隔时间
 			"dur": 500, // 动画持续时间
 			"direction": "left", // 轮播方向
 			"index": 0 // 指定当前索引
@@ -198,6 +198,7 @@ function Kcarouselblock(carousel, pilot){
 		var dur = defaults.dur;
 		var index = defaults.index;
 		var leftDist = -index * twidth;
+		var isLock = false; // 开始轮播时上锁，轮播结束时解锁
 
 		CssUtil.setCss(myInnerList, {
 			"width": twidth * itemNumber + "px",
@@ -214,35 +215,73 @@ function Kcarouselblock(carousel, pilot){
 		var move = defaults.direction == "right" ? prev : next;
 
 		var clock = setInterval(function(){
-			move();
-			CssUtil.removeClassAll(mySquareDots, 'dot-active');
-			CssUtil.addClass(mySquareDots[index], 'dot-active');
+			move(1);
 		}, defaults.speed);
 
-		function next(){
-			leftDist -= twidth;
-			index++;
+		function next(step){
+			if(isLock){
+				return;
+			}
+			// ---- //
+			isLock = true;
+			leftDist -= step * twidth;
+			index += step;
 			if(leftDist < -(itemNumber - 1) * twidth){
 				leftDist = 0;
 				index = 0;
 			}
 			AnimUtil.animate(myInnerList, {
 				"left": leftDist + "px"
+			}, {}, function(){
+				isLock = false;
 			});
+			CssUtil.removeClassAll(mySquareDots, 'dot-active');
+			CssUtil.addClass(mySquareDots[index], 'dot-active');
 		}
 
-		function prev(){
-			leftDist += twidth;
-			index--;
+		function prev(step){
+			if(isLock){
+				return;
+			}
+			// ---- //
+			isLock = true;
+			leftDist += step * twidth;
+			index -= step;
 			if(leftDist > 0){
 				leftDist = -(itemNumber - 1) * twidth;
 				index = itemNumber - 1;
 			}
 			AnimUtil.animate(myInnerList, {
 				"left": leftDist + "px"
+			}, {}, function(){
+				isLock = false;
 			});
+			CssUtil.removeClassAll(mySquareDots, 'dot-active');
+			CssUtil.addClass(mySquareDots[index], 'dot-active');
 		}
 		
+		// ---- //
+
+		(function(){
+			for(var i = 0, len = mySquareDots.length; i < len; i++){
+				EventUtil.addEvent(mySquareDots[i], 'click', (function(k){
+					return function(){
+						if(isLock){
+							return;
+						}
+						// ---- //
+						if(k === index){
+							return;
+						}else if(k > index){
+							next(k - index);
+						}else if(k < index){
+							prev(index - k);
+						}
+					}
+				})(i));
+			}
+		})();
+
 	}
 
 	return {
