@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>test</title>
+<script src="js/_baseutils.js"></script>
+<script src="js/kdialog.js"></script>
+<style type="text/css">
+
+#status_show {
+	font-size: 30px;
+}
+
+</style>
+</head>
+<body>
+
+	<header>我是header模块，我订阅了comfirm的"result"事件，当用户点击了comfirm的按键时，本模块状态数据根据"result"事件发布的内容发生改变[status: <strong id="status_show">undefined</strong>]</header>
+
+	<button id="btn_dialog_show">dialog-show</button>
+	<button id="btn_alert_show">alert-show</button>
+	<button id="btn_confirm_show">comfirm-show</button>
+
+	
+	<script type="text/javascript">
+
+	// -----test----- //
+
+	var mydialog = new Dialog();
+	mydialog.init({
+		'title': 'error',
+		'content': '您的操作出错！',
+		'type': 'error'
+	});
+
+	var myalert = new Alert();
+	myalert.init({
+		'title': 'warning',
+		'content': '警告，您的数据出现异常！',
+		'type': 'warning'
+	});
+
+	var myconfirm = new Confirm();
+	myconfirm.init({
+		'title': 'success',
+		'content': '操作成功！',
+		'type': 'success',
+		'useMask': true
+	});
+
+	btn_dialog_show.onclick = function(){
+		mydialog.show();
+	}
+
+	btn_alert_show.onclick = function(){
+		myalert.show();
+	}
+
+	btn_confirm_show.onclick = function(){
+		myconfirm.show();
+	}
+
+	// --result事件订阅-- //
+	myconfirm.on('result', function(msg){
+		status_show.innerHTML = msg;
+	});
+	
+	</script>
+</body>
+</html>
