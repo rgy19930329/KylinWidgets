@@ -6,22 +6,42 @@
     <title>test</title>
     <script type="text/javascript" src="../../KylinJS.js/KylinJS.js"></script>
     <script type="text/javascript" src="kpicview.js"></script>
+    <link rel="stylesheet" href="kpicview.css">
+    <link rel="stylesheet" href="../../test-common.css">
     <style type="text/css">
-
+        .test-pic-wrap img {
+            width: 120px;
+            height: 120px;
+            cursor: pointer;
+        }
     </style>
 </head>
 
 <body>
-	
-	<div class="ky-pic-view">
-		<img src="https://thumb.115.com/thumb/2/92/67/29267957B1916FB4EAE8183667F7CEDACC67876B_1440_900?s=9rE0tSwc17yphOPU9tt0rA&t=1477470141&sync=1">
-	</div>
+
+    <h1>测试 kpicview（图片浏览器）</h1>
+
+    <section>
+        <h3>点击查看大图</h3>
+    	<div class="test-pic-wrap ky-pic-view">
+    		<img src="http://placehold.it/200x200">
+            <img src="http://placehold.it/300x300">
+            <img src="http://placehold.it/500x300">
+            <img src="http://placehold.it/1200x800">
+            <img src="http://placehold.it/350x200">
+    	</div>
+    </section>
+
+    <div class="ky-picview-mask">
+        <div class="ky-picview-close"><i>&Chi;</i></div>
+        <div class="ky-picview-prev"><i>&lt;</i></div>
+        <div class="ky-picview-next"><i>&gt;</i></div>
+        <div class="ky-picview-content ky-picview-content-prev"><img src="http://placehold.it/350x200"></div>
+    </div>
 
     <script type="text/javascript">
-
-    	console.log(ky.apiInfo);
     	
-    	// Kpicview().init();
+    	Kpicview().init();
 
     </script>
 </body>

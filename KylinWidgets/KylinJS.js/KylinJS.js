@@ -218,13 +218,19 @@
     window.ky.EventUtil = {
         /**
          * @desc 添加事件
-         * @param [element, eventType, handler] [dom, string, function]
+         * @param [element, eventType, handler] [dom | doms, string, function]
          */
         addEvent: function(element, eventType, handler) {
-            if (element.addEventListener) { //标准浏览器
-                element.addEventListener(eventType, handler, false);
-            } else {
-                element.attachEvent('on' + eventType, handler);
+            if(ky.BaseUtil.isArrayLike(element)) {
+                for(var i = 0; i < element.length; i++) {
+                    arguments.callee(element[i], eventType, handler);
+                }
+            }else{
+                if (element.addEventListener) { //标准浏览器
+                    element.addEventListener(eventType, handler, false);
+                } else {
+                    element.attachEvent('on' + eventType, handler);
+                }
             }
         },
         /**
@@ -232,10 +238,16 @@
          * @param [element, eventType, handler] [dom, string, function]
          */
         removeEvent: function(element, eventType, handler) {
-            if (element.removeEventListener) { //标准浏览器
-                element.removeEventListener(eventType, handler, false);
-            } else {
-                element.detachEvent('on' + eventType, handler);
+            if(ky.BaseUtil.isArrayLike(element)) {
+                for(var i = 0; i < element.length; i++) {
+                    arguments.callee(element[i], eventType, handler);
+                }
+            }else{
+                if (element.removeEventListener) { //标准浏览器
+                    element.removeEventListener(eventType, handler, false);
+                } else {
+                    element.detachEvent('on' + eventType, handler);
+                }
             }
         },
         /**
@@ -423,6 +435,14 @@
 
             this.createKeyframes(motion_name, keyframesConfig);
         }
+    };
+    /**
+     * @desc dom选择器
+     * @param [selector] [string] [选择器]
+     * @return [array like]
+     */
+    window.ky.select = function(selector) {
+        return document.querySelectorAll(selector);
     };
     /**
      * dom工具
