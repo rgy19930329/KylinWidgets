@@ -33,6 +33,14 @@
                 return false; 
         },
         /**
+        * @desc 将类数组对象转化成数组
+        * @param [obj] [Any]
+        * @return [array]
+        */
+        makeArray: function(obj){
+            return Array.prototype.slice.call(obj);
+        },
+        /**
         * @desc 转驼峰命名
         * @param [name] [string]
         * @return [string]
@@ -79,41 +87,59 @@
                 return getComputedStyle(source, false)[attr];
             }
         },
-
+        /**
+        * @desc 元素是否存在某个class
+        * @param [source, value] [dom, string]
+        * @return [boolean]
+        */
         hasClass: function(source, value){
             return source.className.match(new RegExp('(\\s|^)' + value + '(\\s|$)'));
         },
-
+        /**
+        * @desc 为元素添加某个class
+        * @param [source, value] [dom, string]
+        */
         addClass: function(source, value){
             if(!this.hasClass(source, value)){
                 source.className += ' ' + value;
             }
         },
-
+        /**
+        * @desc 为元素移除某个class
+        * @param [source, value] [dom, string]
+        */
         removeClass: function(source, value){
             if(this.hasClass(source, value)){
                 source.className = source.className.replace(new RegExp('(\\s|^)' + value + '(\\s|$)'), '')
             }
         },
-
+        /**
+        * @desc 为所有元素(arraylike)添加存在某个class
+        * @param [source, value] [doms, string]
+        */
         addClassAll: function(source, value){
             for(var i = 0, len = source.length; i < len; i++){
                 this.addClass(source[i], value);
             }
         },
-
+        /**
+        * @desc 为所有元素(arraylike)移除存在某个class
+        * @param [source, value] [doms, string]
+        */
         removeClassAll: function(source, value){
             for(var i = 0, len = source.length; i < len; i++){
                 this.removeClass(source[i], value);
             }
         }
     };
-
     /**
-        event工具
+    * event工具
     */
     window.ky.EventUtil = {
-        //添加事件
+        /**
+        * @desc 添加事件
+        * @param [element, eventType, handler] [dom, string, function]
+        */
         addEvent: function(element, eventType, handler){
             if(element.addEventListener){//标准浏览器
                 element.addEventListener(eventType, handler, false);
@@ -121,7 +147,10 @@
                 element.attachEvent('on' + eventType, handler);
             }
         },
-        //移除事件
+        /**
+        * @desc 移除事件
+        * @param [element, eventType, handler] [dom, string, function]
+        */
         removeEvent: function(element, eventType, handler){
             if(element.removeEventListener){//标准浏览器
                 element.removeEventListener(eventType, handler, false);
@@ -129,15 +158,21 @@
                 element.detachEvent('on' + eventType, handler);
             }
         },
-        //获取事件
+        /**
+        * @desc 获取事件
+        */
         getEvent: function(event){
             return event || window.event;
         },
-        //获取目标元素
+        /**
+        * @desc 获取目标元素
+        */
         getTarget: function(event){
             return this.getEvent(event).target || this.getEvent(event).srcElement;
         },
-        //阻止默认行为
+        /**
+        * @desc 阻止默认行为
+        */
         preventDefault: function(event){
             var evt = this.getEvent(event);
             if(evt.preventDefault){//标准浏览器
@@ -146,7 +181,9 @@
                 evt.returnValue = false;
             }
         },
-        //阻止事件冒泡
+        /**
+        * @desc 阻止事件冒泡
+        */
         stopPropagation: function(event){
             var evt = this.getEvent(event);
             if(evt.stopPropagation){//标准浏览器
@@ -156,12 +193,14 @@
             }
         }
     };
-
     /**
         animation工具
     */
     window.ky.AnimUtil = {
-        //透明度
+        /**
+        * @desc 透明度
+        * @param [source, dur] [dom, number]
+        */
         opacity: function(source, dur){
             var per = 0;
             var startTime = Date.now();
@@ -215,8 +254,10 @@
                }
             });
         },
-
-        //动画
+        /**
+        * @desc 透明度
+        * @param [source, obj, opr, callback] [dom, object, object, function]
+        */
         animate: function(source, obj, opr, callback){
             var opr = opr || {};
 
@@ -261,7 +302,10 @@
 
             ky.EventUtil.addEvent(source, transitionend, callback);
         },
-
+        /**
+        * @desc 创建keyframes
+        * @param [source, obj] [dom, object]
+        */
         createKeyframes: function(source, obj){
             var styleDom = document.createElement('style');
             var process = '';
@@ -276,7 +320,10 @@
             styleDom.innerHTML = str;
             document.getElementsByTagName("head")[0].appendChild(styleDom);
         },
-
+        /**
+        * @desc 创建动画
+        * @param [source, animConfig, keyframesConfig] [dom, object, object]
+        */
         createAnimation: function(source, animConfig, keyframesConfig){
             var animConfig = animConfig || {};
             var dur = animConfig.dur || 1000;// 每次循环持续时间
@@ -297,20 +344,29 @@
             this.createKeyframes(motion_name, keyframesConfig);
         }
     };
-
     /**
-        dom工具
+    * dom工具
     */
     window.ky.DomUtil = {
-
+        /**
+        * @desc 在元素之前插入
+        * @param [source, newNode, existNode] [dom, object, object] [父级dom, 新的dom, 已经存在的dom]
+        */
         insertBefore: function(source, newNode, existNode){
             source.insertBefore(newNode, existNode);
         },
-
+        /**
+        * @desc 在元素之后插入
+        * @param [source, newNode, existNode] [dom, object, object] [父级dom, 新的dom, 已经存在的dom]
+        */
         insertAfter: function(source, newNode, existNode){
             source.insertBefore(newNode, existNode.nextSibling);
         },
-
+        /**
+        * @desc 获取所有兄弟节点
+        * @param [source, selector] [dom, string] [父级dom, 选择器]
+        * @return [array]
+        */
         siblings: function(source, selector){// 返回数组
             var parent = source.parentNode;
             var list = parent.querySelectorAll(selector);
@@ -322,8 +378,12 @@
             }
             return res;
         },
-
-        findNextSilblingByTagName: function(source, tag){// 根据标签寻找下一个兄弟节点
+        /**
+        * @desc 根据标签获取当前节点之后所有兄弟节点
+        * @param [source, tag] [dom, string] [dom, 标签名]
+        * @return [array]
+        */
+        findNextSilblingByTagName: function(source, tag){
             var obj = source;
             while(true){
                 obj = obj.nextSibling;
@@ -336,8 +396,12 @@
             }
             return obj;
         },
-
-        findPrevSilblingByTagName: function(source, tag){// 根据标签寻找上一个兄弟节点
+        /**
+        * @desc 根据标签获取当前节点之前所有兄弟节点
+        * @param [source, tag] [dom, string] [dom, 标签名]
+        * @return [array]
+        */
+        findPrevSilblingByTagName: function(source, tag){
             var obj = source;
             while(true){
                 obj = obj.previousSibling;
@@ -350,18 +414,20 @@
             }
             return obj;
         },
-
+        /**
+        * @desc 获取所有子节点
+        * @param [source, selector] [dom, string] [父级dom, 选择器]
+        * @return [array]
+        */
         children: function(source, selector){
             var list = source.querySelectorAll(selector);
             return list;
         },
-
-        // 将伪数组对象转化成数组，如(arguments, HTMLCollection, NodeList等)
-        makeArray: function(obj){
-            return Array.prototype.slice.call(obj);
-        },
-
-        // 获取子元素在父容器中的索引
+        /**
+        * @desc 获取子元素在父容器中的索引
+        * @param [parent, child] [dom, dom] [父dom, 子dom]
+        * @return [number]
+        */
         getIndex: function(parent, child){
             var list = parent.childNodes;
             list = this.makeArray(list);
