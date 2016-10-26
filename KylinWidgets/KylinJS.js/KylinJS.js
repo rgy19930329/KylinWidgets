@@ -4,7 +4,7 @@
  * @author rgy19930329 in github
  */
 (function() {
-    // 构造自己的命名空间  
+    // 构造自己的命名空间
     window.ky = {};
     // KylinJS.js库信息
     window.ky.apiInfo = {
@@ -177,11 +177,15 @@
         },
         /**
          * @desc 为元素添加某个class
-         * @param [source, value] [dom, string]
+         * @param [source, value] [dom | doms, string]
          */
         addClass: function(source, value) {
-            if (!this.hasClass(source, value)) {
-                source.className += ' ' + value;
+            if(source.length) {
+                this.addClassAll(source, value);
+            }else{
+                if (!this.hasClass(source, value)) {
+                    source.className += ' ' + value;
+                }
             }
         },
         /**
@@ -189,8 +193,12 @@
          * @param [source, value] [dom, string]
          */
         removeClass: function(source, value) {
-            if (this.hasClass(source, value)) {
-                source.className = source.className.replace(new RegExp('(\\s|^)' + value + '(\\s|$)'), '')
+            if(source.length) {
+                this.removeClassAll(source, value);
+            }else{
+                if (this.hasClass(source, value)) {
+                    source.className = source.className.replace(new RegExp('(\\s|^)' + value + '(\\s|$)'), '')
+                }
             }
         },
         /**
@@ -438,11 +446,17 @@
     };
     /**
      * @desc dom选择器
-     * @param [selector] [string] [选择器]
-     * @return [array like]
+     * @param [parent, selector] [dom, string] [dom节点, 选择器]
+     * @return [array like | dom]
      */
-    window.ky.select = function(selector) {
-        return document.querySelectorAll(selector);
+    window.ky.select = function(parent, selector) {
+        var res = null;
+        if(arguments.length == 2) {
+            res = parent.querySelectorAll(selector);
+        }else if(arguments.length == 1){
+            res = document.querySelectorAll(arguments[0]);
+        }
+        return (res.length == 1) ? res[0] : res;
     };
     /**
      * dom工具
@@ -513,15 +527,6 @@
                 }
             }
             return obj;
-        },
-        /**
-         * @desc 获取所有子节点
-         * @param [source, selector] [dom, string] [父级dom, 选择器]
-         * @return [array]
-         */
-        children: function(source, selector) {
-            var list = source.querySelectorAll(selector);
-            return list;
         },
         /**
          * @desc 获取子元素在父容器中的索引

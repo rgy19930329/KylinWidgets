@@ -23,7 +23,7 @@
 
     <section>
         <h3>点击查看大图</h3>
-    	<div class="test-pic-wrap ky-pic-view">
+    	<div class="test-pic-wrap" id="picView1">
     		<img src="http://placehold.it/200x200">
             <img src="http://placehold.it/300x300">
             <img src="http://placehold.it/500x300">
@@ -32,16 +32,24 @@
     	</div>
     </section>
 
-    <div class="ky-picview-mask">
-        <div class="ky-picview-close"><i>&Chi;</i></div>
-        <div class="ky-picview-prev"><i>&lt;</i></div>
-        <div class="ky-picview-next"><i>&gt;</i></div>
-        <div class="ky-picview-content ky-picview-content-prev"><img src="http://placehold.it/350x200"></div>
-    </div>
+    <hr>
+
+    <section>
+        <h3>点击查看大图2</h3>
+    	<div class="test-pic-wrap" id="picView2">
+    		<img src="http://placehold.it/200x200">
+            <img src="http://placehold.it/300x300">
+            <img src="http://placehold.it/500x300">
+            <img src="http://placehold.it/1200x800">
+            <img src="http://placehold.it/350x200">
+    	</div>
+    </section>
 
     <script type="text/javascript">
-    	
-    	Kpicview().init();
+
+    	Kpicview(picView1).init();
+
+        // Kpicview(picView2).init();
 
     </script>
 </body>
