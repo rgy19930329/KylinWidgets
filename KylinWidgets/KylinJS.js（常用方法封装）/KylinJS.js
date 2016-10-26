@@ -1,43 +1,77 @@
+/**
+* @desc KylinJS.js 精简型js基本库
+* @date 2015-8-1
+* @author rgy19930329 in github
+*/
 
 (function() {
-    //构造自己的命名空间。  
+    // 构造自己的命名空间  
     window.ky = {};
-
+    // KylinJS.js库信息
     window.ky.apiInfo = {
         apiName : 'ky',
-        apiVersion : '1.0.0'
+        apiVersion : '1.1.0'
     };
-
     /**
-        css工具
+    * base工具
     */
-    window.ky.CssUtil = {
-
+    window.ky.BaseUtil = {
+        /**
+        * @desc 判断是否是类数组
+        * @param [o] [Any]
+        * @return [boolean]
+        */
+        isArrayLike: function(o) {
+            if (o &&                                // o is not null, undefined, etc.
+                typeof o === 'object' &&            // o is an object
+                isFinite(o.length) &&               // o.length is a finite number
+                o.length >= 0 &&                    // o.length is non-negative
+                o.length === Math.floor(o.length) &&  // o.length is an integer
+                o.length < 4294967296)              // o.length < 2^32
+                return true;                        // Then o is array-like
+            else
+                return false; 
+        },
+        /**
+        * @desc 转驼峰命名
+        * @param [name] [string]
+        * @return [string]
+        */
         toCamel: function(name){
             return name.replace(/-[a-z]{1}/g, function(item){
                 return item.slice(1).toUpperCase();
             });
         },
 
+    };
+    /**
+    * css工具
+    */
+    window.ky.CssUtil = {
+        /**
+        * @desc 设置元素css样式值
+        * @param [source, obj] [string | dom | doms, object]
+        */
         setCss: function(source, obj){
             if(Object.prototype.toString.call(source) == '[object String]'){
                 var list = document.querySelectorAll(source);
                 arguments.callee(list, obj);
-            }else if(Object.prototype.toString.call(source) == '[object NodeList]' || 
-                Object.prototype.toString.call(source) == '[object HTMLCollection]' ||
-                Object.prototype.toString.call(source) == '[object Array]'){
+            }else if(ky.BaseUtil.isArrayLike(source)){
                 for(var i = 0, len = source.length; i < len; i++){
                     for(var k in obj){
-                        source[i].style[this.toCamel(k)] = obj[k];
+                        source[i].style[ky.BaseUtil.toCamel(k)] = obj[k];
                     }
                 }
             }else{
                 for(var k in obj){
-                    source.style[this.toCamel(k)] = obj[k];
+                    source.style[ky.BaseUtil.toCamel(k)] = obj[k];
                 }
             }
         },
-
+        /**
+        * @desc 获取元素css样式值
+        * @param [source, attr] [dom, string]
+        */
         getCss: function(source, attr) {
             if (source.currentStyle) {
                 return source.currentStyle[attr];

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>test</title>
+<script src="../KylinJS.js"></script>
+<style type="text/css">
+
+.box {
+	width: 100px;
+	height: 100px;
+	background: #59f;
+	margin-top: 10px;
+}
+
+</style>
+</head>
+<body>
+
+	<h1>测试 animation工具 [AnimUtil 回调]</h1>
+	<h2>—— transition 实现</h2>
+
+	<button id="btn">press</button>
+
+	<div id="box" class="box"></div>
+
+	
+	<script type="text/javascript">
+
+	btn.onclick = function(){
+		ky.AnimUtil.animate(box, {
+			'opacity': 0
+		}, {}, function(){
+			alert('动画结束啦！');
+		});
+	}
+
+	</script>
+</body>
+</html>

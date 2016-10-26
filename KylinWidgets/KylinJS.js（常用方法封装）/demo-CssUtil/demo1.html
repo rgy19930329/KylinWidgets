@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>test</title>
+    <script src="../KylinJS.js"></script>
+    <link rel="stylesheet" href="../../test-common.css">
+
+</head>
+
+<body>
+
+    <h1>测试 CssUtil工具 ky.CssUtil.setCss</h1>
+
+	<section>
+		<p><button id="testBtn1">press</button></p>
+		<ul id="testList1">
+			<li>111111</li>
+			<li>222222</li>
+			<li>333333</li>
+			<li>444444</li>
+		</ul>
+	</section>
+	<script type="text/javascript">
+    	var list1 = testList1.getElementsByTagName('li');
+    	testBtn1.onclick = function() {
+    		ky.CssUtil.setCss(list1, {
+    			'color': 'red'
+    		});
+    	};
+    </script>
+
+	<hr>
+
+	<section>
+		<p>
+			<button id="testBtn2">press1</button>
+			<button id="testBtn3">press2</button>
+		</p>
+		<div id="testDiv1" class="test-box"></div>
+	</section>
+	<script type="text/javascript">
+    	testBtn2.onclick = function() {
+    		ky.CssUtil.setCss(testDiv1, {
+    			'background': 'red'
+    		});
+    	};
+    	testBtn3.onclick = function() {
+    		ky.CssUtil.setCss('#testDiv1', {
+    			'background': '#f60'
+    		});
+    	};
+    </script>
+
+   
+</body>
+
+</html>

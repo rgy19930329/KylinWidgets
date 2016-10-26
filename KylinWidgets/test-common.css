@@ -1,0 +1,58 @@
+body {
+	font-family: "Microsoft yahei";
+	margin: 0;
+	padding: 0;
+}
+
+h1 {
+	background: #59f;
+	color: #fff;
+	margin: 0;
+	padding: 12px;
+}
+
+.test-box {
+    width: 100px;
+    height: 100px;
+    background: #59f;
+    margin-top: 10px;
+}
+
+section {
+	margin: 30px;
+}
+
+button {
+	border: 1px solid #ddd;
+	font-size: 18px;
+	padding: 5px 10px;
+	border-radius: 3px;
+	cursor: pointer;
+	background: #fff;
+}
+
+button:hover {
+	background: #eee;
+}
+
+.btn-primary {
+	background: #59f;
+	color: #fff;
+}
+
+.btn-primary:hover {
+	background: #59e;
+}
+
+.btn-lg {
+	font-size: 28px;
+}
+
+.btn-sm {
+	font-size: 14px;
+}
+
+.split {
+	padding-left: 5px;
+	padding-right: 5px;
+}
