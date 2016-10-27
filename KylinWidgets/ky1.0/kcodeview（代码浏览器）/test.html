@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>test</title>
+    <script type="text/javascript" src="../../KylinJS.js/KylinJS.js"></script>
+    <script type="text/javascript" src="kcodeview.js"></script>
+    <link rel="stylesheet" href="kcodeview.css">
+    <link rel="stylesheet" href="../../test-common.css">
+    <style type="text/css">
+
+    </style>
+</head>
+
+<body>
+
+    <h1>测试 kcodeview（代码浏览器）</h1>
+
+    <section>
+    	<div class="ky-codeview-wrap" id="codeView">
+<pre><code>function getSum() {
+    var sum = 0;
+    for (var i = 0; i <= 100; i++) {
+        sum += i;
+    }
+    return sum;
+}
+console.log(getSum());
+</code></pre>
+    	</div>
+    </section>
+
+    <script type="text/javascript">
+
+    	Kcodeview(codeView).init({
+            'font-size': '18px',
+            'line-height': '28px'
+        });
+
+    </script>
+</body>
+
+</html>
