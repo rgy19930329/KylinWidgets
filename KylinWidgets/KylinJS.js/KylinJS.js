@@ -130,7 +130,22 @@
                 return item.slice(1).toUpperCase();
             });
         },
-
+        /**
+         * @desc 生成随机字符串
+         * @param [len] [number] [需要生成的字符串长度]
+         * @return [string]
+         */
+        randomString(len) {　　
+            len = len || 32;　　
+            /****默认去掉了容易混淆的字符oOLl,9gq,Vv,Uu,I1****/
+            var $chars = 'ABCDEFGHJKMNPQRSTWXYZabcdefhijkmnprstwxyz2345678';
+            var maxPos = $chars.length;　　
+            var pwd = '';　　
+            for (var i = 0; i < len; i++) {　　　　
+                pwd += $chars.charAt(Math.floor(Math.random() * maxPos));　　
+            }　　
+            return pwd;
+        }
     };
     /**
      * css工具
