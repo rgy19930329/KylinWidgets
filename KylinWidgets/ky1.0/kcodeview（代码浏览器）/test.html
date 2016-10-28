@@ -19,7 +19,8 @@
 
     <section>
     	<div class="ky-codeview-wrap" id="codeView">
-<pre><code>function getSum() {
+<pre><code>
+function getSum() {
     var sum = 0;
     for (var i = 0; i <= 100; i++) {
         sum += i;
@@ -31,7 +32,31 @@ var str = '123';
 console.log(str + "abc");
 var date = new Date('1993-05-20');
 console.log(date);
-</code></pre>
+// 定义类
+class User {
+    constructor(name) {
+        this.name = name;
+    }
+    say() {
+        console.log('my name is' + this.name);
+    }
+}
+var arr = Array(11, 12, 13);
+// 遍历数组
+for(let i = 0; i < arr.length; i++) {
+    console.log(arr[i]);
+}
+/*遍历对象*/ 
+for(var key in object) {
+    console.log(key);
+}
+/**
+* @desc 初始化代码浏览器
+*/
+Kcodeview(codeView).init({
+    'font-size': '18px',
+    'line-height': '28px'
+});</code></pre>
     	</div>
     </section>
 

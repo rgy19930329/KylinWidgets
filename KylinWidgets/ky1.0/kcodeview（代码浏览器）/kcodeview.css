@@ -1,7 +1,10 @@
 .ky-codeview-wrap {
     background: #333;
     color: #ddd;
-    padding: 5px 15px;
+    padding: 0 15px 5px 15px;
+}
+.color0 {
+	color: #666;
 }
 .color1 {
     color: #b33909;
@@ -14,4 +17,19 @@
 }
 .color4 {
     color: #c39c37;
+}
+
+.color10 {
+	color: #f60;
+}
+.color11 {
+	color: #7860f6;
+}
+.color12 {
+	color: #368cec;
+}
+.ky-tab-span {
+	display: inline-block;
+	text-align: right;
+	margin-right: 20px;
 }
