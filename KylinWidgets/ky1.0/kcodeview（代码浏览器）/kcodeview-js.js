@@ -1,15 +1,16 @@
-function Kcodeview(bar){
+function KcodeviewJs(bar){
 
 	var param = {};
 
 	var operators = ['\\+=', '-=', '\\*=', '\\/=', '&lt;=', '&gt;=', '&lt;', '&gt;', '=', '\\+', '-', '\\*', '\\/', '%'];
 	var specialkeywords = ['class'];
-	
+
 	var colors = {
 		color1: ['var', 'let', 'for', 'if', 'else', 'return', 'function', 'this', ' in ', 'switch', 'new '],
 		color2: ['log', 'push', 'shift', 'pop', 'unshift', 'join', 'concat', 'match', 'replace', 'apply', 'call'],
 		color3: ['console', 'RegExp', 'Date', 'Array', 'Object'],
-		color4: ['prototype', 'arguments', 'length']
+		color4: ['prototype', 'arguments', 'length'],
+		color5: ['window', 'location', 'history', 'setTimeout', 'setInterval', 'document']
 	};
 	/**
 	* @desc 初始化元素
@@ -18,34 +19,36 @@ function Kcodeview(bar){
 		param.code = ky.select(bar, 'code');
 	};
 	/**
-	* @desc 项目初始化
+	* @desc 初始化参数配置
 	*/
-	var init = function(obj) {
-		initEle();
-
-		// 参数配置
+	var initConfig = function(obj) {
 		ky.CssUtil.setCss(param.code, {
 			'font-family': 'consolas' // 默认字体
 		});
 		ky.CssUtil.setCss(param.code, obj);
-
+	};
+	/**
+	* @desc 开始着色
+	*/
+	var bepaint = function() {
 		// 开始着色
 		var res = param.code.innerHTML;
-		
+
 		var reg_base_obj = {
 			note: '(\\/{2,}.*?(\\r|\\n))|(\\/\\*(\\n|.)*?\\*\\/)', // 匹配注释
 			string: '("([^\\\"]*(\\.)?)*")|(\'([^\\\']*(\\.)?)*\')', // 匹配字符串
 			number: '([0-9]+)', // 匹配数字
 			operators: '(' + operators.join('|') + ')', // 匹配操作符
 			specialkeywords: '(' + specialkeywords.join('|') + ')', // 匹配特殊关键字
-			method: '([\\r\\n\\(\\s{}]+)([a-zA-Z0-9]\\w*\s*\\([a-zA-Z0-9]*\\w*\\))([\\.\\)\\s{}\\n\\r]+)', // 匹配函数及其参数
+			method: '([\\r\\n\\(\\s{}\\.;]+)([a-zA-Z0-9]\\w*\s*\\([a-zA-Z0-9]*\\w*\\))([\\.\\)\\s{}\\n\\r;]+)', // 匹配函数及其参数
 		};
 
 		var reg_keywords_obj = {
 			keywords1: '(' + colors.color1.join('|') + ')', // 匹配1类关键字
 			keywords2: '(' + colors.color2.join('|') + ')', // 匹配2类关键字
 			keywords3: '(' + colors.color3.join('|') + ')', // 匹配3类关键字
-			keywords4: '(' + colors.color4.join('|') + ')' // 匹配4类关键字
+			keywords4: '(' + colors.color4.join('|') + ')', // 匹配4类关键字
+			keywords5: '(' + colors.color5.join('|') + ')', // 匹配5类关键字
 		};
 
 		var reg_base = '';
@@ -90,11 +93,17 @@ function Kcodeview(bar){
 				return '<span class="color3">' + tar + '</span>';
 			}else if(tar.match(new RegExp(reg_keywords_obj.keywords4))) {
 				return '<span class="color4">' + tar + '</span>';
+			}else if(tar.match(new RegExp(reg_keywords_obj.keywords5))) {
+				return '<span class="color5">' + tar + '</span>';
 			}
 			return tar;
 		});
-		
-		// 添加行数标志
+		return res;
+	};
+	/**
+	* @desc 添加行数标志
+	*/
+	var addRowTag = function(res) {
 		var num = 0;
 		res = res.replace(/\r|\n/g, function(tar) {
 			num++;
@@ -109,8 +118,17 @@ function Kcodeview(bar){
 		});
 	};
 	/**
+	* @desc 项目初始化
+	*/
+	var init = function(obj) {
+		initEle();// 初始化元素
+		initConfig(obj);// 初始化参数配置
+		var res = bepaint();// 开始着色
+		addRowTag(res);// 增加行数标识
+	};
+	/**
 	* @desc 获取代码
-	*/ 
+	*/
 	var getCode = function() {
 		var output = param.code.innerText;
 		output = output.replace(/(\r|\n)[0-9]+/g, function(tar) {
