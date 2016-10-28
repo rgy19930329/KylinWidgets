@@ -8,3 +8,7 @@
 >本套UI组件与传统的组件相比优势在于:  
 第一、按需导入，严格控制脚本大小；
 第二、允许用户根据自己项目中的需求定义符合项目统一风格的样式。
+
+## project version log
+
+> 1. [2016-10-26] 版本ky1.0 [分支ky1.0](https://github.com/rgy19930329/KylinWidgets/tree/ky1.0)
