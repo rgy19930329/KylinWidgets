@@ -18,6 +18,12 @@
     <h1>测试 kcodeview（代码浏览器）</h1>
 
     <section>
+        <button class="btn" id="press">点击获取代码</button>
+    </section>
+
+    <hr>
+
+    <section>
     	<div class="ky-codeview-wrap" id="codeView">
 <pre><code>
 function getSum() {
@@ -62,10 +68,17 @@ Kcodeview(codeView).init({
 
     <script type="text/javascript">
 
-    	Kcodeview(codeView).init({
+        var myCodeView = Kcodeview(codeView);
+    	myCodeView.init({
             'font-size': '18px',
             'line-height': '28px'
         });
+
+        press.onclick = function() {
+            var res = myCodeView.getCode();
+            alert(res);
+        }
+
 
     </script>
 </body>

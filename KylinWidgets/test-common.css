@@ -29,6 +29,7 @@ button {
 	border-radius: 3px;
 	cursor: pointer;
 	background: #fff;
+	font-family: "Microsoft yahei";
 }
 
 button:hover {

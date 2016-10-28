@@ -116,7 +116,7 @@ function Kcodeview(bar){
 		output = output.replace(/(\r|\n)[0-9]+/g, function(tar) {
 			return tar.match(/\r|\n/)[0];
 		});
-		console.log(output);
+		return output;
 	};
 
 	return {
