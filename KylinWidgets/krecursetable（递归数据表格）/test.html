@@ -9,8 +9,8 @@
 
 .cell1 {
 	border: 1px solid #ccc;
-	width: 910px;
 	overflow: hidden;
+    display: inline-block;
 }
 
 .cell1 > div {
@@ -52,7 +52,7 @@
 </head>
 <body>
 
-	<div id="box"></div>
+	<div id="box" class="box"></div>
 
 	<script type="text/javascript">
 
@@ -91,9 +91,9 @@
     function createCell(name){
     	var label = document.createElement('label');
 		label.style.display = 'inline-block';
-    	label.style.width = '300px';
-    	label.style.height = '30px';
-    	label.style.lineHeight = '30px';
+    	label.style.width = '360px';
+    	label.style.height = '40px';
+    	label.style.lineHeight = '40px';
 		var div = document.createElement('div');
 		div.appendChild(label);
 
