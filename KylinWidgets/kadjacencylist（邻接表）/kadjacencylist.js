@@ -155,7 +155,7 @@ function Kadjacencylist(alist){
 			'display': 'inline-block',
 			'position': 'absolute',
 			'font-size': '18px',
-			'top': '-14px',
+			'top': '-11px',
 			'right': '-2px',
 			'color': color
 		});
