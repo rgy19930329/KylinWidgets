@@ -55,15 +55,23 @@ function KcodeviewHtml(bar){
 			}
 			// 匹配其它标签
 			var tmp = tar.match(/(<\/*)([^>]+)>/);
-			var arr1 = tmp[2].split(/\s+/);
-			var tag = arr1.shift();
+			var tagEnd = tmp[2].indexOf(' ');
+			var tag = tmp[2].slice(0, tagEnd);
+			var arr = tmp[2].slice(tagEnd).match(/[\w-]+=\"[^=]*\"/g);
+
 			var attrs = '';
 			var attr = '';
-			while(attr = arr1.shift()) {
-				var tarr = attr.split('=');
-				var key = tarr[0],
-					value = tarr[1];
-				attrs += ' <span class="color2">' + key + '</span>=' + '<span class="color4">' + value + '</span>';
+			if(arr) {
+				while(attr = arr.shift()) {
+					var tarr = attr.split('=');
+					var key = tarr[0],
+						value = tarr[1];
+					if(key == 'id') {
+						attrs += ' <span class="color12">' + key + '</span>=' + '<span class="color4">' + value + '</span>';
+					}else{
+						attrs += ' <span class="color2">' + key + '</span>=' + '<span class="color4">' + value + '</span>';
+					}
+				}
 			}
 			return convert(tmp[1]) + '<span class="color1">' + tag + '</span>' + attrs + convert('>');
 		});

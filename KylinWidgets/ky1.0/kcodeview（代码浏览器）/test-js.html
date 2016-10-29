@@ -25,15 +25,15 @@
     <hr>
 
     <section class="section-box">
-    	<div class="ky-codeview-wrap" id="codeViewHtml">
-<pre><code>
-    <!-- html结构 -->
-    <div class="ky-codeview-wrap" id="xxx">
-<pre>&lt;code&gt;
+        <textarea rows="7">
+    <div class="ky-codeview-wrap" id="codeView">
+        <pre>
+            <code>
 内容
-&lt;/code&gt;</pre>
-    </div></code></pre>
-    	</div>
+            </code>
+        </pre>
+    </div>
+        </textarea>
     </section>
 
     <section class="section-box">
@@ -100,7 +100,6 @@ setTimeout(function() {
         };
         var myCodeView = KcodeviewJs(codeViewJs);
     	myCodeView.init(obj);
-        KcodeviewHtml(codeViewHtml).init(obj);
 
         press.onclick = function() {
             var res = myCodeView.getCode();

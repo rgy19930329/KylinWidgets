@@ -40,7 +40,7 @@ function KcodeviewJs(bar){
 			number: '(([^\\w])([0-9]+)([^\\w]))', // 匹配数字
 			operators: '(' + operators.join('|') + ')', // 匹配操作符
 			specialkeywords: '(' + specialkeywords.join('|') + ')', // 匹配特殊关键字
-			method: '([\\r\\n\\(\\s{}\\.;]+)([a-zA-Z0-9]\\w*\s*\\([a-zA-Z0-9]*\\w*\\))([\\.\\)\\s{}\\n\\r;]+)', // 匹配函数及其参数
+			method: '([\\r\\n\\(\\s{}\\.;]+)([a-zA-Z_]\\w*\s*\\([a-zA-Z_]*\\w*\\))([\\.\\)\\s{}\\n\\r;]+)', // 匹配函数及其参数
 		};
 
 		var reg_keywords_obj = {
@@ -79,7 +79,7 @@ function KcodeviewJs(bar){
 				return '<span class="color1">' + tar + '</span>';
 			}else if(tar.match(new RegExp(reg_base_obj.method))) {
 				var arr = tar.match(new RegExp(reg_base_obj.method));
-				var tmp = tar.match(/([a-zA-Z0-9]\w*)\s*\(([a-zA-Z0-9]*\w*)\)/);
+				var tmp = tar.match(/([a-zA-Z_]\w*)\s*\(([a-zA-Z_]*\w*)\)/);
 				return arr[1] + '<span class="color12">' + tmp[1] + '</span>(<span class="color4">' + tmp[2] + '</span>)' + arr[3];
 			}
 			return tar;

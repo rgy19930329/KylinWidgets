@@ -14,7 +14,7 @@ body {
 .test-box {
     width: 100px;
     height: 100px;
-    background: #59f;
+    background: #f60;
     margin-top: 10px;
 }
 
@@ -70,29 +70,26 @@ body {
 	font-size: 14px;
 }
 
+textarea {
+	display: block;
+	width: 100%;
+	font-size: 18px;
+	box-sizing: border-box;
+	line-height: 28px;
+	border: 1px solid #aaa;
+}
+
 .split {
 	padding-left: 5px;
 	padding-right: 5px;
 }
 
-.fl {
-	float: left;
-}
-.fr {
-	float: right;
-}
-.oh {
-	overflow: hidden;
-}
-.tl {
-	text-align: left;
-}
-.tc {
-	text-align: center;
-}
-.tr {
-	text-align: right;
-}
-.clearfix {
-	clear: both;
-}
+.fl {float: left;}
+.fr {float: right;}
+.oh {overflow: hidden;}
+.tl {text-align: left;}
+.tc {text-align: center;}
+.tr {text-align: right;}
+.clearfix {clear: both;}
+.mt10 {margin-top: 10px;}
+.mt20 {margin-top: 20px;}

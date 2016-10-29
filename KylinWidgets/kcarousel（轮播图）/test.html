@@ -1,136 +1,209 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<meta charset="utf-8">
-<title>test</title>
-<script type="text/javascript" src="kcarousel.js"></script>
-<style type="text/css">
+	<meta charset="utf-8">
+	<title>test</title>
 
-#myCarousel {
-	border: 5px solid #59f;
-}
+	<script src="../KylinJS.js/KylinJS.js"></script>
+	<script src="../ky1.0/kcodeview（代码浏览器）/kcodeview-html.js"></script>
+	<script src="../ky1.0/kcodeview（代码浏览器）/kcodeview-js.js"></script>
+	<link rel="stylesheet" href="../ky1.0/kcodeview（代码浏览器）/kcodeview.css">
+	<link rel="stylesheet" href="../test-common.css">
 
-.carousel-dir {
-	width: 100%;
-	position: absolute;
-	top: 50%;
-	margin-top: -50px;
-	font-size: 70px;
-	font-weight: bold;
-	color: #fff;
-}
+	<script type="text/javascript" src="kcarousel.js"></script>
+	<style type="text/css">
+		#myCarousel {
+			border: 5px solid #59f;
+		}
 
-.carousel-dir div {
-	width: 50px;
-	height: 100px;
-	cursor: pointer;
-	line-height: 100px;
-	transition: all 0.5s ease;
-}
+		.carousel-dir {
+			width: 100%;
+			position: absolute;
+			top: 50%;
+			margin-top: -50px;
+			font-size: 70px;
+			font-weight: bold;
+			color: #fff;
+		}
 
-.carousel-dir div:hover {
-	background: rgba(0, 0, 0, 0.3);
-}
+		.carousel-dir div {
+			width: 50px;
+			height: 100px;
+			cursor: pointer;
+			line-height: 100px;
+			transition: all 0.5s ease;
+		}
 
-#leftBtn {
-	float: left;
-	border-radius: 0 50% 50% 0;
-}
+		.carousel-dir div:hover {
+			background: rgba(0, 0, 0, 0.3);
+		}
 
-#rightBtn {
-	float: right;
-	text-align: right;
-	border-radius: 50% 0 0 50%;
-}
+		#leftBtn {
+			float: left;
+			border-radius: 0 50% 50% 0;
+		}
 
-.carousel-footer {
-	width: 100%;
-	height: 80px;
-	background: rgba(0, 0, 0, 0.3);
-	position: absolute;
-	bottom: 50px;
-}
+		#rightBtn {
+			float: right;
+			text-align: right;
+			border-radius: 50% 0 0 50%;
+		}
 
-.carousel-footer ul {
-	width: 200px;
-	margin: 35px auto;
-}
+		.carousel-footer {
+			width: 100%;
+			height: 80px;
+			background: rgba(0, 0, 0, 0.3);
+			position: absolute;
+			bottom: 50px;
+		}
 
-.carousel-footer li {
-	list-style: none;
-	width: 15px;
-	height: 15px;
-	background: #fff;
-	border-radius: 50%;
-	float: left;
-	margin: 0 12px;
-	cursor: pointer;
-}
+		.carousel-footer ul {
+			width: 200px;
+			margin: 35px auto;
+		}
 
-.carousel-footer .selected {
-	background: #59f;
-	transition: all 300ms ease;
-}
+		.carousel-footer li {
+			list-style: none;
+			width: 15px;
+			height: 15px;
+			background: #fff;
+			border-radius: 50%;
+			float: left;
+			margin: 0 12px;
+			cursor: pointer;
+		}
 
-</style>
+		.carousel-footer .selected {
+			background: #59f;
+			transition: all 300ms ease;
+		}
+	</style>
 </head>
+
 <body>
 
-    <div class="wrap">
-   	    <div id="myCarousel" class="carousel">
-            <div class="carousel-content">
-        		<a href=""><img src="imgs/1.jpg"></a>
-            	<a href=""><img src="imgs/2.jpg"></a>
-            	<a href=""><img src="imgs/3.jpg"></a>
-            	<a href=""><img src="imgs/4.jpg"></a>
-            	<a href=""><img src="imgs/5.jpg"></a>
-            </div>
-            <div class="carousel-dir">
-            	<div id="leftBtn">
-            		&lt;
-            	</div>
-            	<div id="rightBtn">
-            		&gt;
-            	</div>
-            </div>
-            <div class="carousel-footer">
-            	<ul id="footer">
-            		<li class="selected"></li>
-            		<li></li>
-            		<li></li>
-            		<li></li>
-            		<li></li>
-            	</ul>
-            </div>
-        </div>
-    </div>
+	<h1 class="page-title">演示 kcarousel（轮播图）</h1>
 
-    <button id="btn">press</button>
+	<section class="section-box">
+		<div class="wrap">
+			<div id="myCarousel" class="carousel">
+				<div class="carousel-content">
+					<a href=""><img src="http://placehold.it/350x150"></a>
+					<a href=""><img src="http://placehold.it/250x180"></a>
+					<a href=""><img src="http://placehold.it/280x150"></a>
+					<a href=""><img src="http://placehold.it/320x250"></a>
+					<a href=""><img src="http://placehold.it/150x250"></a>
+				</div>
+				<div class="carousel-dir">
+					<div id="leftBtn">
+						&lt;
+					</div>
+					<div id="rightBtn">
+						&gt;
+					</div>
+				</div>
+				<div class="carousel-footer">
+					<ul id="footer">
+						<li class="selected"></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<br>
+		<div class="">
+			<button id="press" class="btn">点击获取当前索引</button>
+		</div>
+	</section>
+	<script type="text/javascript">
+		var carousel = Kcarousel(myCarousel);
+		carousel.init({
+			"width": '600px', // 宽度
+			"height": '400px', // 高度
+			"dur": 1000, // 每个动画持续时间
+			"delay": 5000, // 到下一个动画的延迟时间
+			"needOpacity": false // 是否需要透明度变化
+		}, {
+			"leftBtn": leftBtn, // 向左按钮id
+			"rightBtn": rightBtn, // 向右按钮id
+			"footer": footer // 当前索引展示块id
+		});
 
-    <hr>
-    <img src="imgs/instruction2.jpg">
-    <img src="imgs/instruction.jpg">
+		press.onclick = function() {
+			alert(carousel.getIndex());
+		}
+	</script>
+	<hr>
 
+	<section class="section-box">
+		<h2 class="section-title">组件结构以及初始化</h2>
+		<section class="section-box-left">
+			<div class="ky-codeview-wrap" id="codeViewHtml">
+<pre><code>
+<div id="myCarousel" class="carousel">
+	<div class="carousel-content">
+		<a href=""><img src="imgs/1.jpg"></a>
+		<a href=""><img src="imgs/2.jpg"></a>
+		<a href=""><img src="imgs/3.jpg"></a>
+		<a href=""><img src="imgs/4.jpg"></a>
+		<a href=""><img src="imgs/5.jpg"></a>
+	</div>
+	<div class="carousel-dir">
+		<div id="leftBtn">
+			&lt;
+		</div>
+		<div id="rightBtn">
+			&gt;
+		</div>
+	</div>
+	<div class="carousel-footer">
+		<ul id="footer">
+			<li class="selected"></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+	</div>
+</div></code></pre>
+			</div>
+		</section>
+		<section class="section-box-right">
+			<div class="ky-codeview-wrap" id="codeViewJs">
+<pre><code>
+var carousel = Kcarousel(myCarousel);
+carousel.init({
+	"width": '600px', // 宽度
+	"height": '400px', // 高度
+	"dur": 1000, // 每个动画持续时间
+	"delay": 5000, // 到下一个动画的延迟时间
+	"needOpacity": false // 是否需要透明度变化
+}, {
+	"leftBtn": leftBtn, // 向左按钮id
+	"rightBtn": rightBtn, // 向右按钮id
+	"footer": footer // 当前索引展示块id
+});
+
+press.onclick = function() {
+	alert(carousel.getIndex());
+}</code></pre>
+			</div>
+		</section>
+	</section>
 
 	<script type="text/javascript">
-	
-	var carousel = Kcarousel(myCarousel);
-	carousel.init({
-		"width" : '600px',// 宽度
-		"height" : '400px',// 高度
-		"dur": 1000,// 每个动画持续时间
-		"delay": 5000,// 到下一个动画的延迟时间
-		"needOpacity": false// 是否需要透明度变化
-	}, {
-		"leftBtn": leftBtn,// 向左按钮id
-		"rightBtn": rightBtn,// 向右按钮id
-		"footer": footer// 当前索引展示块id
-	});
-
-	btn.onclick = function(){
-		console.log(carousel.getIndex());
-	}
-
+		var obj = {
+			'font-size': '18px',
+			'line-height': '28px'
+		};
+		KcodeviewHtml(codeViewHtml).init(obj);
+		KcodeviewJs(codeViewJs).init(obj);
 	</script>
+
 </body>
+
 </html>

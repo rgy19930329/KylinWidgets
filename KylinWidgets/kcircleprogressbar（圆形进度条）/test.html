@@ -1,91 +1,155 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<meta charset="utf-8">
-<title>test</title>
-<script type="text/javascript" src="kcircleprogressbar.js"></script>
-<style type="text/css">
+	<meta charset="utf-8">
+	<title>test</title>
 
-.wrap {
-	padding: 10px;
-	width: 300px;
-}
+	<script src="../KylinJS.js/KylinJS.js"></script>
+	<script src="../ky1.0/kcodeview（代码浏览器）/kcodeview-html.js"></script>
+	<script src="../ky1.0/kcodeview（代码浏览器）/kcodeview-js.js"></script>
+	<link rel="stylesheet" href="../ky1.0/kcodeview（代码浏览器）/kcodeview.css">
+	<link rel="stylesheet" href="../test-common.css">
 
-.wrap > div{
-	text-align: center;
-}
+	<script type="text/javascript" src="kcircleprogressbar.js"></script>
+	<style type="text/css">
+		.wrap {
+			padding: 10px;
+			width: 300px;
+		}
 
-.wrap, .box {
-	display: inline-block;
-}
+		.wrap>div {
+			text-align: center;
+		}
 
-</style>
+		.wrap,
+		.box {
+			display: inline-block;
+		}
+	</style>
 </head>
+
 <body>
 
-    <div class="wrap">
-   	    <div id="myBar"></div>
-   	    <div>
-   	    	<button id="sub">sub</button>
-    		<button id="add">add</button>
-   	    </div>
-    </div>
+	<h1 class="page-title">演示 kcircleprogressbar（圆形进度条）</h1>
 
-    <div class="box">
-    	<div id="myBar2"></div>
-    </div>
+	<section class="section-box">
+		<section class="section-box-left">
+			<div class="wrap">
+				<div id="myBar"></div>
+				<div class="mt10">
+					<button id="sub" class="btn">sub</button>
+					<button id="add" class="btn">add</button>
+				</div>
+			</div>
+		</section>
+		<section class="section-box-right">
+			<div class="box">
+				<div id="myBar2"></div>
+			</div>
+		</section>
+	</section>
+	<script type="text/javascript">
+		var bar = Kcircleprogressbar(myBar);
+		bar.init({
+			'radius': '150px', //半径
+			'thick': '45px', //厚度
+			'bgColor': '#59f', //背景颜色
+			'fillColor': '#eee', //空白填充颜色
+			'proColor': '#F2E42C', //进度颜色
+			'textColor': 'orange', //文字颜色
+			'textSize': '50px' //文字大小
+		}, {
+			'process': '0%' //当前进度
+		});
+		function addPro() {
+			var v = bar.getProcess();
+			v++;
+			bar.setProcess(v);
+		}
+		add.onclick = function() {
+			addPro();
+		}
+		sub.onclick = function() {
+			var v = bar.getProcess();
+			v = v - 10;
+			bar.setProcess(v);
+		}
+		setInterval(function() {
+			addPro();
+		}, 50);
 
+		Kcircleprogressbar(myBar2).init();
+	</script>
+	<hr>
 
+	<section class="section-box">
+		<h2 class="section-title">组件结构以及初始化</h2>
+		<section class="section-box-left">
+			<div class="ky-codeview-wrap" id="codeViewHtml">
+<pre><code>
+<!-- 图1 -->
+<div class="wrap">
+	<div id="myBar"></div>
+	<div class="mt10">
+		<button id="sub" class="btn">sub</button>
+		<button id="add" class="btn">add</button>
+	</div>
+</div>
+<!-- 图2 -->
+<div class="box">
+	<div id="myBar2"></div>
+</div></code></pre>
+			</div>
+		</section>
+		<section class="section-box-right">
+			<div class="ky-codeview-wrap" id="codeViewJs">
+				<pre>
+					<code>
+var bar = Kcircleprogressbar(myBar);
+bar.init({
+	'radius': '150px', //半径
+	'thick': '45px', //厚度
+	'bgColor': '#59f', //背景颜色
+	'fillColor': '#eee', //空白填充颜色
+	'proColor': '#F2E42C', //进度颜色
+	'textColor': 'orange', //文字颜色
+	'textSize': '50px' //文字大小
+}, {
+	'process': '0%' //当前进度
+});
+function addPro() {
+	var v = bar.getProcess();
+	v++;
+	bar.setProcess(v);
+}
+add.onclick = function() {
+	addPro();
+}
+sub.onclick = function() {
+	var v = bar.getProcess();
+	v = v - 10;
+	bar.setProcess(v);
+}
+setInterval(function() {
+	addPro();
+}, 50);
 
-    <hr>
-
-    <img src="img/instruction.jpg">
-    <img src="img/instruction2.jpg">
-    <img src="img/instruction3.jpg">
-
+Kcircleprogressbar(myBar2).init();</code>
+				</pre>
+			</div>
+		</section>
+	</section>
 
 	<script type="text/javascript">
-
-	var bar = Kcircleprogressbar(myBar);
-	
-	bar.init({
-		'radius': '150px',//半径
-		'thick': '45px',//厚度
-		'bgColor': '#59f',//背景颜色
-		'fillColor': '#eee',//空白填充颜色
-		'proColor': '#F2E42C',//进度颜色
-		'textColor': 'orange',//文字颜色
-		'textSize': '50px'//文字大小
-	}, {
-		'process': '0%'//当前进度
-	});
-
-
-	function addPro(){
-		var v = bar.getProcess();
-		v++;
-		bar.setProcess(v);
-	}
-	
-	add.onclick = function(){
-		addPro();
-	}
-
-	sub.onclick = function(){
-		var v = bar.getProcess();
-		v = v - 10;
-		bar.setProcess(v);
-	}
-
-	setInterval(function(){
-		addPro();
-	}, 50);
-
-	// ------------------------------------------
-
-	Kcircleprogressbar(myBar2).init();
-
-
+		var obj = {
+			'font-size': '18px',
+			'line-height': '28px'
+		};
+		KcodeviewHtml(codeViewHtml).init(obj);
+		KcodeviewJs(codeViewJs).init(obj);
 	</script>
+
 </body>
+
 </html>
