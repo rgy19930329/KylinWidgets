@@ -1,52 +1,97 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<meta charset="utf-8">
-<title>test</title>
-<script type="text/javascript" src="kbinarytree.js"></script>
+	<meta charset="utf-8">
+	<title>test</title>
 
-<style type="text/css">
+	<script src="../KylinJS.js/KylinJS.js"></script>
+	<script src="../ky1.0/kcodeview（代码浏览器）/kcodeview-html.js"></script>
+	<script src="../ky1.0/kcodeview（代码浏览器）/kcodeview-js.js"></script>
+	<link rel="stylesheet" href="../ky1.0/kcodeview（代码浏览器）/kcodeview.css">
+	<link rel="stylesheet" href="../test-common.css">
 
-body {
-	font-family: "Microsoft Yahei";
-}
-
-</style>
+	<script type="text/javascript" src="kbinarytree.js"></script>
+	<style type="text/css">
+		body {
+			font-family: "Microsoft Yahei";
+		}
+	</style>
 </head>
+
 <body>
 
-	<section id="myTree"></section>
+	<h1 class="page-title">演示 kbinarytree（二叉树）</h1>
 
+	<section class="section-box">
+		<section id="myTree"></section>
+	</section>
 	<hr>
-
-	<section id="myTree2"></section>
-
-	<hr>
-
-	<img src="img/instruction.jpg">
-	
+	<section class="section-box">
+		<section id="myTree2"></section>
+	</section>
 	<script type="text/javascript">
+		var arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, undefined, 10, 11]; // 数据源
+		Kbinarytree(myTree).init(arr, {
+			'width': '800px', // 二叉树宽度
+			'nodeSize': '60px', // 节点尺寸
+			'nodeBgColor': 'orange', // 节点背景颜色
+			'nodeTextColor': '#fff', // 节点文字颜色
+			'nodeSpan': '5px', // 节点间隔
+			'nodeIsCircle': true, // 节点是否使用圆形
+			'lineSize': '2px', // 线条粗细
+			'lineColor': '#6EB215' // 线条颜色
+		});
+		// ---------------------- //
+		var tree = Kbinarytree(myTree2);
+		tree.init(arr);
+		var divs = tree.getNodes();
+		console.log(divs);
+	</script>
+	<hr>
 
-	var arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, undefined, 10, 11];// 数据源
-	Kbinarytree(myTree).init(arr, {
-		'width': '800px',// 二叉树宽度
-		'nodeSize': '60px',// 节点尺寸
-		'nodeBgColor': 'orange',// 节点背景颜色
-		'nodeTextColor': '#fff',// 节点文字颜色
-		'nodeSpan': '5px',// 节点间隔
-		'nodeIsCircle': true,// 节点是否使用圆形
-		'lineSize': '2px',// 线条粗细
-		'lineColor': '#6EB215'// 线条颜色
-	});
+	<section class="section-box">
+		<h2 class="section-title">组件结构以及初始化</h2>
+		<section class="section-box-left">
+			<div class="ky-codeview-wrap" id="codeViewHtml">
+<pre><code>
+<section id="myTree"></section>
+<section id="myTree2"></section></code></pre>
+			</div>
+		</section>
+		<section class="section-box-right">
+			<div class="ky-codeview-wrap" id="codeViewJs">
+<pre><code>
+var arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, undefined, 10, 11]; // 数据源
+Kbinarytree(myTree).init(arr, {
+	'width': '800px', // 二叉树宽度
+	'nodeSize': '60px', // 节点尺寸
+	'nodeBgColor': 'orange', // 节点背景颜色
+	'nodeTextColor': '#fff', // 节点文字颜色
+	'nodeSpan': '5px', // 节点间隔
+	'nodeIsCircle': true, // 节点是否使用圆形
+	'lineSize': '2px', // 线条粗细
+	'lineColor': '#6EB215' // 线条颜色
+});
+// ---------------------- //
+var tree = Kbinarytree(myTree2);
+tree.init(arr);
+var divs = tree.getNodes();
+console.log(divs);</code></pre>
+		</section>
 
-	// ---------------------- //
+	</section>
 
-	var tree = Kbinarytree(myTree2);
-	tree.init(arr);
-	var divs = tree.getNodes();
-	console.log(divs);
-
+	<script type="text/javascript">
+		var obj = {
+			'font-size': '18px',
+			'line-height': '28px'
+		};
+		KcodeviewHtml(codeViewHtml).init(obj);
+		KcodeviewJs(codeViewJs).init(obj);
 	</script>
 
+
 </body>
+
 </html>

@@ -13,7 +13,7 @@ function Kadjacencylist(alist){
             if(Object.prototype.toString.call(source) == '[object String]'){
                 var list = document.querySelectorAll(source);
                 arguments.callee(list, obj);
-            }else if(Object.prototype.toString.call(source) == '[object NodeList]' || 
+            }else if(Object.prototype.toString.call(source) == '[object NodeList]' ||
                 Object.prototype.toString.call(source) == '[object HTMLCollection]'){
                 for(var i = 0, len = source.length; i < len; i++){
                     for(var k in obj){
@@ -48,7 +48,7 @@ function Kadjacencylist(alist){
     }
 
     // ------------------------------- //
-	
+
 	// 获取元素的绝对位置
 	function getAbsPoint(e) {
 		var x = e.offsetLeft;
@@ -206,7 +206,7 @@ function Kadjacencylist(alist){
 	function init(arr, obj){
 		var obj = obj || {};
 
-		twidth = obj.width || '600px';
+		twidth = obj.width || '100%';
 		theight = obj.height || '400px';
 		cellSize = obj.cellSize || '30px';
 		color = obj.color || '#000';
@@ -241,4 +241,3 @@ function Kadjacencylist(alist){
 		fresh: fresh
 	}
 }
-

@@ -4,8 +4,8 @@ body {
 	padding: 0;
 }
 
-h1 {
-	background: #59f;
+.page-title {
+	background: #d9851c;
 	color: #fff;
 	margin: 0;
 	padding: 12px;
@@ -18,11 +18,32 @@ h1 {
     margin-top: 10px;
 }
 
-section {
+.section-box {
 	margin: 30px;
+	overflow: hidden;
+}
+.section-title {
+	background: #d9851c;
+	color: #fff;
+	line-height: 50px;
+	padding-left: 12px;
+	border-radius: 12px 12px 0 0;
+	text-align: center;
+}
+.section-box-left {
+	float: left;
+	width: 49%;
+	box-sizing: border-box;
+	padding-bottom: 10px;
+}
+.section-box-right {
+	float: right;
+	width: 49%;
+	box-sizing: border-box;
+	padding-bottom: 10px;
 }
 
-button {
+.btn {
 	border: 1px solid #ddd;
 	font-size: 18px;
 	padding: 5px 10px;
@@ -30,25 +51,21 @@ button {
 	cursor: pointer;
 	background: #fff;
 	font-family: "Microsoft yahei";
+	text-decoration: none;
 }
-
-button:hover {
+.btn:hover {
 	background: #eee;
 }
-
 .btn-primary {
 	background: #59f;
 	color: #fff;
 }
-
 .btn-primary:hover {
 	background: #59e;
 }
-
 .btn-lg {
 	font-size: 28px;
 }
-
 .btn-sm {
 	font-size: 14px;
 }
@@ -56,4 +73,26 @@ button:hover {
 .split {
 	padding-left: 5px;
 	padding-right: 5px;
+}
+
+.fl {
+	float: left;
+}
+.fr {
+	float: right;
+}
+.oh {
+	overflow: hidden;
+}
+.tl {
+	text-align: left;
+}
+.tc {
+	text-align: center;
+}
+.tr {
+	text-align: right;
+}
+.clearfix {
+	clear: both;
 }

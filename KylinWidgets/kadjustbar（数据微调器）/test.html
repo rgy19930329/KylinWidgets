@@ -1,129 +1,190 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<meta charset="utf-8">
-<title>test</title>
-<script type="text/javascript" src="kadjustbar.js"></script>
+	<meta charset="utf-8">
+	<title>test</title>
 
-<style type="text/css">
+	<script src="../KylinJS.js/KylinJS.js"></script>
+	<script src="../ky1.0/kcodeview（代码浏览器）/kcodeview-html.js"></script>
+	<script src="../ky1.0/kcodeview（代码浏览器）/kcodeview-js.js"></script>
+	<link rel="stylesheet" href="../ky1.0/kcodeview（代码浏览器）/kcodeview.css">
+	<link rel="stylesheet" href="../test-common.css">
 
-* {
-	margin: 0;padding: 0;
-}
+	<script type="text/javascript" src="kadjustbar.js"></script>
+	<style type="text/css">
+		#myBar {
+			margin: 50px;
+		}
 
-#myBar {
-	margin: 50px;
-}
+		#myBar input {
+			width: 120px;
+			height: 40px;
+			transition: all 0.3s ease;
+			padding: 0 5px;
+		}
 
-#myBar input {
-	width: 120px;
-	height: 40px;
-	transition: all 0.3s ease;
-	padding: 0 5px;
-}
+		#myBar input:focus {
+			width: 150px;
+		}
 
-#myBar input:focus {
-	width: 150px;
-}
+		#myBar button {
+			width: 30px;
+			height: 20px;
+		}
 
-#myBar button {
-	width: 30px;
-	height: 20px;
-}
+		#myBar2 {
+			margin: 50px;
+			border: 1px solid orange;
+		}
 
+		#myBar2 input {
+			height: 40px;
+			text-align: center;
+		}
 
+		#myBar2 button {
+			width: 40px;
+			height: 20px;
+			border: none;
+			color: #fff;
+			background: #222;
+		}
 
-#myBar2 {
-	margin: 50px;
-	border: 1px solid orange;
-}
+		#myBar2 button:hover {
+			background: #555;
+			font-size: 18px;
+		}
 
-#myBar2 input {
-	height: 40px;
-	text-align: center;
-}
-
-#myBar2 button {
-	width: 40px;
-	height: 20px;
-	border: none;
-	color: #fff;
-	background: #222;
-}
-
-#myBar2 button:hover {
-	background: #555;
-	font-size: 18px;
-}
-
-#myBar2 button:first-child {
-	border-bottom: 1px solid orange;
-}
-
-</style>
+		#myBar2 button:first-child {
+			border-bottom: 1px solid orange;
+		}
+	</style>
 </head>
+
 <body>
 
-	<div id="myBar">
-		<input type="text">
-		<div>
-			<button id="addBtn">+</button>
-			<button id="subBtn">-</button>
-		</div>
-	</div>
+	<h1 class="page-title">演示 kadjustbar（数据微调器）</h1>
 
-	<br>
+	<section class="section-box oh">
+		<section class="section-box-left">
+			<div id="myBar">
+				<input type="text">
+				<div>
+					<button id="addBtn">+</button>
+					<button id="subBtn">-</button>
+				</div>
+			</div>
+		</section>
+		<section class="section-box-right">
+			<div id="myBar2">
+				<input type="text">
+				<div>
+					<button id="addBtn2">+</button>
+					<button id="subBtn2">-</button>
+				</div>
+			</div>
+			<div>
+				<button id="press" class="btn">当前值</button>
+			</div>
+		</section>
+	</section>
+	<script type="text/javascript">
+		// myBar
+		var list1 = ['星期一', '星期二', '星期三', '星期四', '星期五', '星期六', '星期天'];
 
-	<div id="myBar2">
-		<input type="text">
-		<div>
-			<button id="addBtn2">+</button>
-			<button id="subBtn2">-</button>
-		</div>
-	</div>
+		Kadjustbar(myBar).init({
+			'dataList': list1,
+			'currentIndex': 3
+		}, {
+			'addBtn': addBtn,
+			'subBtn': subBtn
+		});
 
-	<br>
+		// myBar2
+		var list2 = [];
+		for (var i = 0; i < 100; i++) {
+			list2[i] = i;
+		}
+		var bar = Kadjustbar(myBar2);
+		bar.init({
+			'dataList': list2
+		}, {
+			'addBtn': addBtn2,
+			'subBtn': subBtn2
+		});
 
-	<button id="press">当前值</button>
-
+		press.onclick = function() {
+			alert(bar.getValue());
+		}
+	</script>
 	<hr>
 
-	<img src="img/instruction.jpg">
-	<img src="img/instruction2.jpg">
-	<img src="img/instruction3.jpg">
+	<section class="section-box">
+		<h2 class="section-title">组件结构以及初始化</h2>
+		<section class="section-box-left">
+			<div class="ky-codeview-wrap" id="codeViewHtml">
+<pre><code>
+<div id="myBar">
+	<input type="text">
+	<div>
+		<button id="addBtn">+</button>
+		<button id="subBtn">-</button>
+	</div>
+</div>
+<div id="myBar2">
+	<input type="text">
+	<div>
+		<button id="addBtn2">+</button>
+		<button id="subBtn2">-</button>
+	</div>
+</div></code></pre>
+			</div>
+		</section>
+		<section class="section-box-right">
+			<div class="ky-codeview-wrap" id="codeViewJs">
+<pre><code>
+// myBar
+var list1 = ['星期一', '星期二', '星期三', '星期四', '星期五', '星期六', '星期天'];
 
-	
+Kadjustbar(myBar).init({
+	'dataList': list1,
+	'currentIndex': 3
+}, {
+	'addBtn': addBtn,
+	'subBtn': subBtn
+});
+
+// myBar2
+var list2 = [];
+for (var i = 0; i < 100; i++) {
+	list2[i] = i;
+}
+var bar = Kadjustbar(myBar2);
+bar.init({
+	'dataList': list2
+}, {
+	'addBtn': addBtn2,
+	'subBtn': subBtn2
+});
+
+press.onclick = function() {
+	alert(bar.getValue());
+}</code></pre>
+		</section>
+
+	</section>
+
 	<script type="text/javascript">
-
-	var list1 = ['星期一', '星期二', '星期三', '星期四', '星期五', '星期六', '星期天'];
-
-	Kadjustbar(myBar).init({
-		'dataList': list1,
-		'currentIndex': 3
-	}, {
-		'addBtn': addBtn,
-		'subBtn': subBtn
-	});
-
-
-	var list2 = [];
-	for(var i = 0; i < 100; i++){
-		list2[i] = i;
-	}
-	var bar = Kadjustbar(myBar2);
-	bar.init({
-		'dataList': list2
-	},{
-		'addBtn': addBtn2,
-		'subBtn': subBtn2
-	});
-
-	press.onclick = function(){
-		alert(bar.getValue());
-	}
-
-
+		var obj = {
+			'font-size': '18px',
+			'line-height': '28px'
+		};
+		KcodeviewHtml(codeViewHtml).init(obj);
+		KcodeviewJs(codeViewJs).init(obj);
 	</script>
 
+
 </body>
+
 </html>

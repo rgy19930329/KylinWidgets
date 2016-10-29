@@ -2,37 +2,38 @@
     background: #333;
     color: #ddd;
     padding: 0 15px 5px 15px;
+    overflow-x: auto;
 }
-.color0 {
+.ky-codeview-wrap .color0 {
 	color: #666;
 }
-.color1 {
+.ky-codeview-wrap .color1 {
     color: #b33909;
 }
-.color2 {
+.ky-codeview-wrap .color2 {
     color: #44c55a;
 }
-.color3 {
+.ky-codeview-wrap .color3 {
     color: #ddd05f;
 }
-.color4 {
+.ky-codeview-wrap .color4 {
     color: #c39c37;
 }
-.color5 {
+.ky-codeview-wrap .color5 {
     /* color: #08c; */
     color: #00868B;
 }
 
-.color10 {
+.ky-codeview-wrap .color10 {
 	color: #f60;
 }
-.color11 {
+.ky-codeview-wrap .color11 {
 	color: #7860f6;
 }
-.color12 {
+.ky-codeview-wrap .color12 {
 	color: #368cec;
 }
-.ky-tab-span {
+.ky-codeview-wrap .ky-tab-span {
 	display: inline-block;
 	text-align: right;
 	margin-right: 20px;

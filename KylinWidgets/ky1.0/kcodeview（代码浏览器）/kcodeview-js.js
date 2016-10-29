@@ -37,7 +37,7 @@ function KcodeviewJs(bar){
 		var reg_base_obj = {
 			note: '(\\/{2,}.*?(\\r|\\n))|(\\/\\*(\\n|.)*?\\*\\/)', // 匹配注释
 			string: '("([^\\\"]*(\\.)?)*")|(\'([^\\\']*(\\.)?)*\')', // 匹配字符串
-			number: '([0-9]+)', // 匹配数字
+			number: '(([^\\w])([0-9]+)([^\\w]))', // 匹配数字
 			operators: '(' + operators.join('|') + ')', // 匹配操作符
 			specialkeywords: '(' + specialkeywords.join('|') + ')', // 匹配特殊关键字
 			method: '([\\r\\n\\(\\s{}\\.;]+)([a-zA-Z0-9]\\w*\s*\\([a-zA-Z0-9]*\\w*\\))([\\.\\)\\s{}\\n\\r;]+)', // 匹配函数及其参数
@@ -71,7 +71,8 @@ function KcodeviewJs(bar){
 			}else if(tar.match(new RegExp(reg_base_obj.string))) {
 				return '<span class="color4">' + tar + '</span>';
 			}else if(tar.match(new RegExp(reg_base_obj.number))) {
-				return '<span class="color11">' + tar + '</span>';
+				var tmp = tar.match(new RegExp(reg_base_obj.number));
+				return tmp[2] + '<span class="color11">' + tmp[3] + '</span>' + tmp[4];
 			}else if(tar.match(new RegExp(reg_base_obj.operators))) {
 				return '<span class="color2">' + tar + '</span>';
 			}else if(tar.match(new RegExp(reg_base_obj.specialkeywords))) {
@@ -110,10 +111,9 @@ function KcodeviewJs(bar){
 			return tar + '<span class="color10 ky-tab-span">' + num + '</span>';
 		});
 		param.code.innerHTML = res;
-
 		// 重置行标的宽度
-		var span_width = parseInt(num / 10);
-		ky.CssUtil.setCss(ky.select('.ky-tab-span'), {
+		var span_width = (num + '').length;
+		ky.CssUtil.setCss(ky.select(bar, '.ky-tab-span'), {
 			'width': span_width + 'em',
 		});
 	};
