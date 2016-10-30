@@ -1,91 +1,160 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<meta charset="utf-8">
-<title>test</title>
-<script type="text/javascript" src="ktimeaxis.js"></script>
+	<meta charset="utf-8">
+	<title>test</title>
 
-<style type="text/css">
+	<script src="../KylinJS.js/KylinJS.js"></script>
+	<script src="../ky1.0/kcodeview（代码浏览器）/kcodeview-html.js"></script>
+	<script src="../ky1.0/kcodeview（代码浏览器）/kcodeview-js.js"></script>
+	<link rel="stylesheet" href="../ky1.0/kcodeview（代码浏览器）/kcodeview.css">
+	<link rel="stylesheet" href="../test-common.css">
 
-* {
-	margin: 0;padding: 0;
-}
+	<script type="text/javascript" src="ktimeaxis.js"></script>
 
-body {
-	font-family: "Microsoft Yahei";
-}
+	<style type="text/css">
+		* {
+			margin: 0;
+			padding: 0;
+		}
 
-li {
-	list-style: none;
-}
+		body {
+			font-family: "Microsoft Yahei";
+		}
 
+		li {
+			list-style: none;
+		}
 
-#myTimeAxis {
-	margin: 50px auto;
-}
-
-</style>
+		#myTimeAxis {
+			margin: 50px auto;
+		}
+	</style>
 </head>
+
 <body>
 
-	<div id="myTimeAxis"></div>
-	
+	<h1 class="page-title">演示 ktimeaxis（时间轴）</h1>
+
+	<section class="section-box">
+		<div id="myTimeAxis"></div>
+	</section>
 	<script type="text/javascript">
-
-	var data = [
-		{
+		var data = [{
 			'year': '2015年',
-			'detail': [
-				{
-					'day': '12月7日',
-					'content': ['形成完整的基础服务+互动推广+业务管理+行业应用+应用商店的服务架构', '注册用户突破10万，荣获“创业之星”大赛八强']
-				},
-				{
-					'day': '8月2日',
-					'content': ['全新渠道代理管理后台上线，更便捷更强大', 
-					'荣获2013年微应用最佳服务商']
-				},
-				{
-					'day': '6月18日',
-					'content': ['V5.2上线', 
-					'与众多行业建立合作，推出多个行业解决方案']
-				}
-			]
-		},
-		{
+			'detail': [{
+				'day': '12月7日',
+				'content': ['形成完整的基础服务+互动推广+业务管理+行业应用+应用商店的服务架构', '注册用户突破10万，荣获“创业之星”大赛八强']
+			}, {
+				'day': '8月2日',
+				'content': ['全新渠道代理管理后台上线，更便捷更强大',
+					'荣获2013年微应用最佳服务商'
+				]
+			}, {
+				'day': '6月18日',
+				'content': ['V5.2上线',
+					'与众多行业建立合作，推出多个行业解决方案'
+				]
+			}]
+		}, {
 			'year': '2014年',
-			'detail': [
-				{
-					'day': '5月2日',
-					'content': ['全网第一个微信刮刮卡、大转盘上线', 
-					'创造微信公众号一周涨5万粉的奇迹']
-				},
-				{
-					'day': '1月10日',
-					'content': ['计划实现一个NB的社会化APP']
-				}
-			]
-		},
-		{
+			'detail': [{
+				'day': '5月2日',
+				'content': ['全网第一个微信刮刮卡、大转盘上线',
+					'创造微信公众号一周涨5万粉的奇迹'
+				]
+			}, {
+				'day': '1月10日',
+				'content': ['计划实现一个NB的社会化APP']
+			}]
+		}, {
 			'year': '2013年',
-			'detail': [
-				{
-					'day': '8月20日',
-					'content': ['寻找一个适合的商机']
-				}
-			]
-		}
-	];
+			'detail': [{
+				'day': '8月20日',
+				'content': ['寻找一个适合的商机']
+			}]
+		}];
 
-	Ktimeaxis(myTimeAxis).init({
-		'width': '800px',
-		'color': 'orange',
-		'yearSize': '22px',
-		'daySize': '16px',
-		'msgSize': '14px'
-	}, data);
+		Ktimeaxis(myTimeAxis).init({
+			'width': '800px',
+			'color': 'orange',
+			'yearSize': '22px',
+			'daySize': '16px',
+			'msgSize': '14px'
+		}, data);
+	</script>
+	<hr>
+	<section class="section-box">
+		<h2 class="section-title">组件结构以及初始化</h2>
+		<section class="section-box-left">
+			<div class="ky-codeview-wrap" id="codeViewHtml">
+				<pre>
+<code>
+<div id="myTimeAxis"></div></code>
+				</pre>
+			</div>
+		</section>
+		<section class="section-box-right">
+			<div class="ky-codeview-wrap" id="codeViewJs">
+				<pre>
+<code>
+var data = [{
+	'year': '2015年',
+	'detail': [{
+		'day': '12月7日',
+		'content': ['形成完整的基础服务+互动推广+业务管理+行业应用+应用商店的服务架构', '注册用户突破10万，荣获“创业之星”大赛八强']
+	}, {
+		'day': '8月2日',
+		'content': ['全新渠道代理管理后台上线，更便捷更强大',
+			'荣获2013年微应用最佳服务商'
+		]
+	}, {
+		'day': '6月18日',
+		'content': ['V5.2上线',
+			'与众多行业建立合作，推出多个行业解决方案'
+		]
+	}]
+}, {
+	'year': '2014年',
+	'detail': [{
+		'day': '5月2日',
+		'content': ['全网第一个微信刮刮卡、大转盘上线',
+			'创造微信公众号一周涨5万粉的奇迹'
+		]
+	}, {
+		'day': '1月10日',
+		'content': ['计划实现一个NB的社会化APP']
+	}]
+}, {
+	'year': '2013年',
+	'detail': [{
+		'day': '8月20日',
+		'content': ['寻找一个适合的商机']
+	}]
+}];
 
+Ktimeaxis(myTimeAxis).init({
+	'width': '800px',
+	'color': 'orange',
+	'yearSize': '22px',
+	'daySize': '16px',
+	'msgSize': '14px'
+}, data);</code>
+				</pre>
+			</div>
+		</section>
+	</section>
+
+	<script type="text/javascript">
+		var obj = {
+			'font-size': '18px',
+			'line-height': '28px'
+		};
+		KcodeviewHtml(codeViewHtml).init(obj);
+		KcodeviewJs(codeViewJs).init(obj);
 	</script>
 
 </body>
+
 </html>

@@ -1,53 +1,110 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<meta charset="utf-8">
-<title>test</title>
-<script type="text/javascript" src="kslidebar.js"></script>
-<style type="text/css">
+	<meta charset="utf-8">
+	<title>test</title>
 
-.box {
-	padding: 50px;
-}
+	<script src="../KylinJS.js/KylinJS.js"></script>
+	<script src="../ky1.0/kcodeview（代码浏览器）/kcodeview-html.js"></script>
+	<script src="../ky1.0/kcodeview（代码浏览器）/kcodeview-js.js"></script>
+	<link rel="stylesheet" href="../ky1.0/kcodeview（代码浏览器）/kcodeview.css">
+	<link rel="stylesheet" href="../test-common.css">
 
+	<script type="text/javascript" src="kslidebar.js"></script>
 
-</style>
+	<style type="text/css">
+		.box {
+			padding: 20px;
+		}
+	</style>
 </head>
+
 <body>
 
-    <div class="box">
-   	    <div id="myBar"></div>
-    </div>
+	<h1 class="page-title">演示 kslidebar（滑动条）</h1>
 
-    <div class="box">
-        <div id="myBar2"></div>
-    </div>
-    
-    <hr>
+	<section class="section-box">
+		<div class="box">
+			<div id="myBar"></div>
+		</div>
 
-    <img src="img/instruction.jpg">
+		<div class="box">
+			<div id="myBar2"></div>
+		</div>
+	</section>
+	<script type="text/javascript">
+		Kslidebar(myBar).init({
+			'width': '450px', // 进度条宽度
+			'height': '20px', // 进度条高度
+			'isFillet': true, // 是否使用圆角
+			'proColor': '#59f', // 进度颜色
+			'bgColor': '#ccc', // 进度条背景颜色
+			'cIsArc': true, // 控制块是否使用弧形样式
+			'cwidth': '15px', // 控制块宽度
+			'ccolor': '#888', // 控制块颜色
+			'isShowProgress': true, // 是否显示进度提示文字
+			'textColor': '#fff' // 进度提示文字颜色
+		}, {
+			'maxValue': 100, // 最大值
+			'minValue': 0, // 最小值
+			'value': 30 // 初始化值
+		});
+
+		Kslidebar(myBar2).init();
+	</script>
+	<hr>
+	<section class="section-box">
+		<h2 class="section-title">组件结构以及初始化</h2>
+		<section class="section-box-left">
+			<div class="ky-codeview-wrap" id="codeViewHtml">
+				<pre>
+<code>
+<div class="box">
+	<div id="myBar"></div>
+</div>
+
+<div class="box">
+	<div id="myBar2"></div>
+</div></code>
+				</pre>
+			</div>
+		</section>
+		<section class="section-box-right">
+			<div class="ky-codeview-wrap" id="codeViewJs">
+				<pre>
+<code>
+Kslidebar(myBar).init({
+	'width': '450px', // 进度条宽度
+	'height': '20px', // 进度条高度
+	'isFillet': true, // 是否使用圆角
+	'proColor': '#59f', // 进度颜色
+	'bgColor': '#ccc', // 进度条背景颜色
+	'cIsArc': true, // 控制块是否使用弧形样式
+	'cwidth': '15px', // 控制块宽度
+	'ccolor': '#888', // 控制块颜色
+	'isShowProgress': true, // 是否显示进度提示文字
+	'textColor': '#fff' // 进度提示文字颜色
+}, {
+	'maxValue': 100, // 最大值
+	'minValue': 0, // 最小值
+	'value': 30 // 初始化值
+});
+
+Kslidebar(myBar2).init();</code>
+				</pre>
+			</div>
+		</section>
+	</section>
 
 	<script type="text/javascript">
-
-    Kslidebar(myBar).init({
-        'width': '450px',// 进度条宽度
-        'height': '20px',// 进度条高度
-        'isFillet': true,// 是否使用圆角
-        'proColor': '#59f',// 进度颜色
-        'bgColor': '#ccc',// 进度条背景颜色
-        'cIsArc': true,// 控制块是否使用弧形样式
-        'cwidth': '15px',// 控制块宽度
-        'ccolor': '#888',// 控制块颜色
-        'isShowProgress': true,// 是否显示进度提示文字
-        'textColor': '#fff'// 进度提示文字颜色
-    }, {
-        'maxValue': 100,// 最大值
-        'minValue': 0,// 最小值
-        'value': 30// 初始化值
-    });
-
-    Kslidebar(myBar2).init();
-
+		var obj = {
+			'font-size': '18px',
+			'line-height': '28px'
+		};
+		KcodeviewHtml(codeViewHtml).init(obj);
+		KcodeviewJs(codeViewJs).init(obj);
 	</script>
 </body>
+
 </html>

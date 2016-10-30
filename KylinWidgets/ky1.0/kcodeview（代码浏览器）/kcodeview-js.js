@@ -6,11 +6,11 @@ function KcodeviewJs(bar){
 	var specialkeywords = ['class'];
 
 	var colors = {
-		color1: ['var', 'let', 'for', 'if', 'else', 'return', 'function', 'this', ' in ', 'switch', 'new '],
-		color2: ['push', 'shift', 'pop', 'unshift', 'join', 'concat', 'match', 'replace', 'apply', 'call'],
+		color1: ['var ', 'let ', 'for', 'if', 'else', 'return ', 'function', 'this', ' in ', 'switch', 'new '],
+		//color2: ['push', 'shift', 'pop', 'unshift', 'join', 'concat', 'match', 'replace', 'apply', 'call'],
 		color3: ['console', 'RegExp', 'Date', 'Array', 'Object'],
 		color4: ['prototype', 'arguments', 'length'],
-		color5: ['window', 'location', 'history', 'setTimeout', 'setInterval', 'document']
+		color5: ['window', 'location', 'history', 'setTimeout', 'setInterval', 'document', 'true', 'false']
 	};
 	/**
 	* @desc 初始化元素
@@ -45,7 +45,7 @@ function KcodeviewJs(bar){
 
 		var reg_keywords_obj = {
 			keywords1: '(' + colors.color1.join('|') + ')', // 匹配1类关键字
-			keywords2: '(' + colors.color2.join('|') + ')', // 匹配2类关键字
+			// keywords2: '(' + colors.color2.join('|') + ')', // 匹配2类关键字
 			keywords3: '(' + colors.color3.join('|') + ')', // 匹配3类关键字
 			keywords4: '(' + colors.color4.join('|') + ')', // 匹配4类关键字
 			keywords5: '(' + colors.color5.join('|') + ')', // 匹配5类关键字
@@ -88,9 +88,11 @@ function KcodeviewJs(bar){
 		res = res.replace(new RegExp(reg_keywords, 'g'), function(tar) {
 			if(tar.match(new RegExp(reg_keywords_obj.keywords1))) {
 				return '<span class="color1">' + tar + '</span>';
-			}else if(tar.match(new RegExp(reg_keywords_obj.keywords2))) {
-				return '<span class="color2">' + tar + '</span>';
-			}else if(tar.match(new RegExp(reg_keywords_obj.keywords3))) {
+			}
+			// else if(tar.match(new RegExp(reg_keywords_obj.keywords2))) {
+			// 	return '<span class="color2">' + tar + '</span>';
+			// }
+			else if(tar.match(new RegExp(reg_keywords_obj.keywords3))) {
 				return '<span class="color3">' + tar + '</span>';
 			}else if(tar.match(new RegExp(reg_keywords_obj.keywords4))) {
 				return '<span class="color4">' + tar + '</span>';

@@ -1,119 +1,248 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<meta charset="utf-8">
-<title>test</title>
-<script type="text/javascript" src="krecursetable.js"></script>
+	<meta charset="utf-8">
+	<title>test</title>
 
-<style type="text/css">
+	<script src="../KylinJS.js/KylinJS.js"></script>
+	<script src="../ky1.0/kcodeview（代码浏览器）/kcodeview-html.js"></script>
+	<script src="../ky1.0/kcodeview（代码浏览器）/kcodeview-js.js"></script>
+	<link rel="stylesheet" href="../ky1.0/kcodeview（代码浏览器）/kcodeview.css">
+	<link rel="stylesheet" href="../test-common.css">
 
-.cell1 {
-	border: 1px solid #ccc;
-	overflow: hidden;
-    display: inline-block;
-}
+	<script type="text/javascript" src="krecursetable.js"></script>
 
-.cell1 > div {
-	border-bottom: 1px solid #ccc;
-}
+	<style type="text/css">
+		.cell1 {
+			border: 1px solid #ccc;
+			overflow: hidden;
+			display: inline-block;
+		}
 
-.cell1 > div:last-child {
-	border-bottom: none;
-}
+		.cell1>div {
+			border-bottom: 1px solid #ccc;
+		}
 
-.cell2 {
-	display: inline-block;
-	vertical-align: top;
-}
+		.cell1>div:last-child {
+			border-bottom: none;
+		}
 
-.cell2 > div {
-	border-bottom: 1px solid #ccc;
-	border-left: 1px solid #ccc;
-}
+		.cell2 {
+			display: inline-block;
+			vertical-align: top;
+		}
 
-.cell2 > div:last-child {
-	border-bottom: none;
-}
+		.cell2>div {
+			border-bottom: 1px solid #ccc;
+			border-left: 1px solid #ccc;
+		}
 
-.cell3 {
-	display: inline-block;
-	vertical-align: top;
-}
+		.cell2>div:last-child {
+			border-bottom: none;
+		}
 
-.cell3 > div {
-	border-left: 1px solid #ccc;
-}
+		.cell3 {
+			display: inline-block;
+			vertical-align: top;
+		}
 
-.cell3 > div:last-child {
-	border-bottom: none;
-}
+		.cell3>div {
+			border-left: 1px solid #ccc;
+		}
 
-</style>
+		.cell3>div:last-child {
+			border-bottom: none;
+		}
+	</style>
 </head>
+
 <body>
 
-	<div id="box" class="box"></div>
+	<h1 class="page-title">演示 krecursetable（递归数据表格）</h1>
 
+	<section class="section-box">
+		<div id="box" class="box"></div>
+	</section>
 	<script type="text/javascript">
+		var tableData = {
+			'func': [{
+				'name': '个人中心',
+				'func': [{
+					'name': '我的资料',
+					'func': [{
+						'name': ''
+					}]
+				}, {
+					'name': '资料认证',
+					'func': [{
+						'name': '修改'
+					}]
+				}]
+			}, {
+				'name': '标识管理',
+				'func': [{
+					'name': '标识申请',
+					'func': [{
+						'name': '申请'
+					}, {
+						'name': '网申'
+					}]
+				}, {
+					'name': '标识列表',
+					'func': [{
+						'name': '下载'
+					}, {
+						'name': '撤销'
+					}, {
+						'name': '提交'
+					}]
+				}]
+			}, {
+				'name': '项目管理',
+				'func': [{
+					'name': '',
+					'func': [{
+						'name': '开始'
+					}, {
+						'name': '需求'
+					}, {
+						'name': '分析'
+					}, {
+						'name': '建模'
+					}]
+				}]
+			}]
+		};
 
-	var tableData = {
-    	'func': [
-    		{
-    			'name': '个人中心',
-    			'func': [{
-    				'name': '我的资料',
-    				'func': [{'name': ''}]
-    			}, {
-    				'name': '资料认证',
-    				'func': [{'name': '修改'}]
-    			}]
-    		},
-    		{
-    			'name': '标识管理',
-    			'func': [{
-    				'name': '标识申请',
-    				'func': [{'name': '申请'}, {'name': '网申'}]
-    			}, {
-    				'name': '标识列表',
-    				'func': [{'name': '下载'}, {'name': '撤销'}, {'name': '提交'}]
-    			}]
-    		},
-    		{
-    			'name': '项目管理',
-    			'func': [{
-    				'name': '',
-    				'func': [{'name': '开始'}, {'name': '需求'}, {'name': '分析'}, {'name': '建模'}]
-    			}]
-    		}
-    	]
-    };
+		function createCell(name) {
+			var label = document.createElement('label');
+			label.style.display = 'inline-block';
+			label.style.width = '360px';
+			label.style.height = '40px';
+			label.style.lineHeight = '40px';
+			var div = document.createElement('div');
+			div.appendChild(label);
 
-    function createCell(name){
-    	var label = document.createElement('label');
-		label.style.display = 'inline-block';
-    	label.style.width = '360px';
-    	label.style.height = '40px';
-    	label.style.lineHeight = '40px';
+			if (name) {
+				var checkbox = document.createElement('input');
+				checkbox.setAttribute('type', 'checkbox');
+				var span = document.createElement('span');
+				span.innerHTML = name;
+				label.appendChild(checkbox);
+				label.appendChild(span);
+				var div = document.createElement('div');
+				div.appendChild(label);
+				return div;
+			}
+			return div;
+		}
+
+		Krecursetable(box).init(tableData, createCell);
+	</script>
+	<hr>
+	<section class="section-box">
+		<h2 class="section-title">组件结构以及初始化</h2>
+		<section class="section-box-left">
+			<div class="ky-codeview-wrap" id="codeViewHtml">
+				<pre>
+<code>
+<div id="box" class="box"></div></code>
+				</pre>
+			</div>
+		</section>
+		<section class="section-box-right">
+			<div class="ky-codeview-wrap" id="codeViewJs">
+				<pre>
+<code>
+var tableData = {
+	'func': [{
+		'name': '个人中心',
+		'func': [{
+			'name': '我的资料',
+			'func': [{
+				'name': ''
+			}]
+		}, {
+			'name': '资料认证',
+			'func': [{
+				'name': '修改'
+			}]
+		}]
+	}, {
+		'name': '标识管理',
+		'func': [{
+			'name': '标识申请',
+			'func': [{
+				'name': '申请'
+			}, {
+				'name': '网申'
+			}]
+		}, {
+			'name': '标识列表',
+			'func': [{
+				'name': '下载'
+			}, {
+				'name': '撤销'
+			}, {
+				'name': '提交'
+			}]
+		}]
+	}, {
+		'name': '项目管理',
+		'func': [{
+			'name': '',
+			'func': [{
+				'name': '开始'
+			}, {
+				'name': '需求'
+			}, {
+				'name': '分析'
+			}, {
+				'name': '建模'
+			}]
+		}]
+	}]
+};
+
+function createCell(name) {
+	var label = document.createElement('label');
+	label.style.display = 'inline-block';
+	label.style.width = '360px';
+	label.style.height = '40px';
+	label.style.lineHeight = '40px';
+	var div = document.createElement('div');
+	div.appendChild(label);
+
+	if (name) {
+		var checkbox = document.createElement('input');
+		checkbox.setAttribute('type', 'checkbox');
+		var span = document.createElement('span');
+		span.innerHTML = name;
+		label.appendChild(checkbox);
+		label.appendChild(span);
 		var div = document.createElement('div');
 		div.appendChild(label);
+		return div;
+	}
+	return div;
+}
 
-    	if(name){
-    		var checkbox = document.createElement('input');
-	    	checkbox.setAttribute('type', 'checkbox');
-	    	var span = document.createElement('span');
-	    	span.innerHTML = name;
-	    	label.appendChild(checkbox);
-	    	label.appendChild(span);
-	    	var div = document.createElement('div');
-	    	div.appendChild(label);
-	    	return div;
-    	}
-    	return div;
-    }
+Krecursetable(box).init(tableData, createCell);</code>
+				</pre>
+			</div>
+		</section>
+	</section>
 
-	Krecursetable(box).init(tableData, createCell);
-
+	<script type="text/javascript">
+		var obj = {
+			'font-size': '18px',
+			'line-height': '28px'
+		};
+		KcodeviewHtml(codeViewHtml).init(obj);
+		KcodeviewJs(codeViewJs).init(obj);
 	</script>
 
 </body>
+
 </html>

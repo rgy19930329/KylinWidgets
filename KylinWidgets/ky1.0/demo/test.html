@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>test</title>
+
+    <script type="text/javascript" src="../../KylinJS.js/KylinJS.js"></script>
+    <script type="text/javascript" src="kcodeview-js.js"></script>
+    <script type="text/javascript" src="kcodeview-html.js"></script>
+    <link rel="stylesheet" href="kcodeview.css">
+    <link rel="stylesheet" href="../../test-common.css">
+
+    <script type="text/javascript" src="k.js"></script>
+    <link rel="stylesheet" href="k.css">
+    <style type="text/css">
+
+    </style>
+</head>
+
+<body>
+
+    <h1 class="page-title">演示 </h1>
+
+	<section class="section-box">
+
+
+	</section>
+    <script type="text/javascript">
+        K().init();
+    </script>
+    <hr>
+
+	<section class="section-box">
+		<h2 class="section-title">组件结构以及初始化</h2>
+		<section class="section-box-left">
+			<div class="ky-codeview-wrap" id="codeViewHtml">
+				<pre>
+<code>
+
+</code>
+				</pre>
+			</div>
+		</section>
+		<section class="section-box-right">
+			<div class="ky-codeview-wrap" id="codeViewJs">
+				<pre>
+<code>
+
+</code>
+				</pre>
+			</div>
+		</section>
+	</section>
+
+	<script type="text/javascript">
+		var obj = {
+			'font-size': '18px',
+			'line-height': '28px'
+		};
+		KcodeviewHtml(codeViewHtml).init(obj);
+		KcodeviewJs(codeViewJs).init(obj);
+	</script>
+
+</body>
+
+</html>

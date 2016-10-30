@@ -1,39 +1,80 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<meta charset="utf-8">
-<title>test</title>
-<script type="text/javascript" src="ktoast.js"></script>
+	<meta charset="utf-8">
+	<title>test</title>
 
-<style type="text/css">
+	<script src="../KylinJS.js/KylinJS.js"></script>
+	<script src="../ky1.0/kcodeview（代码浏览器）/kcodeview-html.js"></script>
+	<script src="../ky1.0/kcodeview（代码浏览器）/kcodeview-js.js"></script>
+	<link rel="stylesheet" href="../ky1.0/kcodeview（代码浏览器）/kcodeview.css">
+	<link rel="stylesheet" href="../test-common.css">
 
-</style>
+	<script type="text/javascript" src="ktoast.js"></script>
+
+	<style type="text/css">
+
+	</style>
 </head>
+
 <body>
 
-	<button id="press">emit</button>
+	<h1 class="page-title">演示 ktoast（简易消息提示框）</h1>
 
+	<section class="section-box">
+		<button id="press" class="btn">emit</button>
+	</section>
 	<div id="myToast"></div>
-
-	<hr>
-
-	<img src="img/instruction.jpg">
-
-	
 	<script type="text/javascript">
+		var bar = Ktoast(myToast);
+		bar.init({
+			'width': '280px', // toast宽度
+			'time': 2000 // toast持续时间
+		});
 
-	
-	var bar = Ktoast(myToast);
-	bar.init({
-		'width': '280px',// toast宽度
-		'time': 2000 // toast持续时间
-	});
+		press.onclick = function() {
+			bar.emit("我是一个简易消息提示框ktoast我是一个简易消息提示框");
+		}
+	</script>
+	<hr>
+	<section class="section-box">
+		<h2 class="section-title">组件结构以及初始化</h2>
+		<section class="section-box-left">
+			<div class="ky-codeview-wrap" id="codeViewHtml">
+				<pre>
+<code>
+<div id="myToast"></div></code>
+				</pre>
+			</div>
+		</section>
+		<section class="section-box-right">
+			<div class="ky-codeview-wrap" id="codeViewJs">
+				<pre>
+<code>
+var bar = Ktoast(myToast);
+bar.init({
+	'width': '280px', // toast宽度
+	'time': 2000 // toast持续时间
+});
 
-	press.onclick = function(){
-		bar.emit("我是一个简易消息提示框ktoast我是一个简易消息提示框");
-	}
+press.onclick = function() {
+	bar.emit("我是一个简易消息提示框ktoast我是一个简易消息提示框");
+}</code>
+				</pre>
+			</div>
+		</section>
+	</section>
 
+	<script type="text/javascript">
+		var obj = {
+			'font-size': '18px',
+			'line-height': '28px'
+		};
+		KcodeviewHtml(codeViewHtml).init(obj);
+		KcodeviewJs(codeViewJs).init(obj);
 	</script>
 
 </body>
+
 </html>

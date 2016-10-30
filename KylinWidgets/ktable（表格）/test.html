@@ -1,107 +1,196 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<meta charset="utf-8">
-<title>test</title>
-<script type="text/javascript" src="ktable.js"></script>
-<style type="text/css">
+	<meta charset="utf-8">
+	<title>test</title>
 
-.handler {
-	width: 500px;
-	padding: 20px;
-	margin-bottom: 30px;
-	border: 5px solid #59f;
-}
+	<script src="../KylinJS.js/KylinJS.js"></script>
+	<script src="../ky1.0/kcodeview（代码浏览器）/kcodeview-html.js"></script>
+	<script src="../ky1.0/kcodeview（代码浏览器）/kcodeview-js.js"></script>
+	<link rel="stylesheet" href="../ky1.0/kcodeview（代码浏览器）/kcodeview.css">
+	<link rel="stylesheet" href="../test-common.css">
 
-#tab {
-	border-collapse: collapse;
-}
+	<script type="text/javascript" src="ktable.js"></script>
 
-#tab tr {
-	border: 1px solid blue;
-}
+	<style type="text/css">
+		.handler {
+			width: 500px;
+			padding: 20px;
+			margin-bottom: 30px;
+			border: 5px solid #59f;
+		}
 
-#tab td {
-	padding: 10px;
-}
+		#tab {
+			border-collapse: collapse;
+		}
 
+		#tab tr {
+			border: 1px solid blue;
+		}
 
-</style>
+		#tab td {
+			padding: 10px;
+		}
+	</style>
 </head>
+
 <body>
 
-	<div class="handler">
-		<button id="drow">删除行</button>
-		<button id="dcol">删除列</button>
-		<button id="irow">插入行</button>
-		<button id="icol">插入列</button>
-		<button id="pdata">打印数据</button>
-	</div>
+	<h1 class="page-title">演示 ktable（表格）</h1>
 
-	<table id="tab">
-		<thead>
-			<tr>
-				<th>first</th>
-				<th>second</th>
-				<th>three</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td>111</td>
-				<td>222</td>
-				<td>333</td>
-			</tr>
-			<tr>
-				<td>444</td>
-				<td>555</td>
-				<td>666</td>
-			</tr>
-			<tr>
-				<td>777</td>
-				<td>888</td>
-				<td>999</td>
-			</tr>
-			<tr>
-				<td>aaa</td>
-				<td>bbb</td>
-				<td>ccc</td>
-			</tr>
-		</tbody>
-	</table>
+	<section class="section-box">
+		<div class="handler">
+			<button id="drow">删除行</button>
+			<button id="dcol">删除列</button>
+			<button id="irow">插入行</button>
+			<button id="icol">插入列</button>
+			<button id="pdata">打印数据</button>
+		</div>
 
-	<hr>
-
-	<img src="img/instruction.jpg">
-	<img src="img/instruction2.jpg">
-	
+		<table id="tab">
+			<thead>
+				<tr>
+					<th>first</th>
+					<th>second</th>
+					<th>three</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>111</td>
+					<td>222</td>
+					<td>333</td>
+				</tr>
+				<tr>
+					<td>444</td>
+					<td>555</td>
+					<td>666</td>
+				</tr>
+				<tr>
+					<td>777</td>
+					<td>888</td>
+					<td>999</td>
+				</tr>
+				<tr>
+					<td>aaa</td>
+					<td>bbb</td>
+					<td>ccc</td>
+				</tr>
+			</tbody>
+		</table>
+	</section>
 	<script type="text/javascript">
+		var tab = document.getElementById("tab");
+		var targetTab = Ktable(tab);
 
-	var tab = document.getElementById("tab");
+		drow.onclick = function() {
+			targetTab.deleteRow(0); // 删除第0行
+		}
+		dcol.onclick = function() {
+			targetTab.deleteCol(0); // 删除第0列
+		}
 
-	var targetTab = Ktable(tab);
+		irow.onclick = function() {
+			targetTab.insertRow(-1); // 从尾部插入一个空行
+		}
 
-	drow.onclick = function(){
-		targetTab.deleteRow(0);// 删除第0行
-	}
+		icol.onclick = function() {
+			targetTab.insertCol(-1); // 从尾部插入一个空列
+		}
 
-	dcol.onclick = function(){
-		targetTab.deleteCol(0);// 删除第0列
-	}
-
-	irow.onclick = function(){
-		targetTab.insertRow(-1);// 从尾部插入一个空行
-	}
-
-	icol.onclick = function(){
-		targetTab.insertCol(-1);// 从尾部插入一个空列
-	}
-
-	pdata.onclick = function(){
-		alert( targetTab.getDataList() );// 打印表中所有数据
-	}
-
-
+		pdata.onclick = function() {
+			alert(targetTab.getDataList()); // 打印表中所有数据
+		}
 	</script>
+	<hr>
+	<section class="section-box">
+		<h2 class="section-title">组件结构以及初始化</h2>
+		<section class="section-box-left">
+			<div class="ky-codeview-wrap" id="codeViewHtml">
+				<pre>
+<code>
+<div class="handler">
+	<button id="drow">删除行</button>
+	<button id="dcol">删除列</button>
+	<button id="irow">插入行</button>
+	<button id="icol">插入列</button>
+	<button id="pdata">打印数据</button>
+</div>
+
+<table id="tab">
+	<thead>
+		<tr>
+			<th>first</th>
+			<th>second</th>
+			<th>three</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>111</td>
+			<td>222</td>
+			<td>333</td>
+		</tr>
+		<tr>
+			<td>444</td>
+			<td>555</td>
+			<td>666</td>
+		</tr>
+		<tr>
+			<td>777</td>
+			<td>888</td>
+			<td>999</td>
+		</tr>
+		<tr>
+			<td>aaa</td>
+			<td>bbb</td>
+			<td>ccc</td>
+		</tr>
+	</tbody>
+</table></code>
+				</pre>
+			</div>
+		</section>
+		<section class="section-box-right">
+			<div class="ky-codeview-wrap" id="codeViewJs">
+				<pre>
+<code>
+var tab = document.getElementById("tab");
+var targetTab = Ktable(tab);
+
+drow.onclick = function() {
+	targetTab.deleteRow(0); // 删除第0行
+}
+dcol.onclick = function() {
+	targetTab.deleteCol(0); // 删除第0列
+}
+
+irow.onclick = function() {
+	targetTab.insertRow(-1); // 从尾部插入一个空行
+}
+
+icol.onclick = function() {
+	targetTab.insertCol(-1); // 从尾部插入一个空列
+}
+
+pdata.onclick = function() {
+	alert(targetTab.getDataList()); // 打印表中所有数据
+}</code>
+				</pre>
+			</div>
+		</section>
+	</section>
+
+	<script type="text/javascript">
+		var obj = {
+			'font-size': '18px',
+			'line-height': '28px'
+		};
+		KcodeviewHtml(codeViewHtml).init(obj);
+		KcodeviewJs(codeViewJs).init(obj);
+	</script>
+
 </body>
+
 </html>

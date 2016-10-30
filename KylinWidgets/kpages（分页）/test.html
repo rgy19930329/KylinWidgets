@@ -1,67 +1,121 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<meta charset="utf-8">
-<title>test</title>
-<script type="text/javascript" src="kpages.js"></script>
+	<meta charset="utf-8">
+	<title>test</title>
 
-<style type="text/css">
+	<script src="../KylinJS.js/KylinJS.js"></script>
+	<script src="../ky1.0/kcodeview（代码浏览器）/kcodeview-html.js"></script>
+	<script src="../ky1.0/kcodeview（代码浏览器）/kcodeview-js.js"></script>
+	<link rel="stylesheet" href="../ky1.0/kcodeview（代码浏览器）/kcodeview.css">
+	<link rel="stylesheet" href="../test-common.css">
 
-* {
-	margin: 0;padding: 0;
-}
+	<script type="text/javascript" src="kpages.js"></script>
 
-#pageBar {
-	padding: 100px;
-}
+	<style type="text/css">
+		#pageBar {
+			padding: 30px;
+		}
 
-#pageBar li {
-	padding: 10px;
-}
+		#pageBar li {
+			padding: 10px;
+		}
 
-#pageBar li:hover {
-	background: #000;
-	color: #fff;
-}
+		#pageBar li:hover {
+			background: #000;
+			color: #fff;
+		}
 
-#pageBar button {
-	padding: 10px;
-}
+		#pageBar button {
+			padding: 10px;
+		}
 
-.page-selected {
-	color: red;
-}
-
-</style>
+		.page-selected {
+			color: red;
+		}
+	</style>
 </head>
+
 <body>
 
-	<div id="pageBar">
-		<div><button id="pageSub">pre</button></div>
-		<div>
-			<ul><li></li></ul>
-		</div>
-		<div><button id="pageAdd">next</button></div>
-	</div>
+	<h1 class="page-title">演示 kpages（分页）</h1>
 
+	<section class="section-box">
+		<div id="pageBar">
+			<div>
+				<button id="pageSub">pre</button>
+			</div>
+			<div>
+				<ul>
+					<li></li>
+				</ul>
+			</div>
+			<div>
+				<button id="pageAdd">next</button>
+			</div>
+		</div>
+	</section>
+	<script type="text/javascript">
+		var pageBar = document.getElementById("pageBar");
+
+		Kpages(pageBar).init({
+			'maxPage': 20, // 最大页数
+			'currentPage': 1 //当前页号
+		}, function(currentPage) {
+			console.log(currentPage);
+		});
+	</script>
 	<hr>
 
-	<img src="img/instruction.jpg">
-	<img src="img/instruction2.jpg">
-	
+	<section class="section-box">
+		<h2 class="section-title">组件结构以及初始化</h2>
+		<section class="section-box-left">
+			<div class="ky-codeview-wrap" id="codeViewHtml">
+				<pre>
+<code>
+<div id="pageBar">
+	<div>
+		<button id="pageSub">pre</button>
+	</div>
+	<div>
+		<ul>
+			<li></li>
+		</ul>
+	</div>
+	<div>
+		<button id="pageAdd">next</button>
+	</div>
+</div></code>
+				</pre>
+			</div>
+		</section>
+		<section class="section-box-right">
+			<div class="ky-codeview-wrap" id="codeViewJs">
+				<pre>
+<code>
+var pageBar = document.getElementById("pageBar");
+
+Kpages(pageBar).init({
+	'maxPage': 20, // 最大页数
+	'currentPage': 1 //当前页号
+}, function(currentPage) {
+	console.log(currentPage);
+});</code>
+				</pre>
+			</div>
+		</section>
+	</section>
+
 	<script type="text/javascript">
-
-	var pageBar = document.getElementById("pageBar");
-
-	Kpages(pageBar).init({
-		'maxPage': 20, // 最大页数
-		'currentPage': 1 //当前页号
-	}, function(currentPage){
-		console.log(currentPage);
-	});
-
-
+		var obj = {
+			'font-size': '18px',
+			'line-height': '28px'
+		};
+		KcodeviewHtml(codeViewHtml).init(obj);
+		KcodeviewJs(codeViewJs).init(obj);
 	</script>
 
 </body>
+
 </html>

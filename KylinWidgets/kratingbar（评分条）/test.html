@@ -1,55 +1,106 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<meta charset="utf-8">
-<title>test</title>
-<script type="text/javascript" src="kratingbar.js"></script>
+	<meta charset="utf-8">
+	<title>test</title>
 
-<style type="text/css">
+	<script src="../KylinJS.js/KylinJS.js"></script>
+	<script src="../ky1.0/kcodeview（代码浏览器）/kcodeview-html.js"></script>
+	<script src="../ky1.0/kcodeview（代码浏览器）/kcodeview-js.js"></script>
+	<link rel="stylesheet" href="../ky1.0/kcodeview（代码浏览器）/kcodeview.css">
+	<link rel="stylesheet" href="../test-common.css">
 
-.box {
-	padding: 50px;
-}
+	<script type="text/javascript" src="kratingbar.js"></script>
 
-</style>
+	<style type="text/css">
+		.box {
+			padding: 20px;
+		}
+	</style>
 </head>
+
 <body>
 
-	<div class="box">
-		<div id="myBar"></div>
-	</div>
+	<h1 class="page-title">演示 kratingbar（评分条）</h1>
 
-	<br>
+	<section class="section-box">
+		<div class="box">
+			<div id="myBar"></div>
+		</div>
 
-	<div class="box">
-		<div id="myBar2"></div>
-	</div>
-
-	<button id="press">当前值</button>
-
-	<hr>
-
-	<img src="img/instruction.jpg">
-	<img src="img/instruction2.jpg">
-	
+		<div class="box">
+			<div id="myBar2"></div>
+			<div class="mt20">
+				<button id="press" class="btn">当前值</button>
+			</div>
+		</div>
+	</section>
 	<script type="text/javascript">
+		Kratingbar(myBar).init();
 
-	Kratingbar(myBar).init();
+		var bar = Kratingbar(myBar2);
+		bar.init({
+			'starSize': '40px',
+			'color': 'orange'
+		}, {
+			'list': ['1星', '2星', '3星', '4星', '5星']
+		});
 
-	var bar = Kratingbar(myBar2);
-	bar.init({
-		'starSize': '40px',
-		'color': 'orange'
-	}, {
-		'list': ['1星', '2星', '3星', '4星', '5星']
-	});
-
-	press.onclick = function(){
-		alert(bar.getValue());
-	}
-	
-
+		press.onclick = function() {
+			alert(bar.getValue());
+		}
 	</script>
+	<hr>
+	<section class="section-box">
+		<h2 class="section-title">组件结构以及初始化</h2>
+		<section class="section-box-left">
+			<div class="ky-codeview-wrap" id="codeViewHtml">
+				<pre>
+<code>
+<div class="box">
+	<div id="myBar"></div>
+</div>
 
+<div class="box">
+	<div id="myBar2"></div>
+	<div class="mt20">
+		<button id="press" class="btn">当前值</button>
+	</div>
+</div></code>
+				</pre>
+			</div>
+		</section>
+		<section class="section-box-right">
+			<div class="ky-codeview-wrap" id="codeViewJs">
+				<pre>
+<code>
+Kratingbar(myBar).init();
+
+var bar = Kratingbar(myBar2);
+bar.init({
+	'starSize': '40px',
+	'color': 'orange'
+}, {
+	'list': ['1星', '2星', '3星', '4星', '5星']
+});
+
+press.onclick = function() {
+	alert(bar.getValue());
+}</code>
+				</pre>
+			</div>
+		</section>
+	</section>
+
+	<script type="text/javascript">
+		var obj = {
+			'font-size': '18px',
+			'line-height': '28px'
+		};
+		KcodeviewHtml(codeViewHtml).init(obj);
+		KcodeviewJs(codeViewJs).init(obj);
+	</script>
 </body>
+
 </html>

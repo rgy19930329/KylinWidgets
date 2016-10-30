@@ -1,45 +1,92 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<meta charset="utf-8">
-<title>test</title>
-<script type="text/javascript" src="kpicker.js"></script>
+	<meta charset="utf-8">
+	<title>test</title>
 
-<style type="text/css">
+	<script src="../KylinJS.js/KylinJS.js"></script>
+	<script src="../ky1.0/kcodeview（代码浏览器）/kcodeview-html.js"></script>
+	<script src="../ky1.0/kcodeview（代码浏览器）/kcodeview-js.js"></script>
+	<link rel="stylesheet" href="../ky1.0/kcodeview（代码浏览器）/kcodeview.css">
+	<link rel="stylesheet" href="../test-common.css">
 
-#mypicker {
-	margin: 30px;
-}
+	<script type="text/javascript" src="kpicker.js"></script>
 
-
-</style>
+	<style type="text/css">
+		#mypicker {
+			margin-bottom: 20px;
+		}
+	</style>
 </head>
+
 <body>
 
-	<button id="press">当前颜色</button>
+	<h1 class="page-title">演示 kpicker（拾色器）</h1>
 
-	<div id="mypicker"></div>
-
-	<hr>
-
-	<img src="img/instruction.jpg">
-	<img src="img/instruction2.jpg">
-	
+	<section class="section-box">
+		<div id="mypicker"></div>
+		<div>
+			<button id="press" class="btn">当前颜色</button>
+		</div>
+	</section>
 	<script type="text/javascript">
+		var pickerTarget = Kpicker(mypicker);
+		pickerTarget.init({
+			'surfaceColor': '#59f' // 外观颜色
+		});
 
-	var pickerTarget = Kpicker(mypicker);
-	pickerTarget.init({
-		'surfaceColor': '#59f' // 外观颜色
-	});
+		press.onclick = function() {
+			var color1 = pickerTarget.getColor();
+			var color2 = pickerTarget.getColor('rgb');
+			var color3 = pickerTarget.getColor('hex');
+			alert(color1 + '\n' + color2 + '\n' + color3);
+		}
+	</script>
+	<hr>
+	<section class="section-box">
+		<h2 class="section-title">组件结构以及初始化</h2>
+		<section class="section-box-left">
+			<div class="ky-codeview-wrap" id="codeViewHtml">
+				<pre>
+<code>
+<div id="mypicker"></div>
+<div>
+	<button id="press" class="btn">当前颜色</button>
+</div></code>
+				</pre>
+			</div>
+		</section>
+		<section class="section-box-right">
+			<div class="ky-codeview-wrap" id="codeViewJs">
+				<pre>
+<code>
+var pickerTarget = Kpicker(mypicker);
+pickerTarget.init({
+	'surfaceColor': '#59f' // 外观颜色
+});
 
-	press.onclick = function(){
-		var color1 = pickerTarget.getColor();
-		var color2 = pickerTarget.getColor('rgb');
-		var color3 = pickerTarget.getColor('hex');
-		alert(color1 + '\n' + color2 + '\n' + color3);
-	}
+press.onclick = function() {
+	var color1 = pickerTarget.getColor();
+	var color2 = pickerTarget.getColor('rgb');
+	var color3 = pickerTarget.getColor('hex');
+	alert(color1 + '\n' + color2 + '\n' + color3);
+};</code>
+				</pre>
+			</div>
+		</section>
+	</section>
 
+	<script type="text/javascript">
+		var obj = {
+			'font-size': '18px',
+			'line-height': '28px'
+		};
+		KcodeviewHtml(codeViewHtml).init(obj);
+		KcodeviewJs(codeViewJs).init(obj);
 	</script>
 
+
 </body>
+
 </html>
