@@ -28,7 +28,7 @@ function KcodeviewHtml(bar){
 		param.code.innerHTML = res;
 
 		// 重置行标的宽度
-		var span_width = parseInt(num / 10);
+		var span_width = (num + '').length;
 		ky.CssUtil.setCss(ky.select('.ky-tab-span'), {
 			'width': span_width + 'em',
 		});
@@ -56,8 +56,12 @@ function KcodeviewHtml(bar){
 			// 匹配其它标签
 			var tmp = tar.match(/(<\/*)([^>]+)>/);
 			var tagEnd = tmp[2].indexOf(' ');
-			var tag = tmp[2].slice(0, tagEnd);
-			var arr = tmp[2].slice(tagEnd).match(/[\w-]+=\"[^=]*\"/g);
+			if(tagEnd > 0) {
+				var tag = tmp[2].slice(0, tagEnd);
+				var arr = tmp[2].slice(tagEnd).match(/[\w-]+=\"[^=]*\"/g);
+			}else{
+				var tag = tmp[2];
+			}
 
 			var attrs = '';
 			var attr = '';

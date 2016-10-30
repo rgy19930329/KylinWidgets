@@ -7,7 +7,7 @@ function KcodeviewJs(bar){
 
 	var colors = {
 		color1: ['var', 'let', 'for', 'if', 'else', 'return', 'function', 'this', ' in ', 'switch', 'new '],
-		color2: ['log', 'push', 'shift', 'pop', 'unshift', 'join', 'concat', 'match', 'replace', 'apply', 'call'],
+		color2: ['push', 'shift', 'pop', 'unshift', 'join', 'concat', 'match', 'replace', 'apply', 'call'],
 		color3: ['console', 'RegExp', 'Date', 'Array', 'Object'],
 		color4: ['prototype', 'arguments', 'length'],
 		color5: ['window', 'location', 'history', 'setTimeout', 'setInterval', 'document']
