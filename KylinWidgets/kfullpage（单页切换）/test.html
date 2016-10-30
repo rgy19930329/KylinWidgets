@@ -1,69 +1,131 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<meta charset="utf-8">
-<title>test</title>
-<script type="text/javascript" src="kfullpage.js"></script>
+	<meta charset="utf-8">
+	<title>test</title>
 
-<style type="text/css">
+	<script src="../KylinJS.js/KylinJS.js"></script>
+	<script src="../ky1.0/kcodeview（代码浏览器）/kcodeview-html.js"></script>
+	<script src="../ky1.0/kcodeview（代码浏览器）/kcodeview-js.js"></script>
+	<link rel="stylesheet" href="../ky1.0/kcodeview（代码浏览器）/kcodeview.css">
+	<link rel="stylesheet" href="../test-common.css">
 
-* {
-	margin: 0;padding: 0;
-}
+	<script type="text/javascript" src="kfullpage.js"></script>
 
-body {
-	font-size: 70px;
-	font-family: "Microsoft Yahei";
-	color: #fff;
-}
+	<style type="text/css">
+		body {
+			/* font-size: 70px; */
+			font-family: "Microsoft Yahei";
+			color: #fff;
+		}
 
-#myBar div:nth-child(odd) {
-	background: #59f;
-}
+		#myBar * {
+			margin: 0;
+			padding: 0;
+		}
 
-#myBar div:nth-child(even) {
-	background: orange;
-}
+		#content > div:nth-child(odd) {
+			background: #59f;
+		}
 
-#content div {
+		#content > div:nth-child(even) {
+			background: orange;
+		}
+
+/* 		#content > div {
 	display: flex;
 	align-items: center;
-}
+} */
 
-p {
-	width: 100%;
-	text-align: center;
-	margin: 0 auto;
-}
+		p {
+			width: 100%;
+			text-align: center;
+			margin: 0 auto;
+		}
 
-
-</style>
+		.page-title {
+			text-align: center;
+			width: 100%;
+			font-size: 36px;
+			background: none;
+		}
+		.section-title {
+			text-align: center;
+			width: 100%;
+			font-size: 28px;
+			background: none;
+		}
+		#myBar .section-box {
+			padding: 20px;
+		}
+	</style>
 </head>
+
 <body>
 
 	<div id="myBar">
 		<div id="content">
 			<div class="section">
-				<p>第一屏</p>
+				<h1 class="page-title">演示 kfullpage（单页切换）</h1>
 			</div>
 			<div class="section">
-				<p>第二屏</p>
-			</div>
+				<section class="section-box">
+				<h2 class="section-title">组件结构以及初始化</h2>
+					<section class="section-box-left">
+						<div class="ky-codeview-wrap" id="codeViewHtml">
+							<pre>
+<code>
+<div id="myBar">
+	<div id="content">
+		<div class="section">
+			<p>第一屏</p>
+		</div>
+		<div class="section">
+			<p>第二屏</p>
+		</div>
+		<div class="section">
+			<p>第三屏</p>
+		</div>
+	</div>
+</div></code>
+							</pre>
+						</div>
+					</section>
+					<section class="section-box-right">
+						<div class="ky-codeview-wrap" id="codeViewJs">
+							<pre>
+<code>
+Kfullpage(myBar, content).init({
+	'dur': 500, // 切换时间
+	'easing': 'ease-in' // 缓动方式
+});</code>
+							</pre>
+						</div>
+					</section>
+				</section>
+				<script type="text/javascript">
+					var obj = {
+						'font-size': '18px',
+						'line-height': '28px'
+					};
+					KcodeviewHtml(codeViewHtml).init(obj);
+					KcodeviewJs(codeViewJs).init(obj);
+				</script>
+			</div><!-- 第二屏结束-->
 			<div class="section">
 				<p>第三屏</p>
 			</div>
 		</div>
 	</div>
-	
+
 	<script type="text/javascript">
-
-	Kfullpage(myBar, content).init({
-		'dur': 500,// 切换时间
-		'easing': 'ease-in'// 缓动方式
-	});
-
-
+		Kfullpage(myBar, content).init({
+			'dur': 500, // 切换时间
+			'easing': 'ease-in' // 缓动方式
+		});
 	</script>
 
 </body>
+
 </html>

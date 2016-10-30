@@ -1,123 +1,205 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<meta charset="utf-8">
-<title>test</title>
-<script type="text/javascript" src="klineprogressbar.js"></script>
-<style type="text/css">
+	<meta charset="utf-8">
+	<title>test</title>
 
-body {
-	font-family: "Microsoft Yahei";
-}
+	<script src="../KylinJS.js/KylinJS.js"></script>
+	<script src="../ky1.0/kcodeview（代码浏览器）/kcodeview-html.js"></script>
+	<script src="../ky1.0/kcodeview（代码浏览器）/kcodeview-js.js"></script>
+	<link rel="stylesheet" href="../ky1.0/kcodeview（代码浏览器）/kcodeview.css">
+	<link rel="stylesheet" href="../test-common.css">
 
-.wrap {
-	width: 600px;
-	padding: 10px;
-}
+	<script type="text/javascript" src="klineprogressbar.js"></script>
+	<style type="text/css">
+		body {
+			font-family: "Microsoft Yahei";
+		}
 
-.wrap > div{
-	margin: 10px;
-}
+		.wrap {
+			width: 600px;
+			padding: 10px;
+		}
 
-.wrap > div:nth-child(2), .wrap > div:nth-child(3){
-	text-align: center;
-}
+		.wrap>div {
+			margin: 10px;
+		}
 
-.box {
-	padding: 50px;
-}
+		.wrap>div:nth-child(2),
+		.wrap>div:nth-child(3) {
+			text-align: center;
+		}
 
-</style>
+		.box {
+			padding: 50px;
+		}
+	</style>
 </head>
+
 <body>
 
-    <div class="wrap">
+	<h1 class="page-title">演示 klineprogressbar（条形进度条）</h1>
 
-   	    <div id="myBar"></div>
+	<section class="section-box">
+		<div class="wrap">
+			<div id="myBar"></div>
+			<div id="show"></div>
+			<div>
+				<button id="sub" class="btn">sub</button>
+				<button id="add" class="btn">add</button>
+			</div>
+		</div>
+		<div class="box">
+			<div id="myBar2"></div>
+		</div>
+		<div class="box">
+			<div id="myBar3"></div>
+		</div>
+	</section>
+	<script type="text/javascript">
+		var bar = Klineprogressbar(myBar);
+		bar.init({
+			'width': '600px',
+			'height': '15px',
+			'proColor': 'orange',
+			'bgColor': '#aaa',
+			'isShowProgress': true
+		}, {
+			'maxValue': 100,
+			'minValue': -100,
+			'value': -80
+		});
+		function showInfo() {
+			show.innerHTML = bar.getValue() + '/(' + bar.getMaxValue() + ',' + bar.getMinValue() + ')/' + bar.getProcess();
+		}
+		showInfo();
+		function addPro() {
+			var v = bar.getValue();
+			v++;
+			bar.setValue(v);
+			showInfo();
+		}
+		add.onclick = function() {
+			addPro();
+		}
+		sub.onclick = function() {
+			var v = bar.getValue();
+			v = v - 10;
+			bar.setValue(v);
+			showInfo();
+		}
+		setInterval(function() {
+			addPro();
+		}, 50);
 
-        <div id="show"></div>
-        <div>
-        	<button id="sub">sub</button>
-    		<button id="add">add</button>
-        </div>
-    </div>
-    
-    <div class="box">
-    	<div id="myBar2"></div>
-    </div>
+		Klineprogressbar(myBar2).init();
 
-    <div class="box">
-    	<div id="myBar3"></div>
-    </div>
+		Klineprogressbar(myBar3).init({
+			'width': '400px', // 进度条宽度
+			'height': '20px', // 进度条高度
+			'proColor': '#59f', // 进度颜色
+			'bgColor': '#ccc', // 背景颜色
+			'textColor': 'orange', // 文字颜色
+			'isFillet': true, // 是否使用圆角
+			'isShowProgress': true // 是否显示进度
+		}, {
+			'maxValue': 100,
+			'minValue': 0,
+			'value': 10
+		});
+	</script>
+	<hr>
+	<section class="section-box">
+		<h2 class="section-title">组件结构以及初始化</h2>
+		<section class="section-box-left">
+			<div class="ky-codeview-wrap" id="codeViewHtml">
+				<pre>
+<code>
+<div class="wrap">
+	<div id="myBar"></div>
+	<div id="show"></div>
+	<div>
+		<button id="sub" class="btn">sub</button>
+		<button id="add" class="btn">add</button>
+	</div>
+</div>
+<div class="box">
+	<div id="myBar2"></div>
+</div>
+<div class="box">
+	<div id="myBar3"></div>
+</div></code>
+				</pre>
+			</div>
+		</section>
+		<section class="section-box-right">
+			<div class="ky-codeview-wrap" id="codeViewJs">
+				<pre>
+<code>
+var bar = Klineprogressbar(myBar);
+bar.init({
+	'width': '600px',
+	'height': '15px',
+	'proColor': 'orange',
+	'bgColor': '#aaa',
+	'isShowProgress': true
+}, {
+	'maxValue': 100,
+	'minValue': -100,
+	'value': -80
+});
+function showInfo() {
+	show.innerHTML = bar.getValue() + '/(' + bar.getMaxValue() + ',' + bar.getMinValue() + ')/' + bar.getProcess();
+}
+showInfo();
+function addPro() {
+	var v = bar.getValue();
+	v++;
+	bar.setValue(v);
+	showInfo();
+}
+add.onclick = function() {
+	addPro();
+}
+sub.onclick = function() {
+	var v = bar.getValue();
+	v = v - 10;
+	bar.setValue(v);
+	showInfo();
+}
+setInterval(function() {
+	addPro();
+}, 50);
 
-    <hr>
+Klineprogressbar(myBar2).init();
 
-    <img src="img/instruction.jpg">
+Klineprogressbar(myBar3).init({
+	'width': '400px', // 进度条宽度
+	'height': '20px', // 进度条高度
+	'proColor': '#59f', // 进度颜色
+	'bgColor': '#ccc', // 背景颜色
+	'textColor': 'orange', // 文字颜色
+	'isFillet': true, // 是否使用圆角
+	'isShowProgress': true // 是否显示进度
+}, {
+	'maxValue': 100,
+	'minValue': 0,
+	'value': 10
+});</code>
+				</pre>
+			</div>
+		</section>
+	</section>
 
 	<script type="text/javascript">
-
-	var bar = Klineprogressbar(myBar);
-	
-	bar.init({
-		'width': '600px',
-		'height': '15px',
-		'proColor': 'orange',
-		'bgColor': '#aaa',
-		'isShowProgress': true
-	}, {
-		'maxValue': 100,
-		'minValue': -100,
-		'value': -80
-	});
-
-	function showInfo(){
-		show.innerHTML = bar.getValue() + '/(' + bar.getMaxValue() + ',' + bar.getMinValue() + ')/' + bar.getProcess();
-	}
-
-	showInfo();
-
-	function addPro(){
-		var v = bar.getValue();
-		v++;
-		bar.setValue(v);
-		showInfo();
-	}
-	
-	add.onclick = function(){
-		addPro();
-	}
-
-	sub.onclick = function(){
-		var v = bar.getValue();
-		v = v - 10;
-		bar.setValue(v);
-		showInfo();
-	}
-
-	setInterval(function(){
-		addPro();
-	}, 50);
-
-	/* ---------------------------- */
-
-	Klineprogressbar(myBar2).init();
-
-	/* ---------------------------- */
-
-	Klineprogressbar(myBar3).init({
-		'width': '400px',// 进度条宽度
-		'height': '20px',// 进度条高度
-		'proColor': '#59f',// 进度颜色
-		'bgColor': '#ccc',// 背景颜色
-		'textColor': 'orange',// 文字颜色
-		'isFillet': true,// 是否使用圆角
-		'isShowProgress': true // 是否显示进度
-	}, {
-		'maxValue': 100,
-		'minValue': 0,
-		'value': 10
-	});
-
+		var obj = {
+			'font-size': '18px',
+			'line-height': '28px'
+		};
+		KcodeviewHtml(codeViewHtml).init(obj);
+		KcodeviewJs(codeViewJs).init(obj);
 	</script>
 </body>
+
 </html>

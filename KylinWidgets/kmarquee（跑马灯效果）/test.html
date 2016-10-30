@@ -1,77 +1,151 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<meta charset="utf-8">
-<title>test</title>
-<script type="text/javascript" src="kmarquee.js"></script>
+	<meta charset="utf-8">
+	<title>test</title>
 
-<style type="text/css">
+	<script src="../KylinJS.js/KylinJS.js"></script>
+	<script src="../ky1.0/kcodeview（代码浏览器）/kcodeview-html.js"></script>
+	<script src="../ky1.0/kcodeview（代码浏览器）/kcodeview-js.js"></script>
+	<link rel="stylesheet" href="../ky1.0/kcodeview（代码浏览器）/kcodeview.css">
+	<link rel="stylesheet" href="../test-common.css">
 
-* {
-	margin: 0;padding: 0;
-}
+	<script type="text/javascript" src="kmarquee.js"></script>
 
-#mymarquee {
-	margin: 50px;
-	border: 1px solid #ccc;
-}
+	<style type="text/css">
+		#mymarquee * {
+			margin: 0;
+			padding: 0;
+		}
 
-#mymarquee a {
-	text-decoration: none;
-	color: #000;
-	font-size: 90%;
-}
+		#mymarquee {
+			margin: 50px;
+			border: 1px solid #ccc;
+		}
 
-#mymarquee a:hover {
-	text-decoration: underline;
-}
+		#mymarquee a {
+			text-decoration: none;
+			color: #000;
+			font-size: 90%;
+		}
 
-
-
-</style>
+		#mymarquee a:hover {
+			text-decoration: underline;
+		}
+	</style>
 </head>
+
 <body>
 
-	<div id="mymarquee">
-		<div class="innerBox">
-			<section>
-				<div><a href=""><img title="图片标题" src="http://h.hiphotos.baidu.com/image/pic/item/6609c93d70cf3bc798e14b10d700baa1cc112a6c.jpg"></a></div>
-				<p><a href="">图片说明图片说明</a></p>
-			</section>
-			<section>
-				<div><a href=""><img title="图片标题" src="http://c.hiphotos.baidu.com/image/pic/item/503d269759ee3d6ddfd3157740166d224f4ade71.jpg"></a></div>
-				<p><a href="">图片说明图片说明</a></p>
-			</section>
-			<section>
-				<div><a href=""><img title="图片标题" src="http://g.hiphotos.baidu.com/image/pic/item/6a63f6246b600c3389cadd601f4c510fd8f9a1e2.jpg"></a></div>
-				<p><a href="">图片说明图片说明</a></p>
-			</section>
-			<section>
-				<div><a href=""><img title="图片标题" src="http://g.hiphotos.baidu.com/image/h%3D200/sign=16f4ef3e35adcbef1e3479069cae2e0e/6d81800a19d8bc3e7763d030868ba61ea9d345e5.jpg"></a></div>
-				<p><a href="">图片说明图片说明</a></p>
-			</section>
-			<section>
-				<div><a href=""><img title="图片标题" src="http://c.hiphotos.baidu.com/image/pic/item/30adcbef76094b36de8a2fe5a1cc7cd98d109d99.jpg"></a></div>
-				<p><a href="">图片说明图片说明</a></p>
-			</section>
+	<h1 class="page-title">演示 kmarquee（跑马灯效果）</h1>
+
+	<section class="section-box">
+		<div id="mymarquee">
+			<div class="innerBox">
+				<section>
+					<div>
+						<a href=""><img title="图片标题" src="http://h.hiphotos.baidu.com/image/pic/item/6609c93d70cf3bc798e14b10d700baa1cc112a6c.jpg"></a>
+					</div>
+					<p><a href="">图片说明图片说明</a></p>
+				</section>
+				<section>
+					<div>
+						<a href=""><img title="图片标题" src="http://c.hiphotos.baidu.com/image/pic/item/503d269759ee3d6ddfd3157740166d224f4ade71.jpg"></a>
+					</div>
+					<p><a href="">图片说明图片说明</a></p>
+				</section>
+				<section>
+					<div>
+						<a href=""><img title="图片标题" src="http://g.hiphotos.baidu.com/image/pic/item/6a63f6246b600c3389cadd601f4c510fd8f9a1e2.jpg"></a>
+					</div>
+					<p><a href="">图片说明图片说明</a></p>
+				</section>
+				<section>
+					<div>
+						<a href=""><img title="图片标题" src="http://g.hiphotos.baidu.com/image/h%3D200/sign=16f4ef3e35adcbef1e3479069cae2e0e/6d81800a19d8bc3e7763d030868ba61ea9d345e5.jpg"></a>
+					</div>
+					<p><a href="">图片说明图片说明</a></p>
+				</section>
+				<section>
+					<div>
+						<a href=""><img title="图片标题" src="http://c.hiphotos.baidu.com/image/pic/item/30adcbef76094b36de8a2fe5a1cc7cd98d109d99.jpg"></a>
+					</div>
+					<p><a href="">图片说明图片说明</a></p>
+				</section>
+			</div>
 		</div>
-	</div>
-
+	</section>
+	<script type="text/javascript">
+		Kmarquee(mymarquee).init({
+			'cellWidth': '200px', // 单元宽度
+			'cellHeight': '300px', // 单元高度
+			'direction': 'left', // 移动方向（默认向左）
+			'speed': 3 // 速度档位（一共5个档位：1, 2, 3, 4, 5）
+		});
+	</script>
 	<hr>
-
-	<img src="img/instruction.jpg">
-	<img src="img/instruction2.jpg">
+	<section class="section-box">
+		<h2 class="section-title">组件结构以及初始化</h2>
+		<section class="section-box-left">
+			<div class="ky-codeview-wrap" id="codeViewHtml">
+				<pre>
+<code>
+<div id="mymarquee">
+	<div class="innerBox">
+		<section>
+			<div>
+				<a href=""><img title="图片标题" src="http://h.hiphotos.baidu.com/image/pic/item/6609c93d70cf3bc798e14b10d700baa1cc112a6c.jpg"></a>
+			</div>
+			<p><a href="">图片说明图片说明</a></p>
+		</section>
+		<section>
+			<div>
+				<a href=""><img title="图片标题" src="http://c.hiphotos.baidu.com/image/pic/item/503d269759ee3d6ddfd3157740166d224f4ade71.jpg"></a>
+			</div>
+			<p><a href="">图片说明图片说明</a></p>
+		</section>
+		<section>
+			<div>
+				<a href=""><img title="图片标题" src="http://g.hiphotos.baidu.com/image/pic/item/6a63f6246b600c3389cadd601f4c510fd8f9a1e2.jpg"></a>
+			</div>
+			<p><a href="">图片说明图片说明</a></p>
+		</section>
+		<section>
+			<div>
+				<a href=""><img title="图片标题" src="http://g.hiphotos.baidu.com/image/h%3D200/sign=16f4ef3e35adcbef1e3479069cae2e0e/6d81800a19d8bc3e7763d030868ba61ea9d345e5.jpg"></a>
+			</div>
+			<p><a href="">图片说明图片说明</a></p>
+		</section>
+	</div>
+</div></code>
+				</pre>
+			</div>
+		</section>
+		<section class="section-box-right">
+			<div class="ky-codeview-wrap" id="codeViewJs">
+				<pre>
+<code>
+Kmarquee(mymarquee).init({
+	'cellWidth': '200px', // 单元宽度
+	'cellHeight': '300px', // 单元高度
+	'direction': 'left', // 移动方向（默认向左）
+	'speed': 3 // 速度档位（一共5个档位：1, 2, 3, 4, 5）
+});</code>
+				</pre>
+			</div>
+		</section>
+	</section>
 
 	<script type="text/javascript">
-
-	Kmarquee(mymarquee).init({
-		'cellWidth': '200px', // 单元宽度
-		'cellHeight': '300px',// 单元高度
-		'direction': 'left',// 移动方向（默认向左）
-		'speed': 3 // 速度档位（一共5个档位：1, 2, 3, 4, 5）
-	});
-
+		var obj = {
+			'font-size': '18px',
+			'line-height': '28px'
+		};
+		KcodeviewHtml(codeViewHtml).init(obj);
+		KcodeviewJs(codeViewJs).init(obj);
 	</script>
 
 </body>
+
 </html>

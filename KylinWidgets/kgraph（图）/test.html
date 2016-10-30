@@ -1,271 +1,462 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<meta charset="utf-8">
-<title>test</title>
-<script type="text/javascript" src="kgraph.js"></script>
+	<meta charset="utf-8">
+	<title>test</title>
 
-<style type="text/css">
+	<script src="../KylinJS.js/KylinJS.js"></script>
+	<script src="../ky1.0/kcodeview（代码浏览器）/kcodeview-html.js"></script>
+	<script src="../ky1.0/kcodeview（代码浏览器）/kcodeview-js.js"></script>
+	<link rel="stylesheet" href="../ky1.0/kcodeview（代码浏览器）/kcodeview.css">
+	<link rel="stylesheet" href="../test-common.css">
 
-body {
-	font-family: "Microsoft Yahei";
-}
+	<script type="text/javascript" src="kgraph.js"></script>
 
-#graph {
-	border: 1px solid orange;
-	display: inline-block;
-}
+	<style type="text/css">
+		body {
+			font-family: "Microsoft Yahei";
+		}
 
-#graph div:nth-child(1){
-	left: 0;
-	top: 0;
-}
+		#graph {
+			border: 1px solid orange;
+			display: inline-block;
+		}
 
-#graph div:nth-child(2){
-	left: 400px;
-	top: 0;
-}
+		#graph div:nth-child(1) {
+			left: 0;
+			top: 0;
+		}
 
-#graph div:nth-child(3){
-	left: 200px;
-	top: 100px;
-}
+		#graph div:nth-child(2) {
+			left: 400px;
+			top: 0;
+		}
 
-#graph div:nth-child(4){
-	left: 0;
-	top: 200px;
-}
+		#graph div:nth-child(3) {
+			left: 200px;
+			top: 100px;
+		}
 
-#graph div:nth-child(5){
-	left: 400px;
-	top: 200px;
-}
+		#graph div:nth-child(4) {
+			left: 0;
+			top: 200px;
+		}
 
-/*--------------------------*/
+		#graph div:nth-child(5) {
+			left: 400px;
+			top: 200px;
+		}
+		/*--------------------------*/
 
-#graph2 {
-	border: 1px solid orange;
-	display: inline-block;
-}
+		#graph2 {
+			border: 1px solid orange;
+			display: inline-block;
+		}
 
-#graph2 div:nth-child(1){
-	left: 0;
-	top: 0;
-}
+		#graph2 div:nth-child(1) {
+			left: 0;
+			top: 0;
+		}
 
-#graph2 div:nth-child(2){
-	left: 400px;
-	top: 0;
-}
+		#graph2 div:nth-child(2) {
+			left: 400px;
+			top: 0;
+		}
 
-#graph2 div:nth-child(3){
-	left: 0;
-	top: 200px;
-}
+		#graph2 div:nth-child(3) {
+			left: 0;
+			top: 200px;
+		}
 
-#graph2 div:nth-child(4){
-	left: 400px;
-	top: 200px;
-}
+		#graph2 div:nth-child(4) {
+			left: 400px;
+			top: 200px;
+		}
+		/*---------------------------*/
 
-/*---------------------------*/
+		#graph3 {
+			border: 1px solid orange;
+			display: inline-block;
+		}
 
-#graph3 {
-	border: 1px solid orange;
-	display: inline-block;
-}
+		#graph3 div:nth-child(1) {
+			left: 0;
+			top: 0;
+		}
 
-#graph3 div:nth-child(1){
-	left: 0;
-	top: 0;
-}
+		#graph3 div:nth-child(2) {
+			left: 400px;
+			top: 0;
+		}
 
-#graph3 div:nth-child(2){
-	left: 400px;
-	top: 0;
-}
+		#graph3 div:nth-child(3) {
+			left: 200px;
+			top: 100px;
+		}
 
-#graph3 div:nth-child(3){
-	left: 200px;
-	top: 100px;
-}
+		#graph3 div:nth-child(4) {
+			left: 0;
+			top: 200px;
+		}
 
-#graph3 div:nth-child(4){
-	left: 0;
-	top: 200px;
-}
+		#graph3 div:nth-child(5) {
+			left: 400px;
+			top: 200px;
+		}
+		/*--------------------------*/
 
-#graph3 div:nth-child(5){
-	left: 400px;
-	top: 200px;
-}
+		#graph4 {
+			border: 1px solid orange;
+			display: inline-block;
+		}
 
-/*--------------------------*/
+		#graph4 div:nth-child(1) {
+			left: 0;
+			top: 0;
+		}
 
-#graph4 {
-	border: 1px solid orange;
-	display: inline-block;
-}
+		#graph4 div:nth-child(2) {
+			left: 400px;
+			top: 0;
+		}
 
-#graph4 div:nth-child(1){
-	left: 0;
-	top: 0;
-}
+		#graph4 div:nth-child(3) {
+			left: 0;
+			top: 200px;
+		}
 
-#graph4 div:nth-child(2){
-	left: 400px;
-	top: 0;
-}
+		#graph4 div:nth-child(4) {
+			left: 400px;
+			top: 200px;
+		}
 
-#graph4 div:nth-child(3){
-	left: 0;
-	top: 200px;
-}
-
-#graph4 div:nth-child(4){
-	left: 400px;
-	top: 200px;
-}
-
-</style>
+		/* --------- */
+		.code-box-html {
+			width: 350px;
+		}
+		.code-box-js {
+			width: 400px;
+		}
+		.section-box-first {
+			vertical-align: top;
+		}
+	</style>
 </head>
+
 <body>
 
-	<section id="graph">
-		<div>V<sub>1</sub></div>
-		<div>V<sub>2</sub></div>
-		<div>V<sub>3</sub></div>
-		<div>V<sub>4</sub></div>
-		<div>V<sub>5</sub></div>
-	</section>
-	<img src="img/instruction1.jpg">
-	<img src="img/instruction11.jpg">
-	<br>
-	<button id="fresh_btn">刷新</button>
-	<hr>
+	<h1 class="page-title">演示 kgraph（图）</h1>
 
-	<section id="graph2">
-		<div>V<sub>1</sub></div>
-		<div>V<sub>2</sub></div>
-		<div>V<sub>3</sub></div>
-		<div>V<sub>4</sub></div>
+	<section class="section-box section-box-first">
+		<div>
+			<button id="fresh_btn" class="btn">刷新</button>
+		</div>
+		<section id="graph">
+			<div>V<sub>1</sub></div>
+			<div>V<sub>2</sub></div>
+			<div>V<sub>3</sub></div>
+			<div>V<sub>4</sub></div>
+			<div>V<sub>5</sub></div>
+		</section>
+		<script type="text/javascript">
+			var arr = [ // 数据源（邻接矩阵，0表示重合或者无穷大）
+				[0, 1, 0, 1, 0],
+				[1, 0, 1, 0, 1],
+				[0, 1, 0, 1, 1],
+				[1, 0, 1, 0, 0],
+				[0, 1, 1, 0, 0]
+			];
+			var myGraph = Kgraph(graph);
+			myGraph.init(arr, {
+				'width': '450px', // 图的宽度
+				'height': '250px', // 图的高度
+				'nodeSize': '50px', // 节点尺寸
+				'nodeBgColor': '#59f', // 节点背景颜色
+				'nodeTextColor': '#fff', // 节点文字颜色
+				'arcColor': '#6EB215', // 弧的颜色
+				'hasDirected': false, // 是否是有向图
+				'hasArcWeight': false // 是否显示权值
+			});
+			// 用于刷新数据源
+			var tarr = [
+				[0, 1, 0, 1, 0],
+				[1, 0, 1, 0, 1],
+				[0, 1, 0, 1, 0],
+				[1, 0, 1, 0, 0],
+				[0, 1, 1, 0, 0]
+			];
+			fresh_btn.onclick = function() {
+				myGraph.fresh(tarr);
+			}
+		</script>
+		<div class="inline code-box-html">
+			<div class="ky-codeview-wrap" id="codeViewHtml1">
+				<pre>
+<code>
+<section id="graph">
+	<div>V<sub>1</sub></div>
+	<div>V<sub>2</sub></div>
+	<div>V<sub>3</sub></div>
+	<div>V<sub>4</sub></div>
+	<div>V<sub>5</sub></div>
+</section></code>
+				</pre>
+			</div>
+		</div>
+		<div class="inline code-box-js">
+			<div class="ky-codeview-wrap" id="codeViewJs1">
+				<pre>
+<code>
+var arr = [ // 数据源（邻接矩阵，0表示重合或者无穷大）
+	[0, 1, 0, 1, 0],
+	[1, 0, 1, 0, 1],
+	[0, 1, 0, 1, 1],
+	[1, 0, 1, 0, 0],
+	[0, 1, 1, 0, 0]
+];
+var myGraph = Kgraph(graph);
+myGraph.init(arr, {
+	'width': '450px', // 图的宽度
+	'height': '250px', // 图的高度
+	'nodeSize': '50px', // 节点尺寸
+	'nodeBgColor': '#59f', // 节点背景颜色
+	'nodeTextColor': '#fff', // 节点文字颜色
+	'arcColor': '#6EB215', // 弧的颜色
+	'hasDirected': false, // 是否是有向图
+	'hasArcWeight': false // 是否显示权值
+});</code>
+				</pre>
+			</div>
+		</div>
 	</section>
-	<img src="img/instruction2.jpg">
-	<img src="img/instruction22.jpg">
-	<hr>
-
-	<section id="graph3">
-		<div>V<sub>1</sub></div>
-		<div>V<sub>2</sub></div>
-		<div>V<sub>3</sub></div>
-		<div>V<sub>4</sub></div>
-		<div>V<sub>5</sub></div>
-	</section>
-	<img src="img/instruction3.jpg">
-	<img src="img/instruction33.jpg">
-	<hr>
-
-	<section id="graph4">
-		<div>V<sub>1</sub></div>
-		<div>V<sub>2</sub></div>
-		<div>V<sub>3</sub></div>
-		<div>V<sub>4</sub></div>
-	</section>
-	<img src="img/instruction4.jpg">
-	<img src="img/instruction44.jpg">
-	<hr>
-	
-	
 	<script type="text/javascript">
-
-	var arr = [ // 数据源（邻接矩阵，0表示重合或者无穷大）
-		[0, 1, 0, 1, 0],
-		[1, 0, 1, 0, 1],
-		[0, 1, 0, 1, 1],
-		[1, 0, 1, 0, 0],
-		[0, 1, 1, 0, 0]
-	];
-	var myGraph = Kgraph(graph);
-	myGraph.init(arr, {
-		'width': '450px',// 图的宽度
-		'height': '250px',// 图的高度
-		'nodeSize': '50px',// 节点尺寸
-		'nodeBgColor': '#59f',// 节点背景颜色
-		'nodeTextColor': '#fff',// 节点文字颜色
-		'arcColor': '#6EB215',// 弧的颜色
-		'hasDirected': false, // 是否是有向图
-		'hasArcWeight': false // 是否显示权值
-	});
-
-	var tarr = [ 
-		[0, 1, 0, 1, 0],
-		[1, 0, 1, 0, 1],
-		[0, 1, 0, 1, 0],
-		[1, 0, 1, 0, 0],
-		[0, 1, 1, 0, 0]
-	];
-	fresh_btn.onclick = function(){
-		myGraph.fresh(tarr);
-	}
-	// ------------------------------ //
-
-	var arr2 = [ // 数据源（邻接矩阵，0表示重合或者无穷大）
-		[0, 1, 1, 0],
-		[0, 0, 0, 0],
-		[0, 0, 0, 1],
-		[1, 0, 0, 0],
-	];
-	Kgraph(graph2).init(arr2, {
-		'width': '450px',// 图的宽度
-		'height': '250px',// 图的高度
-		'nodeSize': '50px',// 节点尺寸
-		'nodeBgColor': '#59f',// 节点背景颜色
-		'nodeTextColor': '#fff',// 节点文字颜色
-		'arcColor': '#6EB215',// 弧的颜色
-		'hasDirected': true, // 是否是有向图
-		'hasArcWeight': false // 是否显示权值
-	});
-
-	// ------------------------------ //
-
-	var arr3 = [ // 数据源（邻接矩阵，0表示重合或者无穷大）
-		[0, 4, 0, 2, 0],
-		[4, 0, 3, 0, 3],
-		[0, 3, 0, 2, 3],
-		[2, 0, 2, 0, 0],
-		[0, 3, 3, 0, 0]
-	];
-	Kgraph(graph3).init(arr3, {
-		'width': '450px',// 图的宽度
-		'height': '250px',// 图的高度
-		'nodeSize': '50px',// 节点尺寸
-		'nodeBgColor': '#59f',// 节点背景颜色
-		'nodeTextColor': '#fff',// 节点文字颜色
-		'arcColor': '#6EB215',// 弧的颜色
-		'hasDirected': false, // 是否是有向图
-		'hasArcWeight': true // 是否显示权值
-	});
-
-	// ------------------------------ //
-
-	var arr4 = [ // 数据源（邻接矩阵，0表示重合或者无穷大）
-		[0, 4, 2, 0],
-		[0, 0, 0, 0],
-		[0, 0, 0, 5],
-		[10, 0, 0, 0],
-	];
-	Kgraph(graph4).init(arr4, {
-		'width': '450px',// 图的宽度
-		'height': '250px',// 图的高度
-		'nodeSize': '50px',// 节点尺寸
-		'nodeBgColor': '#59f',// 节点背景颜色
-		'nodeTextColor': '#fff',// 节点文字颜色
-		'arcColor': '#6EB215',// 弧的颜色
-		'hasDirected': true, // 是否是有向图
-		'hasArcWeight': true // 是否显示权值
-	});
-
+		var obj = {
+			'font-size': '18px',
+			'line-height': '28px'
+		};
+		KcodeviewHtml(codeViewHtml1).init(obj);
+		KcodeviewJs(codeViewJs1).init(obj);
 	</script>
-
+	<hr>
+	<section class="section-box">
+		<section id="graph2">
+			<div>V<sub>1</sub></div>
+			<div>V<sub>2</sub></div>
+			<div>V<sub>3</sub></div>
+			<div>V<sub>4</sub></div>
+		</section>
+		<script type="text/javascript">
+			var arr2 = [ // 数据源（邻接矩阵，0表示重合或者无穷大）
+				[0, 1, 1, 0],
+				[0, 0, 0, 0],
+				[0, 0, 0, 1],
+				[1, 0, 0, 0],
+			];
+			Kgraph(graph2).init(arr2, {
+				'width': '450px', // 图的宽度
+				'height': '250px', // 图的高度
+				'nodeSize': '50px', // 节点尺寸
+				'nodeBgColor': '#59f', // 节点背景颜色
+				'nodeTextColor': '#fff', // 节点文字颜色
+				'arcColor': '#6EB215', // 弧的颜色
+				'hasDirected': true, // 是否是有向图
+				'hasArcWeight': false // 是否显示权值
+			});
+		</script>
+		<div class="inline code-box-html">
+			<div class="ky-codeview-wrap" id="codeViewHtml2">
+				<pre>
+<code>
+<section id="graph2">
+	<div>V<sub>1</sub></div>
+	<div>V<sub>2</sub></div>
+	<div>V<sub>3</sub></div>
+	<div>V<sub>4</sub></div>
+</section></code>
+				</pre>
+			</div>
+		</div>
+		<div class="inline code-box-js">
+			<div class="ky-codeview-wrap" id="codeViewJs2">
+				<pre>
+<code>
+var arr2 = [ // 数据源（邻接矩阵，0表示重合或者无穷大）
+	[0, 1, 1, 0],
+	[0, 0, 0, 0],
+	[0, 0, 0, 1],
+	[1, 0, 0, 0],
+];
+Kgraph(graph2).init(arr2, {
+	'width': '450px', // 图的宽度
+	'height': '250px', // 图的高度
+	'nodeSize': '50px', // 节点尺寸
+	'nodeBgColor': '#59f', // 节点背景颜色
+	'nodeTextColor': '#fff', // 节点文字颜色
+	'arcColor': '#6EB215', // 弧的颜色
+	'hasDirected': true, // 是否是有向图
+	'hasArcWeight': false // 是否显示权值
+});
+</code>
+				</pre>
+			</div>
+		</div>
+	</section>
+	<script type="text/javascript">
+		var obj = {
+			'font-size': '18px',
+			'line-height': '28px'
+		};
+		KcodeviewHtml(codeViewHtml2).init(obj);
+		KcodeviewJs(codeViewJs2).init(obj);
+	</script>
+	<hr>
+	<section class="section-box">
+		<section id="graph3">
+			<div>V<sub>1</sub></div>
+			<div>V<sub>2</sub></div>
+			<div>V<sub>3</sub></div>
+			<div>V<sub>4</sub></div>
+			<div>V<sub>5</sub></div>
+		</section>
+		<script type="text/javascript">
+			var arr3 = [ // 数据源（邻接矩阵，0表示重合或者无穷大）
+				[0, 4, 0, 2, 0],
+				[4, 0, 3, 0, 3],
+				[0, 3, 0, 2, 3],
+				[2, 0, 2, 0, 0],
+				[0, 3, 3, 0, 0]
+			];
+			Kgraph(graph3).init(arr3, {
+				'width': '450px', // 图的宽度
+				'height': '250px', // 图的高度
+				'nodeSize': '50px', // 节点尺寸
+				'nodeBgColor': '#59f', // 节点背景颜色
+				'nodeTextColor': '#fff', // 节点文字颜色
+				'arcColor': '#6EB215', // 弧的颜色
+				'hasDirected': false, // 是否是有向图
+				'hasArcWeight': true // 是否显示权值
+			});
+		</script>
+		<div class="inline code-box-html">
+			<div class="ky-codeview-wrap" id="codeViewHtml3">
+				<pre>
+<code>
+<section id="graph3">
+	<div>V<sub>1</sub></div>
+	<div>V<sub>2</sub></div>
+	<div>V<sub>3</sub></div>
+	<div>V<sub>4</sub></div>
+</section></code>
+				</pre>
+			</div>
+		</div>
+		<div class="inline code-box-js">
+			<div class="ky-codeview-wrap" id="codeViewJs3">
+				<pre>
+<code>
+var arr3 = [ // 数据源（邻接矩阵，0表示重合或者无穷大）
+	[0, 4, 0, 2, 0],
+	[4, 0, 3, 0, 3],
+	[0, 3, 0, 2, 3],
+	[2, 0, 2, 0, 0],
+	[0, 3, 3, 0, 0]
+];
+Kgraph(graph3).init(arr3, {
+	'width': '450px', // 图的宽度
+	'height': '250px', // 图的高度
+	'nodeSize': '50px', // 节点尺寸
+	'nodeBgColor': '#59f', // 节点背景颜色
+	'nodeTextColor': '#fff', // 节点文字颜色
+	'arcColor': '#6EB215', // 弧的颜色
+	'hasDirected': false, // 是否是有向图
+	'hasArcWeight': true // 是否显示权值
+});
+</code>
+				</pre>
+			</div>
+		</div>
+	</section>
+	<script type="text/javascript">
+		var obj = {
+			'font-size': '18px',
+			'line-height': '28px'
+		};
+		KcodeviewHtml(codeViewHtml3).init(obj);
+		KcodeviewJs(codeViewJs3).init(obj);
+	</script>
+	<hr>
+	<section class="section-box">
+		<section id="graph4">
+			<div>V<sub>1</sub></div>
+			<div>V<sub>2</sub></div>
+			<div>V<sub>3</sub></div>
+			<div>V<sub>4</sub></div>
+		</section>
+		<script type="text/javascript">
+			var arr4 = [ // 数据源（邻接矩阵，0表示重合或者无穷大）
+				[0, 4, 2, 0],
+				[0, 0, 0, 0],
+				[0, 0, 0, 5],
+				[10, 0, 0, 0],
+			];
+			Kgraph(graph4).init(arr4, {
+				'width': '450px', // 图的宽度
+				'height': '250px', // 图的高度
+				'nodeSize': '50px', // 节点尺寸
+				'nodeBgColor': '#59f', // 节点背景颜色
+				'nodeTextColor': '#fff', // 节点文字颜色
+				'arcColor': '#6EB215', // 弧的颜色
+				'hasDirected': true, // 是否是有向图
+				'hasArcWeight': true // 是否显示权值
+			});
+		</script>
+		<div class="inline code-box-html">
+			<div class="ky-codeview-wrap" id="codeViewHtml4">
+				<pre>
+<code>
+<section id="graph4">
+	<div>V<sub>1</sub></div>
+	<div>V<sub>2</sub></div>
+	<div>V<sub>3</sub></div>
+	<div>V<sub>4</sub></div>
+</section></code>
+				</pre>
+			</div>
+		</div>
+		<div class="inline code-box-js">
+			<div class="ky-codeview-wrap" id="codeViewJs4">
+				<pre>
+<code>
+var arr4 = [ // 数据源（邻接矩阵，0表示重合或者无穷大）
+	[0, 4, 2, 0],
+	[0, 0, 0, 0],
+	[0, 0, 0, 5],
+	[10, 0, 0, 0],
+];
+Kgraph(graph4).init(arr4, {
+	'width': '450px', // 图的宽度
+	'height': '250px', // 图的高度
+	'nodeSize': '50px', // 节点尺寸
+	'nodeBgColor': '#59f', // 节点背景颜色
+	'nodeTextColor': '#fff', // 节点文字颜色
+	'arcColor': '#6EB215', // 弧的颜色
+	'hasDirected': true, // 是否是有向图
+	'hasArcWeight': true // 是否显示权值
+});
+</code>
+				</pre>
+			</div>
+		</div>
+	</section>
+	<script type="text/javascript">
+		var obj = {
+			'font-size': '18px',
+			'line-height': '28px'
+		};
+		KcodeviewHtml(codeViewHtml4).init(obj);
+		KcodeviewJs(codeViewJs4).init(obj);
+	</script>
 </body>
+
 </html>

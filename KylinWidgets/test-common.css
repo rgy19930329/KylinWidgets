@@ -19,7 +19,8 @@ body {
 }
 
 .section-box {
-	margin: 30px;
+	margin: 20px;
+	padding: 10px;
 	overflow: hidden;
 }
 .section-title {
@@ -91,5 +92,6 @@ textarea {
 .tc {text-align: center;}
 .tr {text-align: right;}
 .clearfix {clear: both;}
+.inline {display: inline-block;}
 .mt10 {margin-top: 10px;}
 .mt20 {margin-top: 20px;}
