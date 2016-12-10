@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>test</title>
+    <script type="text/javascript" src="../../KylinJS.js/KylinJS.js"></script>
+    <script type="text/javascript" src="kcodeview-css.js"></script>
+    <link rel="stylesheet" href="kcodeview.css">
+    <link rel="stylesheet" href="../../test-common.css">
+    <style type="text/css">
+
+    </style>
+</head>
+
+<body>
+
+    <h1 class="page-title">演示 kcodeview-css（代码浏览器）</h1>
+
+    <section class="section-box">
+        <button class="btn" id="press">点击获取代码</button>
+    </section>
+
+    <hr>
+
+    <section class="section-box">
+    	<div class="ky-codeview-wrap" id="codeViewCss">
+<pre><code>
+@import "./app.less";
+
+h1 {
+    font-size: "36px";
+    z-index: 100;
+    span {
+        font-family: "Microsoft yahei";
+    }
+}
+
+.page-title {
+    padding: "10px";
+}
+
+table {
+    width: "400px"; 
+    line-height: "24px";
+}</code></pre>
+    	</div>
+    </section>
+
+    <script type="text/javascript">
+        var obj = {
+            'font-size': '18px',
+            'line-height': '28px'
+        };
+        var myCodeView = KcodeviewCss(codeViewCss);
+    	myCodeView.init(obj);
+
+        press.onclick = function() {
+            var res = myCodeView.getCode();
+            alert(res);
+        }
+    </script>
+
+</body>
+
+</html>
