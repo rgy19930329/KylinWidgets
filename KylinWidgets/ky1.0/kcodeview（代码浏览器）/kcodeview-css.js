@@ -4,11 +4,7 @@ function KcodeviewCss(bar){
 
 	var colors = {
 		color1: ['@import'],
-		color2: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'table', 'tr', 'th', 'td', 'thead', 'tbody', 'span',
-			'label', 'strong', 'b', 'i', 'a', 'img', 'ul', 'ol', 'li', 'p', 'div', 'nav', 'main', 'select',
-			'option', 'sub', 'sup', 'dl', 'dt', 'dd', 'input', 'button', 'form', 'textarea', 'body', 'html',
-			'pre', 'section',
-		],
+		color2: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'],
 	};
 	/**
 	* @desc 初始化元素
@@ -38,8 +34,9 @@ function KcodeviewCss(bar){
 			number: '(([^\\w])([0-9]+)([^\\w]))', // 匹配数字
 			method: '([\\r\\n\\(\\s{}\\.;]+)([a-zA-Z_]\\w*\s*\\([a-zA-Z_]*\\w*\\))([\\.\\)\\s{}\\n\\r;]+)', // 匹配函数及其参数
 			prop: '\\b([\\w-]+):', // 匹配css属性
-			class: '\\b(.[\\w-]+)\\b', // 匹配css的class选择器
-			id: '\\b(#[\\w-]+)\\b', // 匹配css的id
+			tag: '\\b([\\w-]+)\\s*{', // 匹配css的标签选择器
+			class: '(\\.[\\w-]+)\\b', // 匹配css的class选择器
+			id: '(#[\\w-]+)\\b', // 匹配css的id选择器
 		};
 
 		var reg_keywords_obj = {
@@ -75,6 +72,13 @@ function KcodeviewCss(bar){
 				return arr[1] + '<span class="color12">' + tmp[1] + '</span>(<span class="color4">' + tmp[2] + '</span>)' + arr[3];
 			}else if(tar.match(new RegExp(reg_base_obj.prop))) {
 				return '<span class="color5">' + tar + '</span>';
+			}else if(tar.match(new RegExp(reg_base_obj.class))) {
+				return '<span class="color2">' + tar + '</span>';
+			}else if(tar.match(new RegExp(reg_base_obj.id))) {
+				return '<span class="color2">' + tar + '</span>';
+			}else if(tar.match(new RegExp(reg_base_obj.tag))) {
+				var arr = tar.match(new RegExp(reg_base_obj.tag));
+				return '<span class="color2">' + arr[1] + '</span>' + ' {';
 			}
 			return tar;
 		});
