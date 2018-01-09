@@ -13,4 +13,6 @@
 ## 版本ky1.0 (分支ky1.0)
 
 ### 说明
-> ky1.0 中新增或者改造的项目依赖[KylinJS.js](KylinWidgets/KylinJS.js/KylinJS.js)
+> ky1.0 新增或者改造的项目依赖[KylinJS.js](KylinWidgets/KylinJS.js/KylinJS.js)
+
+> ky2.0 新增KjQueryWidgets/...
