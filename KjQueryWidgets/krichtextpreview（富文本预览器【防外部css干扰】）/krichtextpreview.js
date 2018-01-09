@@ -7,7 +7,7 @@
 $ && (function($) {
   $.fn.extend({
     /*rich text preview*/
-    rtpv: function(rt) {
+    krtpv: function(rt) {
       var $target = $(this);
       var rt = rt || '';
       console.log(rt);

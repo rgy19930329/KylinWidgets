@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>demo</title>
+  <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+  <script type="text/javascript" src="kvalidate.js"></script>
+  <style type="text/css">
+
+  </style>
+</head>
+
+<body>
+  <form>
+    <input type="text" name="name" placeholder="姓名">
+    <br>
+    <input type="text" name="age" placeholder="年龄">
+    <br>
+    <button type="button" id="submit-btn">提交</button>
+  </form>
+  <script type="text/javascript">
+  var validates = {
+    name: {
+      explainMsg: '姓名不能为空',
+      required: true
+    },
+    age: {
+      explainMsg: '年龄不能为空',
+      rule: function(value, self) {
+        if (!value) {
+          return true;
+        }
+        if (!value.match(/^\d+(\.\d+)?$/)) {
+          self.explainMsg = '年龄请输入数字';
+          return true;
+        }
+      },
+      // 自定义错误提示
+      tips: function(msg, key) {
+        console.log(msg, key);
+      }
+    }
+  }
+
+  var tips = function(msg) {
+    alert(msg);
+  }
+
+  $('#submit-btn').on('click', function() {
+    var rs = $('form').kvalidate(validates, tips);
+    if (rs) {
+      console.log('允许提交');
+    } else {
+      console.log('不满足条件，无法提交');
+    }
+
+  });
+  </script>
+</body>
+
+</html>

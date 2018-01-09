@@ -7,7 +7,7 @@
 $ && (function($) {
   $.fn.extend({
     /*count down timer*/
-    cdtimer: function(opts) {
+    kcdtimer: function(opts) {
       var $trigger = $(this);
 
       var total = opts.total || 60;
