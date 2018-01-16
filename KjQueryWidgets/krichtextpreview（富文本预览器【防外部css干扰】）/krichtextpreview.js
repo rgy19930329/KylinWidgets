@@ -9,7 +9,7 @@ $ && (function($) {
     /*rich text preview*/
     krtpv: function(rt) {
       var $target = $(this);
-      var rt = rt || '';
+      var rt = rt || $target.data('content') || '';
       console.log(rt);
       var $iframe = $('<iframe frameborder="0" style="display:block;width:100%;"></iframe>');
       $iframe.on('load', function() {
