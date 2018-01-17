@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>demo</title>
+  <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+  <script type="text/javascript" src="kasyncsubmit.js"></script>
+  <link rel="stylesheet" href="style.css">
+  <style type="text/css">
+
+  </style>
+</head>
+
+<body>
+  <form>
+    <input type="text" name="wd">
+    <button id="J-submit-btn">submit</button>
+  </form>
+  <div class="result">
+    <div class="tips"></div>
+    <ul class="list"></ul>
+  </div>
+  <script type="text/javascript">
+  $('#J-submit-btn').kasyncSubmit({
+    url: 'http://suggestion.baidu.com/su',
+    data: function() {
+      return $('form').serialize();
+    },
+    dataType: 'jsonp',
+    jsonp: 'cb',
+    before: function(promises) {
+      // 模拟耗时操作
+      var tasks = function() {
+        if (Math.random() < 0.5) {
+          promises.resolve('校验通过，开始发请求');
+        }else{
+          promises.reject('校验未通过');
+        }
+      }
+      setTimeout(tasks, 1000);　　　
+    },
+    // before: function(promises) {
+    //   $.ajax({
+    //     url: 'http://suggestion.baidu.com/su',
+    //     data: {
+    //       wd: $('form').find('[name=wd]').val()
+    //     },
+    //     dataType: 'jsonp',
+    //     jsonp: 'cb'
+    //   }).done(function(rs) {
+    //     if(rs.q) {
+    //       promises.resolve('通过');
+    //     }else{
+    //       promises.reject('拒绝');
+    //     }
+    //   }).fail(function(e) {
+    //     promises.reject('网络需要抢救');
+    //   });
+    // },
+    success: function(rs) {
+      var list = rs.s || [];
+      var tpl = '';
+      $.each(list, function(index, item) {
+        tpl += '<li>' + item + '</li>';
+      });
+      $('.tips').text('共 ' + list.length + ' 条相关结果');
+      $('.list').html(tpl);
+    }
+  });
+  </script>
+</body>
+
+</html>
