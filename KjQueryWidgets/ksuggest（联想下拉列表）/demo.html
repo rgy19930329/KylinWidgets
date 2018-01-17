@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>demo</title>
+  <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+  <script type="text/javascript" src="ksuggest.js"></script>
+  <link rel="stylesheet" href="style.css">
+  <style type="text/css">
+  input {
+    font-size: 14px;
+    width: 200px;
+    height: 30px;
+  }
+  </style>
+</head>
+
+<body>
+  <form>
+    <input type="text" name="wd" id="J-wd-input" placeholder="请输入关键字进行搜索">
+  </form>
+  <script type="text/javascript">
+  $('#J-wd-input').ksuggest({
+    search: function(promises) {
+      $.ajax({
+        url: 'http://suggestion.baidu.com/su',
+        type: 'get',
+        data: {
+          wd: $('form').find('[name=wd]').val()
+        },
+        dataType: 'jsonp',
+        jsonp: 'cb',
+      }).done(function(rs) {
+        var list = rs.s || [];
+        promises.resolve(list);
+      }).fail(function(e) {
+        promises.resolve([]);
+      });
+    }
+  });
+  </script>
+</body>
+
+</html>

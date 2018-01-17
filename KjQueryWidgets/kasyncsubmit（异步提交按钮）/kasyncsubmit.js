@@ -25,7 +25,7 @@ $ && (function($) {
 
   /**
    * @desc 校验数据类型
-   * @param [rule] [object] [规则] | [opts] [object] [数据源] | 
+   * @param [rule] [object] [规则] | [opts] [object] [数据源] | [errorcb] [function] [错误时的回调方法]
    */
   var verifyType = function(rule, opts, errorcb) {
     var type = '';
@@ -76,7 +76,7 @@ $ && (function($) {
       }
 
       // 初始化参数
-      var defaultCfg = {
+      var defaults = {
         before: function(promises) { promises.resolve(); },
         url: '',
         type: 'get',
@@ -89,7 +89,7 @@ $ && (function($) {
         complete: function() {}
       }
 
-      var cfg = $.extend({}, defaultCfg, opts);
+      var cfg = $.extend({}, defaults, opts || {});
 
       // 添加事件
       me.on('click', function() {
@@ -124,9 +124,7 @@ $ && (function($) {
           ajaxOpts = $.extend({}, ajaxOpts, { jsonp: cfg.jsonp });
         }
 
-        // if (!cfg.before()) {
-        //   return;
-        // }
+        // before 操作 -> 数据提交
         var promises = $.Deferred();
 
         cfg.before(promises);
