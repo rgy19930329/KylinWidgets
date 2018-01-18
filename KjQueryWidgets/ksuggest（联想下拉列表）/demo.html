@@ -13,6 +13,14 @@
     width: 200px;
     height: 30px;
   }
+
+  .custom-style {
+    box-shadow: 0 0 10px #888;
+  }
+  .custom-style li a {
+    padding-left: 10px;
+    color: #f60;
+  }
   </style>
 </head>
 
@@ -22,6 +30,7 @@
   </form>
   <script type="text/javascript">
   $('#J-wd-input').ksuggest({
+    hookClassName: 'custom-style',
     search: function(promises) {
       $.ajax({
         url: 'http://suggestion.baidu.com/su',
@@ -37,6 +46,9 @@
       }).fail(function(e) {
         promises.resolve([]);
       });
+    },
+    callback: function(key) {
+      console.log('关键字 ' + key + ' 触发回调方法');
     }
   });
   </script>

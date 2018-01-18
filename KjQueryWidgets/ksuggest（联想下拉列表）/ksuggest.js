@@ -117,7 +117,6 @@ $ && (function() {
       cfg.search(promises);
 
       $.when(promises).done(function(list) {
-        console.log(list);
         var tpl = '';
         for (var i = 0; i < list.length; i++) {
           tpl += '<li><a href="javascript:;">' + list[i] + '</a></li>';
